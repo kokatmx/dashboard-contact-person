@@ -15,14 +15,21 @@ return new class extends Migration
             $table->id('user_id');
             $table->string('name');
             $table->string('email')->unique();
+            // $table->string('role');
+            $table->unsignedBigInteger('department_id');
+            $table->unsignedBigInteger('division_id');
+            $table->unsignedBigInteger('grade_id');
+            // $table->unsignedBigInteger('area_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('role')->default('user');
-            $table->integer('grade')->default(1);
-            $table->unsignedBigInteger('department_id');
+
+            // foregin key
             $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('division_id')->references('division_id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('grade_id')->references('grade_id')->on('grades')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('area_id')->references('area_id')->on('areas')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

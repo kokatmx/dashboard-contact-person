@@ -13,16 +13,23 @@ class Department extends Model
 
     protected $primaryKey = 'department_id';
     protected $fillable = [
-        'name',
+        'code_department',
+        'name_department',
         'description',
     ];
 
     public function users()
     {
-        return $this->hasMany(User::class, 'department_id',  'department_id');
+        return $this->hasMany(User::class, 'department_id');
     }
-    public function area()
+
+    // public function areas()
+    // {
+    //     return $this->hasMany(Area::class, 'department_id');
+    // }
+
+    public function divisions()
     {
-        return $this->hasMany(Area::class, 'department_id',  'department_id');
+        return $this->belongsToMany(Division::class, 'department_division', 'department_id', 'division_id');
     }
 }

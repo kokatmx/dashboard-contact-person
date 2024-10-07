@@ -11,13 +11,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $user = User::all();
         $department = Department::all();
-        if (Auth::user()->role === User::ROLE_STORE) {
-            return view('store.dashboard', compact('department'));
-        } elseif (Auth::user()->role === User::ROLE_OFFICE) {
-            return view('office.dashboard', compact('department'));
-        } elseif (Auth::user()->role === User::ROLE_WAREHOUSE) {
-            return view('warehouse.dashboard', compact('department'));
-        }
+        // if (Auth::user()->role === User::ROLE_STORE) {
+        //     return view('dashboard', compact('department', 'user'));
+        // } elseif (Auth::user()->role === User::ROLE_OFFICE) {
+        //     return view('dashboard', compact('department', 'user'));
+        // } elseif (Auth::user()->role === User::ROLE_WAREHOUSE) {
+        //     return view('dashboard', compact('department', 'user'));
+        // }
+        return view('dashboard', compact('department', 'user'));
     }
 }

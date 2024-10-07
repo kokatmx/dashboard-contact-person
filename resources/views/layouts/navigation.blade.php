@@ -12,7 +12,6 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-
                     @if (Auth::user()->role === \App\Models\User::ROLE_STORE)
                         <x-nav-link :href="route('store.dashboard')" :active="request()->routeIs('store.dashboard')">
                             {{ __('Store Dashboard') }}
@@ -49,10 +48,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        {{-- <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link> --}}
-
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -127,3 +122,16 @@
         </div>
     </div>
 </nav>
+{{-- @else
+        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+            <a href="{{ route('login') }}"
+                class="rounded-md px-3 py-2 text-gray-700 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                Log in
+            </a>
+            @if (Route::has('register'))
+                <a href="{{ route('register') }}"
+                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                    Register
+                </a>
+            @endif
+        </div> --}}

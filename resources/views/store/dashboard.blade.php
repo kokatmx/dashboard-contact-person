@@ -11,8 +11,13 @@
                 </div>
                 <div class="p-6 text-gray-900">
                     {{ __('Selamat datang ') }} <strong> {{ Auth::user()->name }}</strong>
-                    <p>{{ __(', Department kamu adalah ') }} <strong>{{ Auth::user()->department->name }}</strong></p>
-                    <p>{{ __(', Grade kamu adalah ') }} <strong>{{ Auth::user()->grade }}</strong></p>
+                    <p>{{ __('Divisi kamu adalah') }} <strong>{{ Auth::user()->division->division_name }}</strong></p>
+
+                    <p>{{ __('Department kamu adalah ') }}
+                        <strong>{{ Auth::user()->department->department_name }}</strong>
+                    </p>
+                    <p>{{ __('Min Grade kamu adalah ') }} <strong>{{ Auth::user()->grade->min_grade }}</strong></p>
+                    <p>{{ __('Max Grade kamu adalah ') }} <strong>{{ Auth::user()->grade->max_grade }}</strong></p>
                 </div>
             </div>
         </div>

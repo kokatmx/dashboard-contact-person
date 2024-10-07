@@ -117,24 +117,43 @@
         <div class="container text-center">
             <div class="content-header">
                 <h1>Dashboard Contact Person</h1>
-
+                @php
+                    $user = Auth::user();
+                    $userDivision = $user->division->division_code ?? null; // Ambil kode divisi
+                    $userDept = $user->department->department_code ?? null; // Ambil kode departemen
+                    $userPosition = $user->position->position_code ?? null;
+                @endphp
                 @if (Route::has('login'))
                     <div class="d-flex justify-content-center mt-4">
                         @auth
-                            @if (Auth::user()->role === \App\Models\User::ROLE_STORE)
+                            @if ($userDivision === 'O2222' && $userDept === 'O1900')
                                 <!-- Tombol untuk Admin Dashboard -->
-                                <a href="{{ route('store.dashboard') }}" class="btn btn-primary me-2">
-                                    Store Dashboard
-                                </a>
-                            @elseif (Auth::user()->role === \App\Models\User::ROLE_OFFICE)
-                                <!-- Tombol untuk User Dashboard -->
-                                <a href="{{ route('office.dashboard') }}" class="btn btn-primary me-2">
-                                    office Dashboard
-                                </a>
-                            @elseif (Auth::user()->role === \App\Models\User::ROLE_WAREHOUSE)
-                                <!-- Tombol untuk User Dashboard -->
                                 <a href="{{ route('warehouse.dashboard') }}" class="btn btn-primary me-2">
                                     Warehouse Dashboard
+                                </a>
+                            @elseif ($userDivision === 'O0000' && in_array($userDept, ['O1100', 'O1200', 'O9400']))
+                                <!-- Tombol untuk User Dashboard -->
+                                <a href="{{ route('Store.dashboard') }}" class="btn btn-primary me-2">
+                                    Store Dashboard
+                                </a>
+                            @elseif (in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000']) &&
+                                    in_array($userDept, [
+                                        'C3100',
+                                        'F1500',
+                                        'F5100',
+                                        'G1600',
+                                        'H1800',
+                                        'H2600',
+                                        'K1300',
+                                        'M3200',
+                                        'R4300',
+                                        'R5800',
+                                        'YY002',
+                                        'YY004',
+                                    ]))
+                                <!-- Tombol untuk User Dashboard -->
+                                <a href="{{ route('office.dashboard') }}" class="btn btn-primary me-2">
+                                    Office Dashboard
                                 </a>
                             @endif
                         @else

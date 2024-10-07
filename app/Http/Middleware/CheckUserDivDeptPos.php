@@ -1,33 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Middleware;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\Response;
 
-class AuthenticatedSessionController extends Controller
+class CheckUserDivDeptPos
 {
     /**
-     * Display the login view.
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function create(): View
+    public function handle(Request $request, Closure $next): Response
     {
-        return view('auth.login');
-    }
-
-    /**
-     * Handle an incoming authentication request.
-     */
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
-
-        $request->session()->regenerate();
         $user = Auth::user();
 
         // Ambil division dan department user
@@ -52,20 +40,7 @@ class AuthenticatedSessionController extends Controller
         ) {
             return redirect()->route('office.dashboard');
         }
-        return redirect()->route('home');
-    }
 
-    /**
-     * Destroy an authenticated session.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        return $next($request);
     }
 }

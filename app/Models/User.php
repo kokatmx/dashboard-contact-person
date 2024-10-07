@@ -28,19 +28,37 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
-        'grade',
+        // 'role',
+        'grade_id',
+        'department_id',
+        'division_id',
     ];
 
     // Cek apakah user memiliki akses untuk mengupdate berdasarkan grade
-    public function canUpdateUsers()
+    // Check if user can update another user based on grade level
+    public function canUpdateUser(User $otherUser)
     {
-        return $this->grade >= self::MIN_GRADE_FOR_UPDATE;
+        return $this->grade->grade_level > $otherUser->grade->grade_level;
     }
     public function department()
     {
-        return $this->belongsTo(Department::class, 'department_id', 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
+
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
+    }
+
+    // public function area()
+    // {
+    //     return $this->belongsTo(Area::class, 'area_id');
+    // }
 
     /**
      * The attributes that should be hidden for serialization.

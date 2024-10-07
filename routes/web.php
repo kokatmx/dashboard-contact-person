@@ -25,15 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified', CheckRoleMiddleware::class])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     // Akses hanya untuk role store
-    Route::get('/store', [DashboardController::class, 'index'])->middleware(CheckRoleMiddleware::class . ':store')->name('store.dashboard');
+    Route::get('/store', [StoreController::class, 'index'])->name('store.dashboard');
 
     // Akses hanya untuk role office
-    Route::get('/office', [DashboardController::class, 'index'])->middleware(CheckRoleMiddleware::class . ':office')->name('office.dashboard');
+    Route::get('/office', [OfficeController::class, 'index'])->name('office.dashboard');
 
     // Akses hanya untuk role warehouse
-    Route::get('/warehouse', [DashboardController::class, 'index'])->middleware(CheckRoleMiddleware::class . ':warehouse')->name('warehouse.dashboard');
+    Route::get('/warehouse', [WarehouseController::class, 'index'])->name('warehouse.dashboard');
 
     Route::prefix('department')->group(function () {
         Route::get('/', [DepartmentController::class, 'index'])->name('department.index');
