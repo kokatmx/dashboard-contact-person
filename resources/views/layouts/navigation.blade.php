@@ -12,17 +12,37 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    @if (Auth::user()->role === \App\Models\User::ROLE_STORE)
+                    @php
+                        $user = Auth::user();
+                        $userDivision = $user->division->division_code ?? null; // Ambil kode divisi
+                        $userDept = $user->department->department_code ?? null; // Ambil kode departemen
+                        $userPosition = $user->position->position_code ?? null;
+                    @endphp
+                    @if ($userDivision === 'O2222' && $userDept === 'O1900')
+                        <x-nav-link :href="route('warehouse.dashboard')" :active="request()->routeIs('warehouse.dashboard')">
+                            {{ __('Warehouse Dashboard') }}
+                        </x-nav-link>
+                    @elseif ($userDivision === 'O0000' && in_array($userDept, ['O1100', 'O1200', 'O9400']))
                         <x-nav-link :href="route('store.dashboard')" :active="request()->routeIs('store.dashboard')">
                             {{ __('Store Dashboard') }}
                         </x-nav-link>
-                    @elseif (Auth::user()->role === \App\Models\User::ROLE_OFFICE)
+                    @elseif (in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000']) &&
+                            in_array($userDept, [
+                                'C3100',
+                                'F1500',
+                                'F5100',
+                                'G1600',
+                                'H1800',
+                                'H2600',
+                                'K1300',
+                                'M3200',
+                                'R4300',
+                                'R5800',
+                                'YY002',
+                                'YY004',
+                            ]))
                         <x-nav-link :href="route('office.dashboard')" :active="request()->routeIs('office.dashboard')">
                             {{ __('Office Dashboard') }}
-                        </x-nav-link>
-                    @elseif (Auth::user()->role === \App\Models\User::ROLE_WAREHOUSE)
-                        <x-nav-link :href="route('warehouse.dashboard')" :active="request()->routeIs('warehouse.dashboard')">
-                            {{ __('Warehouse Dashboard') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -81,17 +101,37 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            @if (Auth::user()->role === \App\Models\User::ROLE_STORE)
+            @php
+                $user = Auth::user();
+                $userDivision = $user->division->division_code ?? null; // Ambil kode divisi
+                $userDept = $user->department->department_code ?? null; // Ambil kode departemen
+                $userPosition = $user->position->position_code ?? null;
+            @endphp
+            @if ($userDivision === 'O2222' && $userDept === 'O1900')
+                <x-nav-link :href="route('warehouse.dashboard')" :active="request()->routeIs('warehouse.dashboard')">
+                    {{ __('Warehouse Dashboard') }}
+                </x-nav-link>
+            @elseif ($userDivision === 'O0000' && in_array($userDept, ['O1100', 'O1200', 'O9400']))
                 <x-nav-link :href="route('store.dashboard')" :active="request()->routeIs('store.dashboard')">
                     {{ __('Store Dashboard') }}
                 </x-nav-link>
-            @elseif (Auth::user()->role === \App\Models\User::ROLE_OFFICE)
+            @elseif (in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000']) &&
+                    in_array($userDept, [
+                        'C3100',
+                        'F1500',
+                        'F5100',
+                        'G1600',
+                        'H1800',
+                        'H2600',
+                        'K1300',
+                        'M3200',
+                        'R4300',
+                        'R5800',
+                        'YY002',
+                        'YY004',
+                    ]))
                 <x-nav-link :href="route('office.dashboard')" :active="request()->routeIs('office.dashboard')">
                     {{ __('Office Dashboard') }}
-                </x-nav-link>
-            @elseif (Auth::user()->role === \App\Models\User::ROLE_WAREHOUSE)
-                <x-nav-link :href="route('warehouse.dashboard')" :active="request()->routeIs('warehouse.dashboard')">
-                    {{ __('Warehouse Dashboard') }}
                 </x-nav-link>
             @endif
         </div>

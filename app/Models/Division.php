@@ -13,7 +13,7 @@ class Division extends Model
 
     public function departments()
     {
-        return $this->belongsToMany(Department::class, 'department_division', 'division_id', 'department_id');
+        return $this->hasMany(Department::class, 'division_id');
     }
 
     public function users()

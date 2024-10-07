@@ -42,6 +42,24 @@ class UserSeeder extends Seeder
             'grade_id' => 24,
         ]);
         User::create([
+            'name' => 'User Q',
+            'email' => 'userQ@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 3,
+            'grade_id' => 24,
+        ]);
+        User::create([
+            'name' => 'User R',
+            'email' => 'userR@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 3,
+            'grade_id' => 24,
+        ]);
+        User::create([
             'name' => 'User D',
             'email' => 'userD@example.com',
             'password' => Hash::make('1234567890'),
@@ -50,7 +68,114 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
         ]);
+        User::create([
+            'name' => 'User M',
+            'email' => 'userM@example.com',
+            'password' => Hash::make('1234567890'),
 
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User N',
+            'email' => 'userN@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User O',
+            'email' => 'userO@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User P',
+            'email' => 'userP@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User S',
+            'email' => 'userS@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User T',
+            'email' => 'userT@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User U',
+            'email' => 'userU@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User V',
+            'email' => 'userV@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User W',
+            'email' => 'userW@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User X',
+            'email' => 'userX@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User Y',
+            'email' => 'userY@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
+        User::create([
+            'name' => 'User Z',
+            'email' => 'userZ@example.com',
+            'password' => Hash::make('1234567890'),
+
+            'division_id' => 2,
+            'department_id' => 2,
+            'grade_id' => 12,
+        ]);
         // store
         User::create([
             'name' => 'User E',

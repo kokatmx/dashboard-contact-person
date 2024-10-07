@@ -78,16 +78,37 @@ class UserController extends Controller
         $query = $request->input('query');
         $departmentId = $request->input('department_id');
 
-        // Cari user berdasarkan nama dan department_id
-        $users = User::where('department_id', $departmentId)
-            ->where('name', 'LIKE', "%{$query}%")
-            ->get();
-
+        // Query untuk mencari pengguna
+        $users = User::when($query, function ($queryBuilder) use ($query) {
+            return $queryBuilder->where('name', 'like', '%' . $query . '%');
+        })
+            ->when($departmentId, function ($queryBuilder) use ($departmentId) {
+                return $queryBuilder->where('department_id', $departmentId);
+            })
+            ->paginate(10);
         // Ambil data departemen untuk ditampilkan di view show
         $department = Department::findOrFail($departmentId);
         $user = Auth::user();
-        $canUpdate = $user->canUpdateUsers();
+        // Inisialisasi canUpdate menjadi false secara default
+        $canUpdate = false;
+        // Ambil divisi pengguna yang sedang login
+        $currentUser = Auth::user();
+        $currentDivisionId = $currentUser->division_id; // Misalkan Anda memiliki `division_id` di model User
 
+        // Cek apakah ada pengguna yang diambil
+        if ($users->isNotEmpty()) {
+            // Iterasi melalui semua pengguna untuk menentukan jika pengguna yang sedang login bisa memperbarui salah satu dari mereka
+            foreach ($users as $user) {
+                // Periksa apakah divisi pengguna yang sedang login sama dengan divisi pengguna lain
+                if ($currentDivisionId === $user->division_id) {
+                    // Jika divisi sama, cek apakah pengguna yang sedang login bisa memperbarui pengguna tersebut
+                    if ($currentUser->canUpdateUsers($user)) {
+                        $canUpdate = true;
+                        break; // Jika bisa update, tidak perlu cek lebih lanjut
+                    }
+                }
+            }
+        }
         if ($users->isEmpty()) {
             return redirect()->back()->with('error', 'User tidak ditemukan.');
         }

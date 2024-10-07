@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id('department_id');
+            $table->unsignedBigInteger('division_id');
             $table->string('department_code')->unique();
             $table->string('department_name');
             $table->string('description');
             $table->timestamps();
+            $table->foreign('division_id')->references('division_id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

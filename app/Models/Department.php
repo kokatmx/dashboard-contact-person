@@ -16,6 +16,7 @@ class Department extends Model
         'code_department',
         'name_department',
         'description',
+        'division_id',
     ];
 
     public function users()
@@ -23,13 +24,8 @@ class Department extends Model
         return $this->hasMany(User::class, 'department_id');
     }
 
-    // public function areas()
-    // {
-    //     return $this->hasMany(Area::class, 'department_id');
-    // }
-
-    public function divisions()
+    public function division()
     {
-        return $this->belongsToMany(Division::class, 'department_division', 'department_id', 'division_id');
+        return $this->belongsTo(Division::class, 'division_id');
     }
 }
