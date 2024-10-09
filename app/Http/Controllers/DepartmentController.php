@@ -41,7 +41,7 @@ class DepartmentController extends Controller
         // Menggunakan query builder untuk mengambil users dan melakukan pagination
         $users = $department->users()->when($query, function ($queryBuilder) use ($query) {
             return $queryBuilder->where('name', 'like', '%' . $query . '%');
-        })->paginate(10);; // Memanggil method users() untuk mendapatkan query builder
+        })->paginate(10)->withPath(' '); // Memanggil method users() untuk mendapatkan query builder
         // Inisialisasi canUpdate menjadi false secara default
         $canUpdate = false;
         // Ambil divisi pengguna yang sedang login

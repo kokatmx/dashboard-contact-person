@@ -17,6 +17,9 @@
     {{-- icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    {{-- mycss --}}
+    <link rel="stylesheet" href="/css/styles.css">
+
 </head>
 
 <body class="font-sans antialiased">

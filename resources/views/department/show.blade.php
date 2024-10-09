@@ -3,7 +3,7 @@
         <!-- User List Table -->
         <div class="bg-white shadow-lg rounded-lg p-6">
             <a href="{{ route('department.index') }}"
-                class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
+                class="btn btn-square btn btn-square-outline btn btn-square-neutral mb-4 hover:bg-neutral-700 hover:text-white">
                 Kembali
             </a>
             <h1 class="text-3xl font-bold text-gray-800 my-5">
@@ -89,8 +89,22 @@
                         class="font-medium">{{ $users->lastItem() }}</span> dari <span
                         class="font-medium">{{ $users->total() }}</span> hasil.
                 </p>
-                <div class="pagination-links my-pagination" data-theme="winter">
-                    {{ $users->links() }}
+                <div class="pagination-links join" data-theme="emerald">
+                    @if ($users->previousPageUrl())
+                        <a href="{{ $users->previousPageUrl() }}" class="pagination-link join-item btn btn-square">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </a>
+                    @endif
+
+                    @for ($i = 1; $i <= $users->lastPage(); $i++)
+                        <a href="{{ $users->url($i) }}"
+                            class="pagination-link {{ $i == $users->currentPage() ? 'active' : '' }} join-item btn btn-square">{{ $i }}</a>
+                    @endfor
+
+                    @if ($users->nextPageUrl())
+                        <a href="{{ $users->nextPageUrl() }}" class="pagination-link join-item btn btn-square"><i
+                                class="fa-solid fa-angles-right"></i></a>
+                    @endif
                 </div>
             </div>
         </div>
