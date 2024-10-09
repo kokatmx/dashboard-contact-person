@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg mt-10">
         <!-- Tombol kembali -->
-        <a href="{{ route('department.show', $departments->department_id) }}"
+        <a href="{{ route('department.show', $department->department_id) }}"
             class="text-blue-600 hover:underline mb-6 inline-block">
             Kembali ke Departemen
         </a>

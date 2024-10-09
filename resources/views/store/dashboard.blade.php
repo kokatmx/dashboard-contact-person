@@ -4,7 +4,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="ps-6 pt-6">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                        <a href="{{ route('department.index') }}" class="btn btn-outline text-blue-600 hover:text-white">
+                        <a href="{{ route('department.index') }}" class="btn btn-outline  hover:text-white">
                             {{ __('Ke List Department') }}
                         </a>
                     </h2>

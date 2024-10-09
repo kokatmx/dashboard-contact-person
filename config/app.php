@@ -123,4 +123,11 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // 'providers' => [
+    //     ConsoleTVs\Charts\ChartsServiceProvider::class,
+    // ],
+    // 'aliases' => [
+    //     'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+    // ],
+
 ];

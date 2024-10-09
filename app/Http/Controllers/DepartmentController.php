@@ -6,6 +6,7 @@ use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
@@ -13,17 +14,23 @@ class DepartmentController extends Controller
     {
         $user = Auth::user();
         $userDivisionId = $user->division_id;
+        $departments = Department::all();
+        // Ambil total user per departemen
+        $usersPerDepartment = Department::withCount('users')->get();
 
         // Ambil departemen yang berada di divisi user
-        $departmentsInDivision = Department::where('division_id', $userDivisionId)->get();
+        $departmentsInDivision = Department::where('division_id', $userDivisionId)
+            ->withCount('users')->get();
 
         // Ambil departemen dari divisi lain
-        $departmentsOutsideDivision = Department::where('division_id', '!=', $userDivisionId)->get();
+        $departmentsOutsideDivision = Department::where('division_id', '!=', $userDivisionId)
+            ->withCount('users')->get();
 
-        return view('department.index', compact('departmentsInDivision', 'departmentsOutsideDivision'));
+        return view('department.index', compact('departmentsInDivision', 'departmentsOutsideDivision', 'departments', 'usersPerDepartment'));
     }
     public function show($id, Request $request)
     {
+
         $department = Department::find($id); // Ganti $departments menjadi $department
         if (!$department) {
             return redirect()->back()->with('error', 'Department tidak ditemukan.');
@@ -45,32 +52,33 @@ class DepartmentController extends Controller
         if ($users->isNotEmpty()) {
             // Iterasi melalui semua pengguna untuk menentukan jika pengguna yang sedang login bisa memperbarui salah satu dari mereka
             foreach ($users as $user) {
-                // Periksa apakah divisi pengguna yang sedang login sama dengan divisi pengguna lain
-                if ($currentDivisionId === $user->division_id) {
-                    // Jika divisi sama, cek apakah pengguna yang sedang login bisa memperbarui pengguna tersebut
-                    if ($currentUser->canUpdateUsers($user)) {
-                        $canUpdate = true;
-                        break; // Jika bisa update, tidak perlu cek lebih lanjut
-                    }
+                // Cek apakah divisi pengguna sama dan grade pengguna yang login lebih tinggi dari user yang akan diperbarui
+                if ($currentDivisionId === $user->division_id && $currentUser->canUpdateUsers($user)) {
+                    $canUpdate = true;
+                    break; // Hentikan loop jika satu user dapat di-update
                 }
             }
         }
 
         return view('department.show', ['department' => $department, 'users' => $users, 'canUpdate' => $canUpdate]);
     }
-
     public function search(Request $request)
     {
-        // Mencari department dengan nama yang sesuai, tanpa case sensitivity
+        $department = Department::all();
         $query = $request->input('query');
-        $departments = Department::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($query) . '%'])->orWhere('department_code', 'LIKE', '%' . $query . '%')
-            ->paginate(10);;
+        $departmentId = $request->input('department_id');
 
-        if ($departments->isEmpty()) {
-            return redirect()->back()->with('error', 'Data department tidak ditemukan.');
+        // $departments = Department::when($query, function ($queryBuilder) use ($query) {
+        //     return $queryBuilder->where('department_name', 'like', '%' . $query . '%');
+        // })->get()
+        //     ->appends(['query' => $query]); // Keeps the query in pagination links
+        $departments = Department::where('department_name', 'like', '%' . $query . '%')->first();
+        if ($departments->count() == 0) {
+            return view('department.index', [
+                'departments' => $departments,
+                'error' => 'Data department tidak ditemukan.'
+            ]);
         }
-
-        // Kirim hasil pencarian ke view index
-        return view('department.index', compact('departments'));
+        return view('department.index', compact('departments', 'department'));
     }
 }

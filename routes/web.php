@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
-use App\Http\Middleware\CheckRoleMiddleware;
+use App\Http\Middleware\CheckUserDivDeptPos;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -19,21 +19,21 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', CheckUserDivDeptPos::class])->group(function () {
     // Akses hanya untuk role store
-    Route::get('/store', [StoreController::class, 'index'])->name('store.dashboard');
+    Route::get('/store', [DashboardController::class, 'index'])->name('store.dashboard');
 
     // Akses hanya untuk role office
-    Route::get('/office', [OfficeController::class, 'index'])->name('office.dashboard');
+    Route::get('/office', [DashboardController::class, 'index'])->name('office.dashboard');
 
     // Akses hanya untuk role warehouse
-    Route::get('/warehouse', [WarehouseController::class, 'index'])->name('warehouse.dashboard');
+    Route::get('/warehouse', [DashboardController::class, 'index'])->name('warehouse.dashboard');
 
     Route::prefix('department')->group(function () {
         Route::get('/', [DepartmentController::class, 'index'])->name('department.index');

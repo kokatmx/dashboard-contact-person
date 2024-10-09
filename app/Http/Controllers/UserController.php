@@ -11,10 +11,10 @@ class UserController extends Controller
 {
     public function edit($id, Department $department)
     {
-        $departments = Department::find($id);
-
         // Cari user berdasarkan id
         $user = User::findOrFail($id);
+        $departments = Department::all();
+        $department = Department::find($user->department_id);
 
         // Ambil user yang sedang login
         $currentUser = Auth::user();
@@ -25,7 +25,7 @@ class UserController extends Controller
         }
 
         // Kirim data user ke view edit
-        return view('user.edit',  compact('user', 'departments'));
+        return view('user.edit',  compact('user', 'departments', 'department'));
     }
 
     /**
@@ -70,7 +70,7 @@ class UserController extends Controller
     private function canUpdate($currentUser, $user)
     {
         // Cek jika grade user yang sedang login lebih tinggi dari user yang akan diupdate
-        return $currentUser->grade >= $user->grade;
+        return $currentUser->grade > $user->grade;
     }
     // UserController.php
     public function search(Request $request)

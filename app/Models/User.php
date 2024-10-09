@@ -37,10 +37,22 @@ class User extends Authenticatable
 
     // Cek apakah user memiliki akses untuk mengupdate berdasarkan grade
     // Check if user can update another user based on grade level
+    // public function canUpdateUsers(User $otherUser)
+    // {
+    //     return $this->grade->max_grade > $otherUser->grade->max_grade;
+    // }
+    // User.php
     public function canUpdateUsers(User $otherUser)
     {
-        return $this->grade->max_grade > $otherUser->grade->max_grade;
+        // Pastikan pengguna berada dalam divisi yang sama dan memiliki `max_grade` yang lebih tinggi
+        // return $this->division_id === $otherUser->division_id && $this->grade->max_grade > $otherUser->grade->max_grade;
+        // Pastikan hanya membandingkan jika divisi sama
+        if ($this->division_id === $otherUser->division_id) {
+            return $this->grade->max_grade > $otherUser->grade->max_grade;
+        }
+        return false; // Tidak bisa update jika divisi berbeda
     }
+
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');

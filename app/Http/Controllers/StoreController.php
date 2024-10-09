@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\CheckRoleMiddleware;
 use App\Models\Department;
+use App\Models\Division;
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Http\Request;
+use ConsoleTVs\Charts\Classes\Chartjs\Chart;
+use Illuminate\Support\Facades\DB;
 
 class StoreController extends Controller
 {
@@ -15,8 +19,14 @@ class StoreController extends Controller
      */
     public function index()
     {
+        // Ambil jumlah departemen unik
+        $totalDepartments = Department::count();
+        // Ambil total user
+        $totalUsers = User::count();
+        // Ambil total divisi
+        $totalDivisions = Division::count();
         $department = Department::all();
-        return view('store.dashboard', compact('department'));
+        return view('dashboard', compact('department', 'totalDepartments', 'totalUsers', 'totalDivisions'));
     }
 
     /**
