@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id('position_id');
             $table->string('position_code')->unique();
             $table->string('position_name');
+            // $table->unsignedBigInteger('division_id');
             $table->timestamps();
+            // $table->foreign('division_id')->references('division_id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

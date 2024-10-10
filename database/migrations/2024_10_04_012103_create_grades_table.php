@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('min_grade');
             $table->integer('max_grade');
             $table->timestamps();
-
             $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade')->onUpdate('cascade');
         });
     }

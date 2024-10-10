@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id('user_id');
+            $table->uuid('uuid')->unique();
             $table->string('name');
             $table->string('email')->unique();
-            // $table->string('role');
-            $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('division_id');
+            $table->unsignedBigInteger('department_id');
+            // $table->unsignedBigInteger('position_id');
             $table->unsignedBigInteger('grade_id');
-            // $table->unsignedBigInteger('area_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('division_id')->references('division_id')->on('divisions')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('grade_id')->references('grade_id')->on('grades')->onDelete('cascade')->onUpdate('cascade');
-            // $table->foreign('area_id')->references('area_id')->on('areas')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

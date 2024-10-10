@@ -3,11 +3,13 @@
         <!-- User List Table -->
         <div class="bg-white shadow-lg rounded-lg p-6">
             <a href="{{ route('department.index') }}"
-                class="btn btn-square btn btn-square-outline btn btn-square-neutral mb-4 hover:bg-neutral-700 hover:text-white">
+                class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
                 Kembali
             </a>
             <h1 class="text-3xl font-bold text-gray-800 my-5">
-                Departemen {{ $department->department_name }}
+                <a href="{{ route('department.employees', $department->uuid) }}">
+                    Departemen {{ $department->department_name }}
+                </a>
             </h1>
 
             <!-- Search User Feature -->
@@ -16,23 +18,42 @@
                     class=" md:w-1/4 lg:w-1/4  border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-indigo-500"
                     value="{{ request('query') }}">
                 <input type="hidden" name="department_id" value="{{ $department->department_id }}">
-                <button type="submit" class="ml-3 bg-indigo-600 text-white rounded-lg px-4 py-2 hover:bg-indigo-700">
+                <button type="submit" class="ml-3 btn btn-primary text-white">
                     Search
                 </button>
             </form>
+            @if (session('success'))
+                <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
+                    x-transition:leave="transition ease-in duration-300" role="alert" class="alert alert-success ">
+
+                    <!-- Success Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+
+                    <!-- Success Message -->
+                    <span class="ml-2">{{ session('success') }}</span>
+                </div>
+            @endif
 
             @if (session('error'))
-                <div role="alert" class="alert alert-error p-4 mb-6 bg-red-100 text-red-700 rounded-lg shadow-md">
+                <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
+                    x-transition:leave="transition ease-in duration-300" role="alert" class="alert alert-error">
+
+                    <!-- Error Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline mr-2" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    {{ session('error') }}
+                    <!-- Success Message -->
+                    <span class="ml-2">{{ session('error') }}</span>
                 </div>
             @endif
 
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">Daftar Karyawan</h2>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 mt-10">Daftar Karyawan</h2>
 
             <!-- User Table -->
             <div class="overflow-x-auto">
@@ -66,8 +87,8 @@
                                     </td>
                                     <td class="border border-gray-300 px-4 py-2">{{ $user->grade->max_grade }}</td>
                                     <td class="border border-gray-300 px-4 py-2">
-                                        @if ($canUpdate)
-                                            <a href="{{ route('user.edit', $user->user_id) }}"
+                                        @if ($canUpdate && Auth::user()->canUpdateUsers($user))
+                                            <a href="{{ route('user.edit', $user->uuid) }}"
                                                 class="text-blue-600 hover:underline">
                                                 Update
                                             </a>
@@ -98,13 +119,15 @@
 
                     @for ($i = 1; $i <= $users->lastPage(); $i++)
                         <a href="{{ $users->url($i) }}"
-                            class="pagination-link {{ $i == $users->currentPage() ? 'active' : '' }} join-item btn btn-square">{{ $i }}</a>
+                            class="pagination-link join-item btn btn-square {{ $i == $users->currentPage() ? 'active' : '' }}">{{ $i }}</a>
                     @endfor
 
                     @if ($users->nextPageUrl())
-                        <a href="{{ $users->nextPageUrl() }}" class="pagination-link join-item btn btn-square"><i
-                                class="fa-solid fa-angles-right"></i></a>
+                        <a href="{{ $users->nextPageUrl() }}" class="pagination-link join-item btn btn-square">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </a>
                     @endif
+
                 </div>
             </div>
         </div>

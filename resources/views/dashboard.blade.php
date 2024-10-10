@@ -9,27 +9,27 @@
                     </h1>
                     <div class="bg-white p-4 rounded-lg shadow-inner border-l-4 border-blue-600">
                         <p class="text-lg text-gray-900">
-                            {{ __('Divisi kamu adalah ') }}
+                            {{ __('Divisi ') }}
                             <span class="font-semibold ">{{ Auth::user()->division->division_name }}</span>
                         </p>
                     </div>
 
                     <div class="bg-white p-4 mt-4 rounded-lg shadow-inner border-l-4 border-yellow-400">
                         <p class="text-lg text-gray-900">
-                            {{ __('Department kamu adalah ') }}
+                            {{ __('Department ') }}
                             <span class="font-semibold ">{{ Auth::user()->department->department_name }}</span>
                         </p>
                     </div>
 
                     <div class="bg-white p-4 mt-4 rounded-lg shadow-inner border-l-4 border-red-600">
                         <p class="text-lg text-gray-900">
-                            {{ __('Jabatan kamu adalah ') }}
+                            {{ __('Jabatan ') }}
                             <span class="font-semibold ">{{ Auth::user()->grade->position->position_name }}</span>
                         </p>
                     </div>
                     <div class="bg-white p-4 mt-4 rounded-lg shadow-inner border-l-4 ">
                         <p class="text-lg text-gray-900">
-                            {{ __('Grade kamu adalah ') }}
+                            {{ __('Grade ') }}
                             <span class="font-semibold">{{ Auth::user()->grade->max_grade }}</span>
                         </p>
                     </div>

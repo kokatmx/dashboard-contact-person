@@ -18,12 +18,14 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'IT Branch',
             'description' => 'IT Branch',
             'division_id' => 1,
+
         ]);
         Department::create([
             'department_code' => 'F1500',
             'department_name' => 'FINANCE ACCOUNTING (BRANCH)',
             'description' => 'FINANCE ACCOUNTING (BRANCH)',
             'division_id' => 2,
+
 
         ]);
         Department::create([
@@ -32,12 +34,14 @@ class DepartmentSeeder extends Seeder
             'description' => 'Inventory Control',
             'division_id' => 2,
 
+
         ]);
         Department::create([
             'department_code' => 'G1600',
             'department_name' => 'BRANCH CORPORATE AFFAIRS',
             'description' => 'BRANCH CORPORATE AFFAIRS',
             'division_id' => 3,
+
 
         ]);
         Department::create([
@@ -47,12 +51,14 @@ class DepartmentSeeder extends Seeder
             'division_id' => 4,
 
 
+
         ]);
         Department::create([
             'department_code' => 'H2600',
             'department_name' => 'BRANCH PEOPLE DEVELOPMENT',
             'description' => 'BRANCH PEOPLE DEVELOPMENT',
             'division_id' => 4,
+
 
         ]);
         Department::create([
@@ -61,12 +67,14 @@ class DepartmentSeeder extends Seeder
             'description' => 'BRANCH MARKETING',
             'division_id' => 5,
 
+
         ]);
         Department::create([
             'department_code' => 'M3200',
             'department_name' => 'BRANCH MERCHANDISING',
             'description' => 'IBRANCH MERCHANDISING',
             'division_id' => 6,
+
 
         ]);
         Department::create([
@@ -75,12 +83,14 @@ class DepartmentSeeder extends Seeder
             'description' => 'Branch Manager/ Deputy Branch manager',
             'division_id' => 7,
 
+
         ]);
         Department::create([
             'department_code' => 'O1200',
             'department_name' => 'Area',
             'description' => 'Area',
             'division_id' => 7,
+
 
         ]);
         Department::create([
@@ -89,12 +99,14 @@ class DepartmentSeeder extends Seeder
             'description' => 'TASK FORCE',
             'division_id' => 7,
 
+
         ]);
         Department::create([
             'department_code' => 'O1900',
             'department_name' => 'BRANCH WAREHOUSETASK',
             'description' => 'BRANCH WAREHOUSE',
             'division_id' => 8,
+
 
         ]);
         Department::create([
@@ -103,6 +115,7 @@ class DepartmentSeeder extends Seeder
             'description' => 'BRANCH FRANCHISE RELATION',
             'division_id' => 9,
 
+
         ]);
         Department::create([
             'department_code' => 'R5800',
@@ -110,12 +123,14 @@ class DepartmentSeeder extends Seeder
             'description' => 'BBRANCH FRANCHISE TAF ADMIN',
             'division_id' => 9,
 
+
         ]);
         Department::create([
             'department_code' => 'YY002',
             'department_name' => 'BRANCH LOCATION & DEVELOPMENT',
             'description' => 'BRANCH LOCATION & DEVELOPMENT',
             'division_id' => 10,
+
 
         ]);
     }

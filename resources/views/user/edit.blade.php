@@ -1,33 +1,49 @@
 <x-app-layout>
-    <div class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg mt-10">
-        <!-- Tombol kembali -->
-        <a href="{{ route('department.show', $department->department_id) }}"
-            class="text-blue-600 hover:underline mb-6 inline-block">
-            Kembali ke Departemen
+    <div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg mt-10 border border-gray-300">
+
+        <!-- Back Button -->
+        <a href="{{ route('department.employees', $department->uuid) }}" class="btn btn-outline mb-10">
+            {{-- ← Kembali --}}
+            Kembali
         </a>
 
-        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Update User: {{ $user->name }}</h2>
+        <!-- Form Header -->
+        <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-left">Edit Karyawan {{ $user->name }}</h2>
 
-        <form action="{{ route('user.update', $user->user_id) }}" method="POST" class="space-y-6">
+        <!-- Edit Form -->
+        <form action="{{ route('user.update', $user->uuid) }}" method="POST">
             @csrf
             @method('PUT')
 
-            <!-- Input Nama -->
-            <div>
-                <label for="name" class="block text-lg font-medium text-gray-700 mb-2">Nama</label>
+            <!-- Name Input -->
+            <div class="mb-4">
+                <label for="name" class="block text-gray-600 font-medium">Nama</label>
                 <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}"
-                    class="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    class="w-full border border-gray-300 rounded p-3 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Masukkan nama" autofocus>
                 @error('name')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>
 
+            <!-- Division Input (Disabled) -->
+            <div class="mb-4">
+                <label for="division" class="block text-gray-600 font-medium">Divisi</label>
+                <input type="text" id="division" name="division" value="{{ $user->division->division_name }}"
+                    class="w-full border border-gray-300 rounded p-3 bg-gray-100 cursor-not-allowed" disabled>
+            </div>
+            <!-- Department Input (Disabled) -->
+            <div class="mb-4">
+                <label for="department" class="block text-gray-600 font-medium">Department</label>
+                <input type="text" id="department" name="department" value="{{ $department->department_name }}"
+                    class="w-full border border-gray-300 rounded p-3 bg-gray-100 cursor-not-allowed" disabled>
+            </div>
+
             <!-- Submit Button -->
-            <div class="flex justify-end">
+            <div class="text-right">
                 <button type="submit"
-                    class="inline-flex items-center px-6 py-3 bg-blue-600 text-gray-800 font-medium rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition">
-                    Update User
+                    class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition-colors">
+                    Simpan
                 </button>
             </div>
         </form>

@@ -19,6 +19,8 @@
 
     {{-- mycss --}}
     <link rel="stylesheet" href="/css/styles.css">
+    {{-- alpinejs --}}
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 
 </head>
 

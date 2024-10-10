@@ -14,4 +14,8 @@ class Position extends Model
     {
         return $this->hasMany(Grade::class, 'position_id');
     }
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
 }

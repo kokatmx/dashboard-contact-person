@@ -28,57 +28,48 @@ class DepartmentController extends Controller
 
         return view('department.index', compact('departmentsInDivision', 'departmentsOutsideDivision', 'departments', 'usersPerDepartment'));
     }
-    public function show($id, Request $request)
+
+    public function showEmployees($uuid)
     {
+        // Temukan department berdasarkan uuid, bukan ID
+        $department = Department::where('uuid', $uuid)->firstOrFail();
+        $departments = Department::all();
 
-        $department = Department::find($id); // Ganti $departments menjadi $department
-        if (!$department) {
-            return redirect()->back()->with('error', 'Department tidak ditemukan.');
-        }
-        // Mengambil query pencarian dari request
-        $query = $request->input('query');
-
-        // Menggunakan query builder untuk mengambil users dan melakukan pagination
-        $users = $department->users()->when($query, function ($queryBuilder) use ($query) {
-            return $queryBuilder->where('name', 'like', '%' . $query . '%');
-        })->paginate(10)->withPath(' '); // Memanggil method users() untuk mendapatkan query builder
-        // Inisialisasi canUpdate menjadi false secara default
-        $canUpdate = false;
-        // Ambil divisi pengguna yang sedang login
         $currentUser = Auth::user();
-        $currentDivisionId = $currentUser->division_id; // Misalkan Anda memiliki `division_id` di model User
+        $currentDivisionId = $currentUser->division_id;
 
-        // Cek apakah ada pengguna yang diambil
-        if ($users->isNotEmpty()) {
-            // Iterasi melalui semua pengguna untuk menentukan jika pengguna yang sedang login bisa memperbarui salah satu dari mereka
-            foreach ($users as $user) {
-                // Cek apakah divisi pengguna sama dan grade pengguna yang login lebih tinggi dari user yang akan diperbarui
-                if ($currentDivisionId === $user->division_id && $currentUser->canUpdateUsers($user)) {
-                    $canUpdate = true;
-                    break; // Hentikan loop jika satu user dapat di-update
-                }
-            }
-        }
+        // Mengambil semua user yang ada di department tersebut dengan pagination
+        $users = $department->users()->paginate(10);
 
-        return view('department.show', ['department' => $department, 'users' => $users, 'canUpdate' => $canUpdate]);
+        // Menentukan apakah user yang login bisa melakukan update pada user lain dalam department
+        $canUpdate = $users->contains(function ($user) use ($currentUser, $currentDivisionId) {
+            return $currentDivisionId == $user->division_id && $currentUser->canUpdateUsers($user);
+        });
+        return view('department.show', compact('users', 'department', 'canUpdate', 'departments'))->with('success', 'Data user berhasil di perbarui');
     }
     public function search(Request $request)
     {
-        $department = Department::all();
         $query = $request->input('query');
-        $departmentId = $request->input('department_id');
 
-        // $departments = Department::when($query, function ($queryBuilder) use ($query) {
-        //     return $queryBuilder->where('department_name', 'like', '%' . $query . '%');
-        // })->get()
-        //     ->appends(['query' => $query]); // Keeps the query in pagination links
-        $departments = Department::where('department_name', 'like', '%' . $query . '%')->first();
-        if ($departments->count() == 0) {
-            return view('department.index', [
-                'departments' => $departments,
-                'error' => 'Data department tidak ditemukan.'
-            ]);
+        $departmentsInDivision = Department::where('division_id', Auth::user()->division_id)
+            ->when($query, function ($queryBuilder) use ($query) {
+                $queryBuilder->where('department_name', 'like', '%' . $query . '%');
+            })
+            ->withCount('users')
+            ->get();
+
+        $departmentsOutsideDivision = Department::where('division_id', '!=', Auth::user()->division_id)
+            ->when($query, function ($queryBuilder) use ($query) {
+                $queryBuilder->where('department_name', 'like', '%' . $query . '%');
+            })
+            ->withCount('users')
+            ->get();
+
+        // Periksa apakah hasil pencarian kosong
+        if ($departmentsInDivision->isEmpty() && $departmentsOutsideDivision->isEmpty()) {
+            return redirect()->route('department.index')->with('error', 'Department tidak ditemukan.');
         }
-        return view('department.index', compact('departments', 'department'));
+
+        return view('department.index', compact('departmentsInDivision', 'departmentsOutsideDivision', 'query'));
     }
 }

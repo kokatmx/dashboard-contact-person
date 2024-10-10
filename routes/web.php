@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,12 +37,12 @@ Route::middleware(['auth', 'verified', CheckUserDivDeptPos::class])->group(funct
 
     Route::prefix('department')->group(function () {
         Route::get('/', [DepartmentController::class, 'index'])->name('department.index');
-        Route::get('{id}', [DepartmentController::class, 'show'])->name('department.show');
+        Route::get('{uuid}/employees', [DepartmentController::class, 'showEmployees'])->name('department.employees');
         Route::get('/search', [DepartmentController::class, 'search'])->name('department.search');
     });
     Route::prefix('user')->group(function () {
-        Route::get('{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-        Route::put('{id}', [UserController::class, 'update'])->name('user.update');
+        Route::get('{uuid}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
         Route::get('search', [UserController::class, 'search'])->name('user.search');
     });
 });

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -17,12 +18,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    const DIV_WAREHOUSE = 'O2222';
-    const DEPT_WAREHOUSE = 'O1900';
-    const DIV_STORE = 'O0000';
-    const DEPT_STORE = ['O1100', 'O1200', 'O9400'];
-    const DIV_OFFICE = ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000'];
-    const DEPT_OFFICE = ['C3100', 'F1500', 'F5100', 'G1600', 'H1800', 'H2600', 'K1300', 'M3200', 'R4300', 'R5800', 'YY002', 'YY004'];
 
     protected $table = 'users';
     protected $primaryKey = 'user_id';
@@ -35,28 +30,16 @@ class User extends Authenticatable
         'division_id',
     ];
 
-    // Cek apakah user memiliki akses untuk mengupdate berdasarkan grade
-    // Check if user can update another user based on grade level
-    // public function canUpdateUsers(User $otherUser)
-    // {
-    //     return $this->grade->max_grade > $otherUser->grade->max_grade;
-    // }
-    // User.php
     public function canUpdateUsers(User $otherUser)
     {
-        // Pastikan pengguna berada dalam divisi yang sama dan memiliki `max_grade` yang lebih tinggi
-        // return $this->division_id === $otherUser->division_id && $this->grade->max_grade > $otherUser->grade->max_grade;
-        // Pastikan hanya membandingkan jika divisi sama
-        if ($this->division_id === $otherUser->division_id) {
-            return $this->grade->max_grade > $otherUser->grade->max_grade;
-        }
-        return false; // Tidak bisa update jika divisi berbeda
+        return $this->division_id == $otherUser->division_id && $this->grade->max_grade >= $otherUser->grade->max_grade;
     }
 
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
     }
+
 
     public function division()
     {
@@ -68,11 +51,32 @@ class User extends Authenticatable
         return $this->belongsTo(Grade::class, 'grade_id');
     }
 
-    // public function area()
+    // for slug
+    // protected static function boot()
     // {
-    //     return $this->belongsTo(Area::class, 'area_id');
+    //     parent::boot();
+
+    //     static::creating(function ($department) {
+    //         $department->slug = Str::slug($department->name . '-' . Str::random(5), '-');
+    //     });
     // }
 
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
+
+    // using UUID
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->uuid)) {
+                $model->uuid = (string) Str::uuid();
+            }
+        });
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
