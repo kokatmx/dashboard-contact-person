@@ -39,11 +39,13 @@ Route::middleware(['auth', 'verified', CheckUserDivDeptPos::class])->group(funct
         Route::get('/', [DepartmentController::class, 'index'])->name('department.index');
         Route::get('{uuid}/employees', [DepartmentController::class, 'showEmployees'])->name('department.employees');
         Route::get('/search', [DepartmentController::class, 'search'])->name('department.search');
-    });
-    Route::prefix('user')->group(function () {
-        Route::get('{uuid}/edit', [UserController::class, 'edit'])->name('user.edit');
-        Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
-        Route::get('search', [UserController::class, 'search'])->name('user.search');
+        Route::prefix('employees')->group(function () {
+            Route::get('{uuid}/edit', [UserController::class, 'edit'])->name('user.edit');
+            Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
+            // Route::get('search', [UserController::class, 'search'])->name('user.search');
+        });
+        // Rute pencarian users per departemen dengan UUID sebagai parameter
+        Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
     });
 });
 

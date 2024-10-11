@@ -28,6 +28,7 @@ class User extends Authenticatable
         'grade_id',
         'department_id',
         'division_id',
+        'no_hp',
     ];
 
     public function canUpdateUsers(User $otherUser)

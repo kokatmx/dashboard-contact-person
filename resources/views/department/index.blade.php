@@ -55,7 +55,7 @@
                     </div>
                 @endif
 
-                <h2 class="text-2xl font-semibold text-gray-800 mt-10">
+                <h2 class="text-2xl font-semibold text-gray-800 mt-10  inline hover:underline underline-offset-2">
                     <a href="{{ route('department.index') }}">List Departemen</a>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mt-3">

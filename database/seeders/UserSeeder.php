@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
             'department_id' => 1,
             'grade_id' => 1,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654321',
         ]);
         User::create([
             'name' => 'User B',
@@ -33,7 +34,7 @@ class UserSeeder extends Seeder
             'department_id' => 1,
             'grade_id' => 23,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '0987654322',
         ]);
         User::create([
             'name' => 'User C',
@@ -44,7 +45,7 @@ class UserSeeder extends Seeder
             'department_id' => 3,
             'grade_id' => 24,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '0987654323',
         ]);
         User::create([
             'name' => 'User Q',
@@ -55,7 +56,7 @@ class UserSeeder extends Seeder
             'department_id' => 3,
             'grade_id' => 24,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '0987654324',
         ]);
         User::create([
             'name' => 'User R',
@@ -66,6 +67,7 @@ class UserSeeder extends Seeder
             'department_id' => 3,
             'grade_id' => 24,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654325',
 
         ]);
         User::create([
@@ -77,6 +79,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654326',
 
         ]);
         User::create([
@@ -88,6 +91,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654327',
 
         ]);
         User::create([
@@ -99,6 +103,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654328',
 
         ]);
         User::create([
@@ -110,6 +115,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654329',
 
         ]);
         User::create([
@@ -121,6 +127,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654366',
 
         ]);
         User::create([
@@ -132,6 +139,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654321',
 
         ]);
         User::create([
@@ -143,6 +151,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 16,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654388',
 
         ]);
         User::create([
@@ -154,6 +163,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654344',
 
         ]);
         User::create([
@@ -165,6 +175,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654543',
 
         ]);
         User::create([
@@ -176,6 +187,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654567',
 
         ]);
         User::create([
@@ -187,6 +199,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 12,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654675',
 
         ]);
 
@@ -199,6 +212,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 146,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765455',
 
         ]);
 
@@ -211,6 +225,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 143,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654777',
 
         ]);
 
@@ -223,6 +238,7 @@ class UserSeeder extends Seeder
             'department_id' => 4,
             'grade_id' => 63,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876543098',
 
         ]);
 
@@ -235,6 +251,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 63,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654540',
 
         ]);
 
@@ -247,6 +264,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 62,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654656',
 
         ]);
 
@@ -259,6 +277,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 61,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654744',
 
         ]);
 
@@ -271,6 +290,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 60,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876544322',
 
         ]);
 
@@ -283,6 +303,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 59,
             'remember_token' => Str::random(10),
+            'no_hp' => '0895367110443',
 
         ]);
 
@@ -295,6 +316,7 @@ class UserSeeder extends Seeder
             'department_id' => 9,
             'grade_id' => 58,
             'remember_token' => Str::random(10),
+            'no_hp' => '089766577488',
 
         ]);
 
@@ -307,6 +329,7 @@ class UserSeeder extends Seeder
             'department_id' => 8,
             'grade_id' => 57,
             'remember_token' => Str::random(10),
+            'no_hp' => '08976655443',
 
         ]);
 
@@ -319,6 +342,7 @@ class UserSeeder extends Seeder
             'department_id' => 9,
             'grade_id' => 56,
             'remember_token' => Str::random(10),
+            'no_hp' => '08976896443',
 
         ]);
 
@@ -331,6 +355,7 @@ class UserSeeder extends Seeder
             'department_id' => 8,
             'grade_id' => 55,
             'remember_token' => Str::random(10),
+            'no_hp' => '088997665544',
 
         ]);
 
@@ -343,6 +368,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 54,
             'remember_token' => Str::random(10),
+            'no_hp' => '0897657784',
 
         ]);
 
@@ -355,6 +381,7 @@ class UserSeeder extends Seeder
             'department_id' => 8,
             'grade_id' => 53,
             'remember_token' => Str::random(10),
+            'no_hp' => '08976688564',
 
         ]);
 
@@ -367,6 +394,7 @@ class UserSeeder extends Seeder
             'department_id' => 9,
             'grade_id' => 52,
             'remember_token' => Str::random(10),
+            'no_hp' => '078899665774',
 
         ]);
 
@@ -379,6 +407,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 51,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987654321897',
 
         ]);
 
@@ -391,6 +420,7 @@ class UserSeeder extends Seeder
             'department_id' => 8,
             'grade_id' => 50,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876576761',
 
         ]);
 
@@ -403,6 +433,7 @@ class UserSeeder extends Seeder
             'department_id' => 9,
             'grade_id' => 49,
             'remember_token' => Str::random(10),
+            'no_hp' => '08779654589',
 
         ]);
 
@@ -415,6 +446,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 48,
             'remember_token' => Str::random(10),
+            'no_hp' => '08997665890',
 
         ]);
 
@@ -427,6 +459,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 47,
             'remember_token' => Str::random(10),
+            'no_hp' => '08456708098',
 
         ]);
 
@@ -439,7 +472,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 46,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '7689095098',
         ]);
 
         User::create([
@@ -451,7 +484,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 45,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '0987654399',
         ]);
 
         User::create([
@@ -463,6 +496,7 @@ class UserSeeder extends Seeder
             'department_id' => 2,
             'grade_id' => 44,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876547781',
 
         ]);
 
@@ -475,6 +509,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 43,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876576540',
 
         ]);
 
@@ -487,6 +522,7 @@ class UserSeeder extends Seeder
             'department_id' => 4,
             'grade_id' => 42,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876540998',
 
         ]);
 
@@ -499,6 +535,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 41,
             'remember_token' => Str::random(10),
+            'no_hp' => '098766749863',
 
         ]);
 
@@ -511,6 +548,7 @@ class UserSeeder extends Seeder
             'department_id' => 4,
             'grade_id' => 40,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987675936398',
 
         ]);
 
@@ -523,7 +561,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 39,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '09876547866',
         ]);
 
         User::create([
@@ -535,6 +573,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 38,
             'remember_token' => Str::random(10),
+            'no_hp' => '0987689670',
 
         ]);
 
@@ -547,6 +586,7 @@ class UserSeeder extends Seeder
             'department_id' => 8,
             'grade_id' => 37,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765097886',
         ]);
 
         User::create([
@@ -558,6 +598,7 @@ class UserSeeder extends Seeder
             'department_id' => 9,
             'grade_id' => 36,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765499007',
         ]);
 
         User::create([
@@ -569,6 +610,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 35,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876549980',
         ]);
 
         User::create([
@@ -580,6 +622,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 34,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765430998',
         ]);
 
         User::create([
@@ -591,6 +634,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 33,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876543098',
         ]);
 
         User::create([
@@ -602,6 +646,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 32,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765490086',
         ]);
 
         User::create([
@@ -613,6 +658,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 31,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765877665',
         ]);
 
         User::create([
@@ -624,6 +670,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 30,
             'remember_token' => Str::random(10),
+            'no_hp' => '098766775445',
         ]);
 
         User::create([
@@ -635,6 +682,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 121,
             'remember_token' => Str::random(10),
+            'no_hp' => '09876543210',
         ]);
 
         User::create([
@@ -646,6 +694,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 122,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432108',
         ]);
 
         User::create([
@@ -657,6 +706,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 123,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432122',
         ]);
 
         User::create([
@@ -668,6 +718,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 124,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432100',
         ]);
 
         User::create([
@@ -679,6 +730,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 125,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432187',
         ]);
 
         User::create([
@@ -690,6 +742,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 126,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432103',
         ]);
 
         User::create([
@@ -701,6 +754,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 127,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432134',
         ]);
 
         User::create([
@@ -712,6 +766,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 128,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432188',
         ]);
 
         User::create([
@@ -723,6 +778,7 @@ class UserSeeder extends Seeder
             'department_id' => 4,
             'grade_id' => 129,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432198',
         ]);
 
         User::create([
@@ -734,6 +790,7 @@ class UserSeeder extends Seeder
             'department_id' => 4,
             'grade_id' => 130,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432144',
         ]);
 
         User::create([
@@ -745,6 +802,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 131,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432166',
         ]);
 
         User::create([
@@ -756,6 +814,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 132,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432176',
         ]);
 
         User::create([
@@ -767,6 +826,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 133,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432199',
         ]);
 
         User::create([
@@ -778,6 +838,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 134,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432108',
         ]);
 
         User::create([
@@ -789,6 +850,7 @@ class UserSeeder extends Seeder
             'department_id' => 4,
             'grade_id' => 135,
             'remember_token' => Str::random(10),
+            'no_hp' => '098765432132',
         ]);
 
         User::create([
@@ -800,6 +862,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 136,
             'remember_token' => Str::random(10),
+            'no_hp' => '124872387492',
         ]);
 
         User::create([
@@ -811,6 +874,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 137,
             'remember_token' => Str::random(10),
+            'no_hp' => '12389458940',
         ]);
 
         User::create([
@@ -822,6 +886,7 @@ class UserSeeder extends Seeder
             'department_id' => 6,
             'grade_id' => 138,
             'remember_token' => Str::random(10),
+            'no_hp' => '203480912843',
         ]);
 
         User::create([
@@ -833,6 +898,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 139,
             'remember_token' => Str::random(10),
+            'no_hp' => '29387472398',
         ]);
 
         User::create([
@@ -844,6 +910,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 140,
             'remember_token' => Str::random(10),
+            'no_hp' => '7829348792',
         ]);
 
         User::create([
@@ -855,6 +922,7 @@ class UserSeeder extends Seeder
             'department_id' => 4,
             'grade_id' => 141,
             'remember_token' => Str::random(10),
+            'no_hp' => '29873921',
         ]);
 
         User::create([
@@ -866,6 +934,7 @@ class UserSeeder extends Seeder
             'department_id' => 5,
             'grade_id' => 142,
             'remember_token' => Str::random(10),
+            'no_hp' => '923047297111',
         ]);
 
         User::create([
@@ -877,6 +946,7 @@ class UserSeeder extends Seeder
             'department_id' => 7,
             'grade_id' => 143,
             'remember_token' => Str::random(10),
+            'no_hp' => '4324972311',
         ]);
 
         User::create([
@@ -888,6 +958,7 @@ class UserSeeder extends Seeder
             'department_id' => 13,
             'grade_id' => 144,
             'remember_token' => Str::random(10),
+            'no_hp' => '457322798',
         ]);
 
         User::create([
@@ -899,6 +970,7 @@ class UserSeeder extends Seeder
             'department_id' => 14,
             'grade_id' => 145,
             'remember_token' => Str::random(10),
+            'no_hp' => '3724798349',
         ]);
 
         // todo:untuk STORE
@@ -912,7 +984,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 70,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '92579134820',
         ]);
         User::create([
             'name' => 'User F',
@@ -923,7 +995,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 77,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '2308492371',
         ]);
         User::create([
             'name' => 'User G',
@@ -934,7 +1006,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 75,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '23974823489',
         ]);
         User::create([
             'name' => 'User H',
@@ -945,7 +1017,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 68,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '11232345',
         ]);
         User::create([
             'name' => 'User EF',
@@ -956,7 +1028,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 64,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '23498010',
         ]);
         User::create([
             'name' => 'User EG',
@@ -967,7 +1039,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 65,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '45823989',
         ]);
         User::create([
             'name' => 'User EH',
@@ -978,7 +1050,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 66,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '20394861894',
         ]);
         User::create([
             'name' => 'User EI',
@@ -989,6 +1061,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 67,
             'remember_token' => Str::random(10),
+            'no_hp' => '9485029800',
         ]);
         User::create([
             'name' => 'User EA',
@@ -999,7 +1072,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 69,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '690237934',
         ]);
         User::create([
             'name' => 'User EB',
@@ -1010,7 +1083,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 71,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '223948975',
         ]);
         User::create([
             'name' => 'User EC',
@@ -1021,7 +1094,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 72,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '5647829311',
         ]);
         User::create([
             'name' => 'User ED',
@@ -1032,6 +1105,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 73,
             'remember_token' => Str::random(10),
+            'no_hp' => '234908021',
         ]);
         User::create([
             'name' => 'User E3',
@@ -1042,7 +1116,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 74,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '123128908',
         ]);
         User::create([
             'name' => 'User EJ',
@@ -1053,7 +1127,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 79,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '23408234',
         ]);
         User::create([
             'name' => 'User EK',
@@ -1064,7 +1138,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 78,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '6689239872',
         ]);
         User::create([
             'name' => 'User EL',
@@ -1075,6 +1149,7 @@ class UserSeeder extends Seeder
             'department_id' => 11,
             'grade_id' => 66,
             'remember_token' => Str::random(10),
+            'no_hp' => '33995080',
         ]);
         User::create([
             'name' => 'User EM',
@@ -1085,7 +1160,7 @@ class UserSeeder extends Seeder
             'department_id' => 11,
             'grade_id' => 70,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '9038492308',
         ]);
         User::create([
             'name' => 'User EN',
@@ -1096,7 +1171,7 @@ class UserSeeder extends Seeder
             'department_id' => 11,
             'grade_id' => 70,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '98484577445',
         ]);
         User::create([
             'name' => 'User EO',
@@ -1107,7 +1182,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 67,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '11100938934',
         ]);
         User::create([
             'name' => 'User EP',
@@ -1118,6 +1193,7 @@ class UserSeeder extends Seeder
             'department_id' => 10,
             'grade_id' => 65,
             'remember_token' => Str::random(10),
+            'no_hp' => '4543548299',
         ]);
 
         // warehouse
@@ -1132,7 +1208,7 @@ class UserSeeder extends Seeder
             'division_id' => 8,
             'password' => Hash::make('1234567890'),
             'remember_token' => Str::random(10),
-
+            'no_hp' => '2093123849',
         ]);
         User::create([
             'name' => 'User J',
@@ -1142,7 +1218,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 99,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '29912084',
         ]);
         User::create([
             'name' => 'User K',
@@ -1153,7 +1229,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 109,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '123909348',
         ]);
         User::create([
             'name' => 'User L',
@@ -1164,7 +1240,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 111,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '1203981238',
         ]);
 
         User::create([
@@ -1176,7 +1252,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 110,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '23049832',
         ]);
 
         User::create([
@@ -1188,7 +1264,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 91,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '983492808',
         ]);
 
         User::create([
@@ -1200,7 +1276,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 91,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '092139293',
         ]);
 
         User::create([
@@ -1212,7 +1288,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 108,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '109283904',
         ]);
 
         User::create([
@@ -1224,7 +1300,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 107,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '21098340',
         ]);
 
         User::create([
@@ -1236,7 +1312,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 106,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '332242378',
         ]);
 
         User::create([
@@ -1248,7 +1324,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 105,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '091203819',
         ]);
 
         User::create([
@@ -1260,7 +1336,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 104,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '689823498',
         ]);
 
         User::create([
@@ -1272,7 +1348,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 103,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '548723982',
         ]);
 
         User::create([
@@ -1284,7 +1360,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 102,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '23492742',
         ]);
 
         User::create([
@@ -1296,7 +1372,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 99,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '34789278934',
         ]);
 
         User::create([
@@ -1308,7 +1384,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 98,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '29348732847',
         ]);
 
         User::create([
@@ -1320,7 +1396,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 97,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '129388234',
         ]);
 
         User::create([
@@ -1332,7 +1408,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 96,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '20139812937',
         ]);
 
         User::create([
@@ -1344,7 +1420,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 95,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '110923892',
         ]);
 
         User::create([
@@ -1356,7 +1432,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 94,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '2347120983',
         ]);
 
         User::create([
@@ -1368,7 +1444,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 93,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '123987897',
         ]);
 
         User::create([
@@ -1380,7 +1456,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 92,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '8348472191',
         ]);
 
         User::create([
@@ -1392,7 +1468,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 91,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '192874873',
         ]);
 
         User::create([
@@ -1404,7 +1480,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 90,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '9283487237',
         ]);
 
         User::create([
@@ -1416,7 +1492,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 89,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '123878923',
         ]);
 
         User::create([
@@ -1428,7 +1504,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 88,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '29929938',
         ]);
 
         User::create([
@@ -1440,10 +1516,9 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 87,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '2389218390',
         ]);
 
-        // JO DIGANTI SENG NGISOR IKI
         User::create([
             'name' => 'User LA',
             'email' => 'userLA@example.com',
@@ -1453,7 +1528,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 116,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '2348990218',
         ]);
 
         User::create([
@@ -1465,7 +1540,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 87,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '2809123874',
         ]);
 
         User::create([
@@ -1477,7 +1552,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 89,
             'remember_token' => Str::random(10),
-
+            'no_hp' => '20398490173',
         ]);
 
         User::create([
@@ -1489,6 +1564,7 @@ class UserSeeder extends Seeder
             'department_id' => 12,
             'grade_id' => 82,
             'remember_token' => Str::random(10),
+            'no_hp' => '87342927739',
         ]);
     }
 }

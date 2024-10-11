@@ -6,18 +6,19 @@
                 class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
                 Kembali
             </a>
-            <h1 class="text-3xl font-bold text-gray-800 my-5">
+            <br>
+            <h1 class="text-3xl font-bold text-gray-800 mt-9 mb-5 inline-block  hover:underline underline-offset-2">
                 <a href="{{ route('department.employees', $department->uuid) }}">
                     Departemen {{ $department->department_name }}
                 </a>
             </h1>
 
             <!-- Search User Feature -->
-            <form action="{{ route('user.search') }}" method="GET" class="mb-6 flex">
+            <form action="{{ route('user.search', $department->uuid) }}" method="GET" class="mb-6 flex">
                 <input type="text" name="query" placeholder="Cari karyawan"
                     class=" md:w-1/4 lg:w-1/4  border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-indigo-500"
                     value="{{ request('query') }}">
-                <input type="hidden" name="department_id" value="{{ $department->department_id }}">
+                <input type="hidden" name="department_id" value="{{ $department->uuid }}">
                 <button type="submit" class="ml-3 btn btn-primary text-white">
                     Search
                 </button>
@@ -53,7 +54,7 @@
                 </div>
             @endif
 
-            <h2 class="text-xl font-semibold text-gray-800 mb-4 mt-10">Daftar Karyawan</h2>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 mt-10  ">Daftar Karyawan</h2>
 
             <!-- User Table -->
             <div class="overflow-x-auto">
@@ -62,6 +63,7 @@
                         <tr class="bg-gray-100 text-gray-600">
                             <th class="px-4 py-2 border border-gray-300 text-left">Nomor</th>
                             <th class="px-4 py-2 border border-gray-300 text-left">Nama Karyawan</th>
+                            <th class="px-4 py-2 border border-gray-300 text-left">Nomor HP</th>
                             <th class="px-4 py-2 border border-gray-300 text-left">Jabatan</th>
                             <th class="px-4 py-2 border border-gray-300 text-left">Divisi</th>
                             <th class="px-4 py-2 border border-gray-300 text-left">Grade</th>
@@ -81,6 +83,7 @@
                                     <td class="border border-gray-300 px-4 py-2">
                                         {{ $loop->index + 1 + ($users->currentPage() - 1) * $users->perPage() }}</td>
                                     <td class="border border-gray-300 px-4 py-2">{{ $user->name }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $user->no_hp }}</td>
                                     <td class="border border-gray-300 px-4 py-2">
                                         {{ $user->grade->position->position_name }}</td>
                                     <td class="border border-gray-300 px-4 py-2">{{ $user->division->division_name }}

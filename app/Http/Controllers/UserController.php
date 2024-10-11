@@ -33,6 +33,7 @@ class UserController extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:255',
         ]);
 
         // Cari user berdasarkan ID
@@ -49,6 +50,7 @@ class UserController extends Controller
         // Update data user
         $user->update([
             'name' => $request->name,
+            'no_hp' => $request->no_hp,
         ]);
         $departmentUuid = optional($user->department)->uuid; // Menggunakan optional untuk mencegah error jika department null
         return redirect()->route('department.employees', ['uuid' => $departmentUuid])
@@ -58,43 +60,36 @@ class UserController extends Controller
     public function search(Request $request, $uuid)
     {
         $query = $request->input('query');
-        $departmentId = $request->input('department_id');
+        $department = Department::where('uuid', $uuid)->firstOrFail(); // Cari data departemen berdasarkan UUID
+        $departmentId = $department->department_id;
 
-        // Query untuk mencari pengguna
-        $users = User::when($query, function ($queryBuilder) use ($query) {
-            return $queryBuilder->where('name', 'like', '%' . $query . '%');
-        })
-            ->when($departmentId, function ($queryBuilder) use ($departmentId) {
-                return $queryBuilder->where('department_id', $departmentId);
+        // Query untuk mencari users dalam departemen tertentu
+        $users = User::where('department_id', $departmentId)
+            ->when($query, function ($queryBuilder) use ($query) {
+                return $queryBuilder->where('name', 'like', '%' . $query . '%');
             })
             ->paginate(10);
-        // Ambil data departemen untuk ditampilkan di view show
-        $department = Department::findOrFail($uuid);
-        $user = Auth::user();
-        // Inisialisasi canUpdate menjadi false secara default
-        $canUpdate = false;
-        // Ambil divisi pengguna yang sedang login
-        $currentUser = Auth::user();
-        $currentDivisionId = $currentUser->division_id; // Misalkan Anda memiliki `division_id` di model User
 
-        // Cek apakah ada pengguna yang diambil
+        // Ambil data user yang sedang login
+        $currentUser = Auth::user();
+        $canUpdate = false;
+        $currentDivisionId = $currentUser->division_id; // Ambil divisi dari user yang login
+
+        // Cek hak akses berdasarkan grade dan divisi
         if ($users->isNotEmpty()) {
-            // Iterasi melalui semua pengguna untuk menentukan jika pengguna yang sedang login bisa memperbarui salah satu dari mereka
             foreach ($users as $user) {
-                // Periksa apakah divisi pengguna yang sedang login sama dengan divisi pengguna lain
-                if ($currentDivisionId === $user->division_id) {
-                    // Jika divisi sama, cek apakah pengguna yang sedang login bisa memperbarui pengguna tersebut
-                    if ($currentUser->canUpdateUsers($user)) {
-                        $canUpdate = true;
-                        break; // Jika bisa update, tidak perlu cek lebih lanjut
-                    }
+                if ($currentDivisionId === $user->division_id && $currentUser->canUpdateUsers($user)) {
+                    $canUpdate = true;
+                    break;
                 }
             }
         }
+
         if ($users->isEmpty()) {
             return redirect()->back()->with('error', 'User tidak ditemukan.');
         }
-        // Return hasil pencarian ke view show department
-        return view('department.show', compact('department', 'users', 'user', 'canUpdate'));
+
+        // Return hasil pencarian ke view list users per department
+        return view('department.show', compact('department', 'users', 'currentUser', 'canUpdate'));
     }
 }
