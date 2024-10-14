@@ -42,9 +42,7 @@ Route::middleware(['auth', 'verified', CheckUserDivDeptPos::class])->group(funct
         Route::prefix('employees')->group(function () {
             Route::get('{uuid}/edit', [UserController::class, 'edit'])->name('user.edit');
             Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
-            // Route::get('search', [UserController::class, 'search'])->name('user.search');
         });
-        // Rute pencarian users per departemen dengan UUID sebagai parameter
         Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
     });
 });
