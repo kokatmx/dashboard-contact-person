@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('area_id');
             $table->string('area_code')->unique();
             $table->string('area_name');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

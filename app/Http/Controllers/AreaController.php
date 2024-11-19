@@ -42,7 +42,7 @@ class AreaController extends Controller
         ]);
     }
 
-    public function showArea(Request $request, $area_code)
+    public function showArea(Request $request, $slug)
     {
         // Ambil user login
         $user = Auth::user();
@@ -51,10 +51,11 @@ class AreaController extends Controller
         // Ambil area-area yang tersedia
         $areas = Area::all(); // Ambil semua area dari database.
 
-        $areaCode = $request->area_id;
-        // Cari area berdasarkan area_code
-        $area = Area::where('area_id', $areaCode)->first();
-
+        // Ambil area_id dari request
+        $areaId = $request->area_id;
+        // Ambil data area berdasarkan area_id
+        $area = Area::where('area_id', $areaId)->firstOrFail();
+        // $area = Area::where('slug', $slug)->firstOrFail();
         // Mengambil data area dengan kriteria yang diinginkan
         $userArea = $user->department->division->area_id;
 

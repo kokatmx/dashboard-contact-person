@@ -48,7 +48,7 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
         Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
     });
 
-    Route::get('/area/details/{area_id}', [AreaController::class, 'showArea'])->name('area.details');
+    Route::get('/area/{area_id}', [AreaController::class, 'showArea'])->name('area.details');
 });
 
 require __DIR__ . '/auth.php';

@@ -2,10 +2,15 @@
     <div class="container mx-auto py-11 sm:px-6 lg:px-8">
         <!-- User List Table -->
         <div class="bg-white shadow-lg rounded-lg p-6">
-            <a href="{{ route('department.index') }}"
-                class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
-                Kembali
-            </a>
+            @if (Auth::user()->area_id === $area->area_id)
+                <a href="{{ route('area.details', $area->area_id) }}" class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
+                    Kembali
+                </a>
+            @else
+                <a href="{{ route('department.index') }}" class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
+                    Kembali
+                </a>
+            @endif
             <br>
             <h1 class="text-3xl font-bold text-gray-800 mt-9 mb-5 inline-block  hover:underline underline-offset-2">
                 <a href="{{ route('department.employees', $department->uuid) }}">
