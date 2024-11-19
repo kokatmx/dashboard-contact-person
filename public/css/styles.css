@@ -1,0 +1,4 @@
+.pagination-links .join-item.active {
+    background-color: #007bff;
+    color: #fff;
+}
