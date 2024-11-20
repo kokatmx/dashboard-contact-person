@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Http\Middleware\CheckRoleMiddleware;
 use App\Models\Department;
 use App\Models\Office;
+=======
+>>>>>>> dev
 use Illuminate\Http\Request;
 
 class OfficeController extends Controller
 {
+<<<<<<< HEAD
     public function index()
     {
         $department = Department::all();
@@ -62,4 +66,7 @@ class OfficeController extends Controller
     {
         //
     }
+=======
+    public function index() {}
+>>>>>>> dev
 }

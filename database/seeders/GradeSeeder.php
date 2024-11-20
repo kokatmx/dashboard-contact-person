@@ -13,6 +13,7 @@ class GradeSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         Grade::create(['position_id' => 1, 'min_grade' => 11, 'max_grade' => 12]); // Branch IT Manager
         Grade::create(['position_id' => 2, 'min_grade' => 10, 'max_grade' => 10]); // Sales Point IT Coordinator
         Grade::create(['position_id' => 3, 'min_grade' => 8, 'max_grade' => 8]);   // Office Support
@@ -39,6 +40,34 @@ class GradeSeeder extends Seeder
         Grade::create(['position_id' => 24, 'min_grade' => 9, 'max_grade' => 10]); // Branch Fix Asset Coordinator
         Grade::create(['position_id' => 25, 'min_grade' => 11, 'max_grade' => 12]); // General Service Manager
         Grade::create(['position_id' => 26, 'min_grade' => 7, 'max_grade' => 8]);  // Branch General Affair Administrator
+=======
+        Grade::create(['position_id' => 1, 'min_grade' => 11, 'max_grade' => 12]);
+        Grade::create(['position_id' => 2, 'min_grade' => 10, 'max_grade' => 10]);
+        Grade::create(['position_id' => 3, 'min_grade' => 8, 'max_grade' => 8]);
+        Grade::create(['position_id' => 4, 'min_grade' => 8, 'max_grade' => 8]);
+        Grade::create(['position_id' => 5, 'min_grade' => 9, 'max_grade' => 9]);
+        Grade::create(['position_id' => 6, 'min_grade' => 11, 'max_grade' => 12]);
+        Grade::create(['position_id' => 7, 'min_grade' => 9, 'max_grade' => 10]);
+        Grade::create(['position_id' => 8, 'min_grade' => 8, 'max_grade' => 8]);
+        Grade::create(['position_id' => 9, 'min_grade' => 7, 'max_grade' => 7]);
+        Grade::create(['position_id' => 10, 'min_grade' => 9, 'max_grade' => 10]);
+        Grade::create(['position_id' => 11, 'min_grade' => 7, 'max_grade' => 7]);
+        Grade::create(['position_id' => 12, 'min_grade' => 8, 'max_grade' => 8]);
+        Grade::create(['position_id' => 13, 'min_grade' => 7, 'max_grade' => 8]);
+        Grade::create(['position_id' => 14, 'min_grade' => 8, 'max_grade' => 8]);
+        Grade::create(['position_id' => 15, 'min_grade' => 9, 'max_grade' => 10]);
+        Grade::create(['position_id' => 16, 'min_grade' => 11, 'max_grade' => 12]);
+        Grade::create(['position_id' => 17, 'min_grade' => 7, 'max_grade' => 8]);
+        Grade::create(['position_id' => 18, 'min_grade' => 7, 'max_grade' => 8]);
+        Grade::create(['position_id' => 19, 'min_grade' => 9, 'max_grade' => 10]);
+        Grade::create(['position_id' => 20, 'min_grade' => 9, 'max_grade' => 10]);
+        Grade::create(['position_id' => 21, 'min_grade' => 9, 'max_grade' => 9]);
+        Grade::create(['position_id' => 22, 'min_grade' => 8, 'max_grade' => 8]);
+        Grade::create(['position_id' => 23, 'min_grade' => 9, 'max_grade' => 10]);
+        Grade::create(['position_id' => 24, 'min_grade' => 9, 'max_grade' => 10]);
+        Grade::create(['position_id' => 25, 'min_grade' => 11, 'max_grade' => 12]);
+        Grade::create(['position_id' => 26, 'min_grade' => 7, 'max_grade' => 8]);
+>>>>>>> dev
         Grade::create(['position_id' => 27, 'min_grade' => 9, 'max_grade' => 10]);
         Grade::create(['position_id' => 28, 'min_grade' => 9, 'max_grade' => 10]);
         Grade::create(['position_id' => 29, 'min_grade' => 9, 'max_grade' => 9]);
@@ -159,7 +188,10 @@ class GradeSeeder extends Seeder
         Grade::create(['position_id' => 144, 'min_grade' => 7, 'max_grade' => 8]);
         Grade::create(['position_id' => 145, 'min_grade' => 0, 'max_grade' => 7]);
         Grade::create(['position_id' => 146, 'min_grade' => 9, 'max_grade' => 10]);
+<<<<<<< HEAD
         // Grade::create(['position_id' => 147, 'min_grade' => 7, 'max_grade' => 8]);
         // Grade::create(['position_id' => 148, 'min_grade' => 7, 'max_grade' => 8]);
+=======
+>>>>>>> dev
     }
 }

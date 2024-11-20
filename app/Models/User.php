@@ -18,6 +18,26 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
+<<<<<<< HEAD
+=======
+    const STORE_AREA = ['O1100', 'O1200', 'O9400'] + ['O0000'];
+    const OFFICE_AREA = [
+        'C3100',
+        'F1500',
+        'F5100',
+        'G1600',
+        'H1800',
+        'H2600',
+        'K1300',
+        'M3200',
+        'R4300',
+        'R5800',
+        'YY002',
+        'YY004',
+    ] +
+        ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000'];
+    const WAREHOUSE_AREA = ['O1900'] + ['O2222'];
+>>>>>>> dev
 
     protected $table = 'users';
     protected $primaryKey = 'user_id';
@@ -25,17 +45,34 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
+=======
+        'area_id',
+>>>>>>> dev
         'grade_id',
         'department_id',
         'division_id',
         'no_hp',
     ];
 
+<<<<<<< HEAD
     public function canUpdateUsers(User $otherUser)
     {
         return $this->division_id == $otherUser->division_id && $this->grade->max_grade >= $otherUser->grade->max_grade;
     }
 
+=======
+    public function canUpdateUsers(User $otherUser): bool
+    {
+        return $this->area_id == $otherUser->area_id && $this->division_id == $otherUser->division_id && $this->department_id == $otherUser->department_id && $this->grade->max_grade >= $otherUser->grade->max_grade;
+    }
+
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class, 'area_id');
+    }
+>>>>>>> dev
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
@@ -52,6 +89,7 @@ class User extends Authenticatable
         return $this->belongsTo(Grade::class, 'grade_id');
     }
 
+<<<<<<< HEAD
     // for slug
     // protected static function boot()
     // {
@@ -67,6 +105,8 @@ class User extends Authenticatable
     //     return 'slug';
     // }
 
+=======
+>>>>>>> dev
     // using UUID
     protected static function boot()
     {

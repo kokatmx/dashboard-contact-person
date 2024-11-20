@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+<<<<<<< HEAD
+=======
+            AreaSeeder::class,
+>>>>>>> dev
             DivisionSeeder::class,
             DepartmentSeeder::class,
             PositionSeeder::class,

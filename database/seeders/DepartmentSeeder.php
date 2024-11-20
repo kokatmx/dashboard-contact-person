@@ -18,6 +18,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'IT Branch',
             'description' => 'IT Branch',
             'division_id' => 1,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
         ]);
         Department::create([
@@ -25,7 +29,11 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'FINANCE ACCOUNTING (BRANCH)',
             'description' => 'FINANCE ACCOUNTING (BRANCH)',
             'division_id' => 2,
+<<<<<<< HEAD
 
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
         ]);
         Department::create([
@@ -33,6 +41,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'Inventory Control',
             'description' => 'Inventory Control',
             'division_id' => 2,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -41,6 +53,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH CORPORATE AFFAIRS',
             'description' => 'BRANCH CORPORATE AFFAIRS',
             'division_id' => 3,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -49,7 +65,11 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH GENERAL SERVICE',
             'description' => 'BRANCH GENERAL SERVICE',
             'division_id' => 4,
+<<<<<<< HEAD
 
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -58,6 +78,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH PEOPLE DEVELOPMENT',
             'description' => 'BRANCH PEOPLE DEVELOPMENT',
             'division_id' => 4,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -66,6 +90,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH MARKETING',
             'description' => 'BRANCH MARKETING',
             'division_id' => 5,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -74,6 +102,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH MERCHANDISING',
             'description' => 'IBRANCH MERCHANDISING',
             'division_id' => 6,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -82,6 +114,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'Branch Manager/ Deputy Branch manager',
             'description' => 'Branch Manager/ Deputy Branch manager',
             'division_id' => 7,
+<<<<<<< HEAD
+=======
+            'area_id' => 2,
+>>>>>>> dev
 
 
         ]);
@@ -90,6 +126,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'Area',
             'description' => 'Area',
             'division_id' => 7,
+<<<<<<< HEAD
+=======
+            'area_id' => 2,
+>>>>>>> dev
 
 
         ]);
@@ -98,6 +138,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'TASK FORCE',
             'description' => 'TASK FORCE',
             'division_id' => 7,
+<<<<<<< HEAD
+=======
+            'area_id' => 2,
+>>>>>>> dev
 
 
         ]);
@@ -106,6 +150,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH WAREHOUSETASK',
             'description' => 'BRANCH WAREHOUSE',
             'division_id' => 8,
+<<<<<<< HEAD
+=======
+            'area_id' => 3,
+>>>>>>> dev
 
 
         ]);
@@ -114,6 +162,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH FRANCHISE RELATION',
             'description' => 'BRANCH FRANCHISE RELATION',
             'division_id' => 9,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -122,6 +174,10 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH FRANCHISE TAF ADMIN',
             'description' => 'BBRANCH FRANCHISE TAF ADMIN',
             'division_id' => 9,
+<<<<<<< HEAD
+=======
+            'area_id' => 1,
+>>>>>>> dev
 
 
         ]);
@@ -130,8 +186,25 @@ class DepartmentSeeder extends Seeder
             'department_name' => 'BRANCH LOCATION & DEVELOPMENT',
             'description' => 'BRANCH LOCATION & DEVELOPMENT',
             'division_id' => 10,
+<<<<<<< HEAD
 
 
         ]);
     }
 }
+=======
+            'area_id' => 1,
+
+        ]);
+
+        Department::create([
+            'department_code' => 'YY004',
+            'department_name' => 'BRANCH BUILDING & MAINTENANCE',
+            'description' => 'BRANCH BUILDING & MAINTENANCE',
+            'division_id' => 10,
+            'area_id' => 1,
+
+        ]);
+    }
+}
+>>>>>>> dev

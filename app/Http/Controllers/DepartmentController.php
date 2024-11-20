@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
+=======
+use App\Models\Area;
+>>>>>>> dev
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,15 +29,31 @@ class DepartmentController extends Controller
         // Ambil departemen dari divisi lain
         $departmentsOutsideDivision = Department::where('division_id', '!=', $userDivisionId)
             ->withCount('users')->get();
+<<<<<<< HEAD
 
         return view('department.index', compact('departmentsInDivision', 'departmentsOutsideDivision', 'departments', 'usersPerDepartment'));
     }
 
     public function showEmployees($uuid)
+=======
+        if ($departments->department_name === 'Area') {
+            return view('department.area', compact('departmentsInDivision', 'departmentsOutsideDivision', 'departments', 'usersPerDepartment'));
+        } else {
+            return view('department.index', compact('departmentsInDivision', 'departmentsOutsideDivision', 'departments', 'usersPerDepartment'));
+        }
+    }
+
+    public function showEmployees($uuid, Request $request)
+>>>>>>> dev
     {
         // Temukan department berdasarkan uuid, bukan ID
         $department = Department::where('uuid', $uuid)->firstOrFail();
         $departments = Department::all();
+<<<<<<< HEAD
+=======
+        $area = Area::where('area_id', Auth::user()->area_id)->firstOrFail();
+        // Simpan slug area di session
+>>>>>>> dev
 
         $currentUser = Auth::user();
         $currentDivisionId = $currentUser->division_id;
@@ -45,8 +65,14 @@ class DepartmentController extends Controller
         $canUpdate = $users->contains(function ($user) use ($currentUser, $currentDivisionId) {
             return $currentDivisionId == $user->division_id && $currentUser->canUpdateUsers($user);
         });
+<<<<<<< HEAD
         return view('department.show', compact('users', 'department', 'canUpdate', 'departments'))->with('success', 'Data user berhasil di perbarui');
     }
+=======
+        return view('department.show-user', compact('area', 'users', 'department', 'canUpdate', 'departments'))->with('success', 'Data user berhasil di perbarui');
+    }
+
+>>>>>>> dev
     public function search(Request $request)
     {
         $query = $request->input('query');

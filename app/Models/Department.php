@@ -18,6 +18,10 @@ class Department extends Model
         'name_department',
         'description',
         'division_id',
+<<<<<<< HEAD
+=======
+        'area_id',
+>>>>>>> dev
     ];
 
     public function users()
@@ -29,6 +33,7 @@ class Department extends Model
         return $this->belongsTo(Division::class, 'division_id');
     }
 
+<<<<<<< HEAD
     // for slug
     // protected static function boot()
     // {
@@ -44,6 +49,16 @@ class Department extends Model
     // {
     //     return 'slug';
     // }
+=======
+    public function positions()
+    {
+        return $this->hasMany(Position::class, 'department_id');
+    }
+    public function area()
+    {
+        return $this->belongsTo(Area::class, 'area_id', 'id');
+    }
+>>>>>>> dev
 
     // using UUID
     protected static function boot()

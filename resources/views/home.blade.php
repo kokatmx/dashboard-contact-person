@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
+=======
+<html lang="en" data-theme="light">
+>>>>>>> dev
 
 <head>
     <meta charset="UTF-8">
@@ -19,6 +23,12 @@
             background-size: cover;
             background-position: center;
         }
+<<<<<<< HEAD
+=======
+        .judul{
+            text-shadow: 3px 10px 3px black;
+        }
+>>>>>>> dev
     </style>
 </head>
 
@@ -27,7 +37,11 @@
     <!-- Hero Section -->
     <section class="hero flex items-center justify-center bg-cover bg-center min-h-screen text-white">
         <div class="container mx-auto text-center p-6">
+<<<<<<< HEAD
             <h1 class="text-5xl font-bold mb-4">Dashboard Contact Person</h1>
+=======
+            <h1 class="text-5xl font-bold mb-4 judul">Dashboard Contact Person</h1>
+>>>>>>> dev
             @php
                 $user = Auth::user();
                 $userDivision = $user->division->division_code ?? null; // Ambil kode divisi
@@ -35,7 +49,11 @@
                 $userPosition = $user->position->position_code ?? null;
             @endphp
             @if (Route::has('login'))
+<<<<<<< HEAD
                 <div class="flex justify-center space-x-4 mt-4">
+=======
+                <div class="flex justify-center space-x-4 mt-10">
+>>>>>>> dev
                     @auth
                         @if ($userDivision === 'O2222' && $userDept === 'O1900')
                             <a href="{{ route('warehouse.dashboard') }}" class="btn ">
@@ -65,7 +83,11 @@
                             </a>
                         @endif
                     @else
+<<<<<<< HEAD
                         <a href="{{ route('login') }}" class="btn btn-outline">
+=======
+                        <a href="{{ route('login') }}" class="btn btn-info btn-lg" >
+>>>>>>> dev
                             <i class="fas fa-sign-in-alt mr-5"></i> Log in
                         </a>
                     @endauth

@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\AreaController;
+>>>>>>> dev
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\OfficeController;
@@ -7,6 +11,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
+<<<<<<< HEAD
+=======
+use App\Http\Middleware\CheckUserAccess;
+>>>>>>> dev
 use App\Http\Middleware\CheckUserDivDeptPos;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +33,11 @@ Route::get('/', function () {
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
+<<<<<<< HEAD
 Route::middleware(['auth', 'verified', CheckUserDivDeptPos::class])->group(function () {
+=======
+Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function () {
+>>>>>>> dev
     // Akses hanya untuk role store
     Route::get('/store', [DashboardController::class, 'index'])->name('store.dashboard');
 
@@ -45,6 +57,14 @@ Route::middleware(['auth', 'verified', CheckUserDivDeptPos::class])->group(funct
         });
         Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
     });
+<<<<<<< HEAD
 });
 
 require __DIR__ . '/auth.php';
+=======
+
+    Route::get('/area/{area_id}', [AreaController::class, 'showArea'])->name('area.details');
+});
+
+require __DIR__ . '/auth.php';
+>>>>>>> dev

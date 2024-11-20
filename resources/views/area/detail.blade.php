@@ -34,11 +34,6 @@
                     Kembali
                 </a>
 
-<<<<<<< HEAD
-=======
-                {{-- <a href="{{ url()->previous() ?? route('home') }}" class="btn btn-outline text-black hover:text-white">Kembali</a> --}}
-
->>>>>>> dev
                 <!-- Department Search Form -->
                 <form action="{{ route('department.search') }}" method="GET" class="my-6">
                     <input type="text" name="query" placeholder="Cari department" value="{{ request('query') }}"
@@ -60,12 +55,16 @@
                     </div>
                 @endif
 
+                <h2 class="text-3xl text-center font-semibold text-gray-800 mt-10 uppercase ">
+                   Area {{ $area->area_name }}
+                </h2>
+<br>
                 <h2 class="text-2xl font-semibold text-gray-800 mt-10  inline hover:underline underline-offset-2">
-                    <a href="{{ route('department.index') }}">List Departemen</a>
+                    <a href="{{ route('area.details',  $area->area_id) }}">List Departemen</a>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mt-3">
                     <!-- Departments in User's Division -->
-                    @foreach ($departmentsInDivision as $department)
+                    @foreach ($departmentsInArea as $department)
                         <div
                             class="card card-normal bg-white shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
                             <div class="card-body p-5">
@@ -81,52 +80,7 @@
                             </div>
                         </div>
                     @endforeach
-<<<<<<< HEAD
                 </div>
-
-                <!-- Departments Outside User's Division -->
-                {{-- <h2 class="text-2xl font-semibold text-gray-800 mt-10">
-                        <a href="{{ route('department.index') }}">List Departemen Lainnya</a>
-                    </h2> --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mt-3">
-=======
-                    {{-- </div> --}}
-
-                    <!-- Departments Outside User's Division -->
-                    {{-- <h2 class="text-2xl font-semibold text-gray-800 mt-10">
-                        <a href="{{ route('department.index') }}">List Departemen Lainnya</a>
-                    </h2> --}}
-                    {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mt-3"> --}}
->>>>>>> dev
-                    @foreach ($departmentsOutsideDivision as $department)
-                        <div
-                            class="card card-normal bg-white shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
-                            <div class="card-body p-5">
-                                <h2 class="card-title text-lg font-semibold text-gray-800 mb-2">
-                                    {{ $department->department_name }}</h2>
-                                <p class="text-gray-600 mb-4">{{ $department->description }}</p>
-                                <div class="card-actions flex justify-between items-center">
-                                    <p class="text-gray-800 font-medium">Total Karyawan: <span
-                                            class="font-bold">{{ $department->users_count }}</span></p>
-                                    <a href="{{ route('department.employees', $department->uuid) }}"
-                                        class="btn btn-primary btn-md">Lihat Karyawan</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-<<<<<<< HEAD
-=======
-                {{--
-                <!-- Jika tidak ada hasil pencarian -->
-                @if ($departmentsInDivision->isEmpty() && $departmentsOutsideDivision->isEmpty())
-                    <div class="mt-5 text-gray-700">
-                        <p>Tidak ada department yang ditemukan untuk pencarian
-                            <strong>"{{ request('query') }}"</strong>.
-                        </p>
-                    </div>
-                @endif --}}
->>>>>>> dev
             </div>
         </div>
     </div>
