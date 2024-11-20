@@ -47,7 +47,7 @@
                     <div
                         class="card card-normal bg-blue-600 shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
                         <div class="card-body p-5">
-                            <i class="fa-solid fa-sitemap text-3xl"></i>
+                            <i class="fa-solid fa-warehouse text-3xl"></i>
                             <h2 class="card-title text-lg font-semibold text-gray-800 mb-2">
                                 Divisi</h2>
 
@@ -59,7 +59,7 @@
                     <div
                         class="card card-normal bg-yellow-400 shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
                         <div class="card-body p-5">
-                            <i class="fa-solid fa-users-between-lines text-3xl"></i>
+                            <i class="fa-solid fa-store text-3xl"></i>
                             <h2 class="card-title text-lg font-semibold text-gray-800 mb-2">
                                 Departemen</h2>
                             <p class="text-black mb-4">Total departemen yang ada<br> <strong
@@ -69,7 +69,7 @@
                     <div
                         class="card card-normal bg-red-600 shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
                         <div class="card-body p-5">
-                            <i class="fa-solid fa-users text-3xl"></i>
+                            <i class="fa-solid fa-office text-3xl"></i>
                             <h2 class="card-title text-lg font-semibold text-gray-800 mb-2">
                                 Karyawan</h2>
                             <p class="text-black mb-4">Total Karyawan Yang Ada <br> <strong

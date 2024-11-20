@@ -76,13 +76,13 @@
                             </div>
                         </div>
                     @endforeach
-                    {{-- </div> --}}
+                </div>
 
-                    <!-- Departments Outside User's Division -->
-                    {{-- <h2 class="text-2xl font-semibold text-gray-800 mt-10">
+                <!-- Departments Outside User's Division -->
+                {{-- <h2 class="text-2xl font-semibold text-gray-800 mt-10">
                         <a href="{{ route('department.index') }}">List Departemen Lainnya</a>
                     </h2> --}}
-                    {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mt-3"> --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:mt-3">
                     @foreach ($departmentsOutsideDivision as $department)
                         <div
                             class="card card-normal bg-white shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
@@ -100,15 +100,6 @@
                         </div>
                     @endforeach
                 </div>
-                {{--
-                <!-- Jika tidak ada hasil pencarian -->
-                @if ($departmentsInDivision->isEmpty() && $departmentsOutsideDivision->isEmpty())
-                    <div class="mt-5 text-gray-700">
-                        <p>Tidak ada department yang ditemukan untuk pencarian
-                            <strong>"{{ request('query') }}"</strong>.
-                        </p>
-                    </div>
-                @endif --}}
             </div>
         </div>
     </div>
