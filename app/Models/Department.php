@@ -18,10 +18,7 @@ class Department extends Model
         'name_department',
         'description',
         'division_id',
-<<<<<<< HEAD
-=======
         'area_id',
->>>>>>> dev
     ];
 
     public function users()
@@ -33,23 +30,6 @@ class Department extends Model
         return $this->belongsTo(Division::class, 'division_id');
     }
 
-<<<<<<< HEAD
-    // for slug
-    // protected static function boot()
-    // {
-    //     parent::boot();
-
-    //     static::creating(function ($department) {
-    //         $department->slug = Str::slug($department->name . '-' . Str::random(5), '-');
-    //     });
-    // }
-
-
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
-=======
     public function positions()
     {
         return $this->hasMany(Position::class, 'department_id');
@@ -58,7 +38,6 @@ class Department extends Model
     {
         return $this->belongsTo(Area::class, 'area_id', 'id');
     }
->>>>>>> dev
 
     // using UUID
     protected static function boot()

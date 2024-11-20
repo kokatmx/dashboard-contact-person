@@ -4,10 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Str;
->>>>>>> dev
 
 class Area extends Model
 {
@@ -15,16 +12,7 @@ class Area extends Model
     protected $table = 'areas';
     protected $primaryKey = 'area_id';
     protected $fillable = [
-<<<<<<< HEAD
-        'name',
-    ];
 
-    public function departments()
-    {
-        $this->belongsTo(Department::class, 'department_id', 'department_id');
-    }
-}
-=======
         "area_code",
         "area_name",
     ];
@@ -74,4 +62,3 @@ class Area extends Model
         return Str::of($areaCode)->slug('-');
     }
 }
->>>>>>> dev

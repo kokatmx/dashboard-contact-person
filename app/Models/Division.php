@@ -10,12 +10,7 @@ class Division extends Model
     use HasFactory;
     protected $table = 'divisions';
     protected $primaryKey = 'division_id';
-<<<<<<< HEAD
-=======
     protected $fillable = ['division_name', 'division_code', 'area_id'];
-
-    
->>>>>>> dev
 
     public function departments()
     {
@@ -30,12 +25,9 @@ class Division extends Model
     {
         return $this->hasMany(User::class, 'division_id');
     }
-<<<<<<< HEAD
-=======
 
     public function area()
     {
         return $this->belongsTo(Area::class, 'area_id');
     }
->>>>>>> dev
 }

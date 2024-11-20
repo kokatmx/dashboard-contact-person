@@ -33,37 +33,24 @@ class AuthenticatedSessionController extends Controller
         // Ambil division dan department user
         $userDivision = $user->division->division_code ?? null; // Ambil kode divisi
         $userDept = $user->department->department_code ?? null;   // Ambil kode departemen
-<<<<<<< HEAD
-        $userPosition = $user->position->position_code ?? null;
 
-        // Warehouse
-        if ($userDivision === 'O2222' && $userDept === 'O1900') {
-=======
         $userArea = $user->department->division->area_id ?? null; // Ambil kode area
 
         // Warehouse
         if ($userDivision === 'O2222' && $userDept === 'O1900' && $userArea === 'WRH') {
->>>>>>> dev
             return redirect()->route('warehouse.dashboard');
         }
 
         // Store
-<<<<<<< HEAD
-        if ($userDivision === 'O0000' && in_array($userDept, ['O1100', 'O1200', 'O9400'])) {
-=======
         if ($userDivision === 'O0000' && in_array($userDept, ['O1100', 'O1200', 'O9400']) && $userArea === 'STO') {
->>>>>>> dev
             return redirect()->route('store.dashboard');
         }
 
         // Office
         if (
-            in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000']) &&
-<<<<<<< HEAD
-            in_array($userDept, ['C3100', 'F1500', 'F5100', 'G1600', 'H1800', 'H2600', 'K1300', 'M3200', 'R4300', 'R5800', 'YY002', 'YY004'])
-=======
+            in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000'])
+            &&
             in_array($userDept, ['C3100', 'F1500', 'F5100', 'G1600', 'H1800', 'H2600', 'K1300', 'M3200', 'R4300', 'R5800', 'YY002', 'YY004']) && $userArea === 'OFF'
->>>>>>> dev
         ) {
             return redirect()->route('office.dashboard');
         }

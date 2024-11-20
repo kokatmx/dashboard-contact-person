@@ -5,27 +5,16 @@ namespace Database\Seeders;
 use App\Models\Area;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-<<<<<<< HEAD
-=======
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
->>>>>>> dev
 
 class AreaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-<<<<<<< HEAD
-    public function run(): void
-    {
-        Area::create([
-            'area_name' => 'Central Warehouse',
-            'department_id' => 2, // ID dari Warehouse Department
-        ]);
-    }
-}
-=======
+
     public function run(Request $request): void
     {
         $areas = [
@@ -42,4 +31,3 @@ class AreaSeeder extends Seeder
         }
     }
 }
->>>>>>> dev
