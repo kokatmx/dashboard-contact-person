@@ -13,7 +13,6 @@ class UserSeeder extends Seeder
 
     public function run(): void
     {
-
         // todo: OFFICE
         User::create([
             'name' => 'User A',
@@ -22,7 +21,7 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 1,
-            'grade_id' => 1,
+            'position_id' => 1,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -33,7 +32,7 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 1,
-            'grade_id' => 2,
+            'position_id' => 2,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -44,7 +43,7 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 1,
-            'grade_id' => 3,
+            'position_id' => 3,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -55,7 +54,7 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 1,
-            'grade_id' => 4,
+            'position_id' => 4,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -66,7 +65,7 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 1,
-            'grade_id' => 5,
+            'position_id' => 5,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -77,7 +76,7 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 1,
-            'grade_id' => 6,
+            'position_id' => 6,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -88,7 +87,7 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 2,
-            'grade_id' => 8,
+            'position_id' => 8,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -99,10 +98,11 @@ class UserSeeder extends Seeder
             'area_id' => 1,
             'division_id' => 1,
             'department_id' => 2,
-            'grade_id' => 16,
+            'position_id' => 16,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
+
 
 
 
@@ -115,7 +115,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 63,
+            'position_id' => 63,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -127,7 +127,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 9,
-            'grade_id' => 62,
+            'position_id' => 64,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -139,7 +139,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 66,
+            'position_id' => 66,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -151,7 +151,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 67,
+            'position_id' => 67,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -163,7 +163,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 69,
+            'position_id' => 69,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -175,7 +175,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 70,
+            'position_id' => 70,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -187,9 +187,8 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 71,
+            'position_id' => 71,
             'remember_token' => Str::random(10),
-
             'no_hp' => '87342927739',
         ]);
 
@@ -200,7 +199,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 72,
+            'position_id' => 72,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -212,7 +211,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 73,
+            'position_id' => 73,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -224,7 +223,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 74,
+            'position_id' => 74,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -236,7 +235,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 75,
+            'position_id' => 75,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -248,7 +247,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 76,
+            'position_id' => 76,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -260,7 +259,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 77,
+            'position_id' => 77,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -272,7 +271,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 74,
+            'position_id' => 74,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -284,7 +283,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 63,
+            'position_id' => 63,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -296,7 +295,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 74,
+            'position_id' => 74,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -308,7 +307,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 65,
+            'position_id' => 65,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -320,7 +319,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 76,
+            'position_id' => 76,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -332,7 +331,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 67,
+            'position_id' => 67,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -344,7 +343,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 68,
+            'position_id' => 68,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -356,7 +355,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 69,
+            'position_id' => 69,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -368,7 +367,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 75,
+            'position_id' => 75,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -380,7 +379,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 77,
+            'position_id' => 77,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -392,7 +391,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 72,
+            'position_id' => 72,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -404,7 +403,7 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 10,
-            'grade_id' => 73,
+            'position_id' => 73,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -416,23 +415,22 @@ class UserSeeder extends Seeder
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 11,
-            'grade_id' => 74,
+            'position_id' => 74,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
 
         User::create([
-            'name' => 'Branch Manager',
-            'email' => 'brangh-manager@example.com',
+            'name' => 'user Branch Manager',
+            'email' => 'branch-manager@example.com',
             'password' => Hash::make('1234567890'),
             'area_id' => 2,
             'division_id' => 7,
             'department_id' => 9,
-            'grade_id' => 62,
+            'position_id' => 62,
             'remember_token' => Str::random(10),
-            'no_hp' => '08392679',
+            'no_hp' => '09236619',
         ]);
-
 
 
 
@@ -445,7 +443,7 @@ class UserSeeder extends Seeder
             'area_id' => 3,
             'division_id' => 8,
             'department_id' => 12,
-            'grade_id' => 78,
+            'position_id' => 78,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -456,7 +454,7 @@ class UserSeeder extends Seeder
             'area_id' => 3,
             'division_id' => 8,
             'department_id' => 12,
-            'grade_id' => 79,
+            'position_id' => 79,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -467,7 +465,7 @@ class UserSeeder extends Seeder
             'area_id' => 3,
             'division_id' => 8,
             'department_id' => 12,
-            'grade_id' => 80,
+            'position_id' => 80,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -478,7 +476,7 @@ class UserSeeder extends Seeder
             'area_id' => 3,
             'division_id' => 8,
             'department_id' => 12,
-            'grade_id' => 81,
+            'position_id' => 81,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -489,7 +487,7 @@ class UserSeeder extends Seeder
             'area_id' => 3,
             'division_id' => 8,
             'department_id' => 12,
-            'grade_id' => 82,
+            'position_id' => 82,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
@@ -500,7 +498,7 @@ class UserSeeder extends Seeder
             'area_id' => 3,
             'division_id' => 8,
             'department_id' => 12,
-            'grade_id' => 83,
+            'position_id' => 83,
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);

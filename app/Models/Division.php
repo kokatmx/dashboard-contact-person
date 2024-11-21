@@ -12,6 +12,8 @@ class Division extends Model
     protected $primaryKey = 'division_id';
     protected $fillable = ['division_name', 'division_code', 'area_id'];
 
+
+
     public function departments()
     {
         return $this->hasMany(Department::class, 'division_id');

@@ -49,12 +49,27 @@ class User extends Authenticatable
         'no_hp',
     ];
 
-
     public function canUpdateUsers(User $otherUser): bool
     {
-        return $this->area_id == $otherUser->area_id && $this->division_id == $otherUser->division_id && $this->department_id == $otherUser->department_id && $this->grade->max_grade >= $otherUser->grade->max_grade;
+        // Cek apakah user yang login adalah Branch Manager
+        if ($this->isBranchManager()) {
+            // Jika Branch Manager, izinkan untuk mengupdate semua user
+            return true;
+        }
+
+        // Jika bukan Branch Manager, cek kondisi lain (area, divisi, departemen, grade)
+        return $this->area_id == $otherUser->area_id
+            && $this->division_id == $otherUser->division_id
+            && $this->department_id == $otherUser->department_id
+            && $this->position->grade->max_grade >= $otherUser->position->grade->max_grade;
     }
 
+    public function isBranchManager()
+    {
+        // dd($this->positions, $this->positions->position_code);
+        // Cek apakah posisi user adalah Branch Manager
+        return $this->positions && $this->positions->position_code === "O1101";
+    }
 
     public function area()
     {
@@ -71,9 +86,9 @@ class User extends Authenticatable
         return $this->belongsTo(Division::class, 'division_id');
     }
 
-    public function grade()
+    public function position()
     {
-        return $this->belongsTo(Grade::class, 'grade_id');
+        return $this->belongsTo(Position::class, 'position_id');
     }
 
     // using UUID

@@ -20,19 +20,19 @@ class UserController extends Controller
         $currentUser = Auth::user();
 
         // Cek apakah user yang sedang login memiliki akses untuk mengedit
-        if (!$currentUser->canUpdateUsers($user)) {
-            return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengedit user ini.');
-        }
+        // if (!$currentUser->canUpdateUsers($user)) {
+        //     return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengedit user ini.');
+        // }
 
         // Kirim data user ke view edit
-        return view('user.edit',  compact('user', 'departments', 'department'));
+        return view('user.edit', compact('user', 'departments', 'department'));
     }
 
     public function update(Request $request, $uuid)
     {
         // Validasi input
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'nullable',
             'no_hp' => 'required|string|max:255',
         ]);
 
@@ -42,14 +42,14 @@ class UserController extends Controller
         // Ambil user yang sedang login
         $currentUser = Auth::user();
 
-        // Cek apakah user yang sedang login memiliki akses untuk mengupdate
-        if (!$currentUser->canUpdateUsers($user)) {
-            return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengupdate user ini.');
-        }
+        // // Cek apakah user yang sedang login memiliki akses untuk mengupdate
+        // if (!$currentUser->canUpdateUsers($user)) {
+        //     return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengupdate user ini.');
+        // }
 
         // Update data user
         $user->update([
-            'name' => $request->name,
+            // 'name' => $request->name,
             'no_hp' => $request->no_hp,
         ]);
         $departmentUuid = optional($user->department)->uuid; // Menggunakan optional untuk mencegah error jika department null

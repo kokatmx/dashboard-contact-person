@@ -12,7 +12,6 @@ class Area extends Model
     protected $table = 'areas';
     protected $primaryKey = 'area_id';
     protected $fillable = [
-
         "area_code",
         "area_name",
     ];

@@ -42,9 +42,7 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 mx-3">
+                <<<<<<< HEAD <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 mx-3">
                     <div
                         class="card card-normal bg-blue-600 shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
                         <div class="card-body p-5">
@@ -77,39 +75,41 @@
                                     class="text-2xl text-black">{{ $totalUsers }}</strong></p>
                         </div>
                     </div>
-                </div>
-=======
-                {{-- area --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 mx-3">
-                    @foreach ($areas as $area)
-                        @php
-                            // Menentukan warna dan ikon berdasarkan area_name
-                            $areaDetails = [
-                                'Warehouse' => ['color' => 'blue-600', 'icon' => 'fa-sitemap'],
-                                'Store' => ['color' => 'yellow-400', 'icon' => 'fa-store'],
-                                'Office' => ['color' => 'red-600', 'icon' => 'fa-building']
-                            ][$area->area_name] ?? ['color' => 'gray-500', 'icon' => 'fa-question-circle'];
-                        @endphp
-                        <div class="card card-normal bg-{{ $areaDetails['color'] }} shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
-                            <div class="card-body p-5">
-                                <div class="mb-4">
-                                    <i class="fas {{ $areaDetails['icon'] }} text-3xl"></i>
-                                </div>
-                                <h2 class="card-title text-lg font-semibold text-gray-800 mb-2 uppercase">
-                                    {{ $area->area_name }}
-                                </h2>
-                                <div class="mt-4">
-                                    <a href="{{ route('area.details',  $area->area_id) }}" class="btn btn-sm btn-outline btn-white">
-                                        Lihat Detail
-                                    </a>
-                                </div>
+            </div>
+            =======
+            {{-- area --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 mx-3">
+                @foreach ($areas as $area)
+                    @php
+                        // Menentukan warna dan ikon berdasarkan area_name
+                        $areaDetails = [
+                            'Warehouse' => ['color' => 'blue-600', 'icon' => 'fa-sitemap'],
+                            'Store' => ['color' => 'yellow-400', 'icon' => 'fa-store'],
+                            'Office' => ['color' => 'red-600', 'icon' => 'fa-building'],
+                        ][$area->area_name] ?? ['color' => 'gray-500', 'icon' => 'fa-question-circle'];
+                    @endphp
+                    <div
+                        class="card card-normal bg-{{ $areaDetails['color'] }} shadow-lg border border-black rounded-lg overflow-hidden transition-transform transform hover:scale-105 m-3">
+                        <div class="card-body p-5">
+                            <div class="mb-4">
+                                <i class="fas {{ $areaDetails['icon'] }} text-3xl"></i>
+                            </div>
+                            <h2 class="card-title text-lg font-semibold text-gray-800 mb-2 uppercase">
+                                {{ $area->area_name }}
+                            </h2>
+                            <div class="mt-4">
+                                <a href="{{ route('area.details', $area->area_id) }}"
+                                    class="btn btn-sm btn-outline btn-white">
+                                    Lihat Detail
+                                </a>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-
->>>>>>> dev
+                    </div>
+                @endforeach
             </div>
+
+            >>>>>>> dev
         </div>
+    </div>
     </div>
 </x-app-layout>

@@ -2,15 +2,16 @@
     <div class="container mx-auto py-11 sm:px-6 lg:px-8">
         <!-- User List Table -->
         <div class="bg-white shadow-lg rounded-lg p-6">
-            @if (Auth::user()->area_id === $area->area_id)
+            {{-- @if (Auth::user()->area_id === $area->area_id)
                 <a href="{{ route('area.details', $area->area_id) }}" class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
                     Kembali
                 </a>
-            @else
-                <a href="{{ route('department.index') }}" class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
-                    Kembali
-                </a>
-            @endif
+            @else --}}
+            <a href="{{ route('department.index') }}"
+                class="btn btn-outline btn-neutral mb-4 hover:bg-neutral-700 hover:text-white">
+                Kembali
+            </a>
+            {{-- @endif --}}
             <br>
             <h1 class="text-3xl font-bold text-gray-800 mt-9 mb-5 inline-block  hover:underline underline-offset-2">
                 <a href="{{ route('department.employees', $department->uuid) }}">
@@ -83,20 +84,22 @@
                                 </td>
                             </tr>
                         @else
-                            @foreach ($users as $user)
+                            @foreach ($usersWithUpdateStatus as $item)
                                 <tr class="hover:bg-gray-50 transition duration-150">
                                     <td class="border border-gray-300 px-4 py-2">
-                                        {{ $loop->index + 1 + ($users->currentPage() - 1) * $users->perPage() }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $user->name }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $user->no_hp }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">
-                                        {{ $user->grade->position->position_name }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $user->division->division_name }}
+                                        {{ $loop->index + 1 + ($users->currentPage() - 1) * $users->perPage() }}
                                     </td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $user->grade->max_grade }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $item['user']->name }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">{{ $item['user']->no_hp }}</td>
                                     <td class="border border-gray-300 px-4 py-2">
-                                        @if ($canUpdate && Auth::user()->canUpdateUsers($user))
-                                            <a href="{{ route('user.edit', $user->uuid) }}"
+                                        {{ $item['user']->position->position_name }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">
+                                        {{ $item['user']->division->division_name }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">
+                                        {{ $item['user']->position->grade->max_grade }}</td>
+                                    <td class="border border-gray-300 px-4 py-2">
+                                        @if ($item['canUpdate'])
+                                            <a href="{{ route('user.edit', $item['user']->uuid) }}"
                                                 class="text-blue-600 hover:underline">
                                                 Update
                                             </a>

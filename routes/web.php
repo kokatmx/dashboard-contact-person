@@ -3,9 +3,14 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\WarehouseController;
 use App\Http\Middleware\CheckUserAccess;
+use App\Http\Middleware\CheckUserDivDeptPos;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -41,6 +46,7 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
             Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
         });
         Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
+        Route::get('/area', [DepartmentController::class, 'deptAreaShow'])->name('department.area');
     });
 
     Route::get('/area/{area_id}', [AreaController::class, 'showArea'])->name('area.details');

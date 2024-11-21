@@ -8,17 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Grade extends Model
 {
     use HasFactory;
-    protected $table = 'grades';
-
     protected $primaryKey = 'grade_id';
 
+    protected $table = 'grades';
+    protected $fillable = ['min_grade', 'max_grade'];
     public function position()
     {
-        return $this->belongsTo(Position::class, 'position_id');
-    }
-
-    public function users()
-    {
-        return $this->hasMany(User::class, 'grade_id');
+        return $this->hasOne(Position::class, 'grade_id');
     }
 }
