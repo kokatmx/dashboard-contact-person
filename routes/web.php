@@ -46,6 +46,7 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
             Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
         });
         Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
+        Route::get('/area', [DepartmentController::class, 'deptAreaShow'])->name('department.area');
     });
 
     Route::get('/area/{area_id}', [AreaController::class, 'showArea'])->name('area.details');

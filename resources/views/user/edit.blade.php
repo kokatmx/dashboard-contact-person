@@ -19,8 +19,8 @@
             <div class="mb-4">
                 <label for="name" class="block text-gray-600 font-medium">Nama</label>
                 <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}"
-                    class="w-full border border-gray-300 rounded p-3 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Masukkan nama" autofocus required>
+                    class="w-full border border-gray-300 rounded p-3 focus:ring-blue-500 focus:border-blue-500 cursor-not-allowed bg-gray-100" disabled
+                    placeholder="Masukkan nama" autofocus >
                 @error('name')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
@@ -28,9 +28,9 @@
 
             <!-- NoHP Input -->
             <div class="mb-4">
-                <label for="no_hp" class="block text-gray-600 font-medium">No. HP</label>
+                <label for="no_hp" class="block text-gray-600 text-2xl font-bold">No. HP</label>
                 <input type="number" id="no_hp" name="no_hp" value="{{ old('no_hp', $user->no_hp) }}"
-                    class="w-full border border-gray-300 rounded p-3 focus:ring-blue-500 focus:border-blue-500"
+                    class="w-full border border-gray-300 rounded p-3 text-3xl font-bold focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Masukkan no HP" autofocus required>
                 @error('name')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -40,7 +40,7 @@
             <!-- Jabatan Input (Disabled) -->
             <div class="mb-4">
                 <label for="position" class="block text-gray-600 font-medium">Jabatan</label>
-                <input type="text" id="position" name="position" value="{{ $user->grade->position->position_name }}"
+                <input type="text" id="position" name="position" value="{{ $user->position->position_name }}"
                     class="w-full border border-gray-300 rounded p-3 bg-gray-100 cursor-not-allowed" disabled>
             </div>
 

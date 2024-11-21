@@ -8,20 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Position extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'position_id';
 
+    protected $table = 'positions';
+    protected $primaryKey = 'position_id';
     protected $fillable = [
         'position_name',
         'position_code',
         'department_id',
+        'grade_id',
     ];
 
-    public function grades()
+    public function grade()
     {
-        return $this->hasMany(Grade::class, 'position_id');
+        return $this->belongsTo(Grade::class, 'grade_id');
     }
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'position_id');
     }
 }

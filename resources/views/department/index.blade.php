@@ -95,8 +95,13 @@
                                 <div class="card-actions flex justify-between items-center">
                                     <p class="text-gray-800 font-medium">Total Karyawan: <span
                                             class="font-bold">{{ $department->users_count }}</span></p>
-                                    <a href="{{ route('department.employees', $department->uuid) }}"
-                                        class="btn btn-primary btn-md">Lihat Karyawan</a>
+                                        @if (strtolower($department->department_code) === 'O1200')
+                                            <a href="{{ route('department.area', $department->uuid) }}"
+                                                class="btn btn-primary btn-md">Lihat Karyawan Di Area</a>
+                                        @else
+                                            <a href="{{ route('department.employees', $department->uuid) }}"
+                                                class="btn btn-primary btn-md">Lihat Karyawan</a>
+                                        @endif
                                 </div>
                             </div>
                         </div>

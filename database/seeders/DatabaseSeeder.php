@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             AreaSeeder::class,
             DivisionSeeder::class,
             DepartmentSeeder::class,
-            PositionSeeder::class,
             GradeSeeder::class,
+            PositionSeeder::class,
             UserSeeder::class,
         ]);
         // User::factory(200)->create();

@@ -24,13 +24,13 @@
                     <div class="bg-white p-4 mt-4 rounded-lg shadow-inner border-l-4 border-red-600">
                         <p class="text-lg text-gray-900">
                             {{ __('Jabatan ') }}
-                            <span class="font-semibold ">{{ Auth::user()->grade->position->position_name }}</span>
+                            <span class="font-semibold ">{{ Auth::user()->position->position_name }}</span>
                         </p>
                     </div>
                     <div class="bg-white p-4 mt-4 rounded-lg shadow-inner border-l-4 ">
                         <p class="text-lg text-gray-900">
                             {{ __('Grade ') }}
-                            <span class="font-semibold">{{ Auth::user()->grade->max_grade }}</span>
+                            <span class="font-semibold">{{ Auth::user()->position->grade->max_grade }}</span>
                         </p>
                     </div>
 

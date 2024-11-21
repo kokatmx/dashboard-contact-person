@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grades', function (Blueprint $table) {
-            $table->id('grade_id');
-            $table->unsignedBigInteger('position_id');
-            $table->integer('min_grade');
-            $table->integer('max_grade');
+        Schema::create('tokos', function (Blueprint $table) {
+            $table->id('toko_id');
+            $table->string('toko_code')->unique();
+            $table->string('toko_name');
             $table->timestamps();
-            $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade');
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('tokos');
     }
 };

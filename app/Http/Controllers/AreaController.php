@@ -46,29 +46,25 @@ class AreaController extends Controller
     {
         // Ambil user login
         $user = Auth::user();
-
-
         // Ambil area-area yang tersedia
         $areas = Area::all(); // Ambil semua area dari database.
-
         // Ambil area_id dari request
         $areaId = $request->area_id;
         // Ambil data area berdasarkan area_id
         $area = Area::where('area_id', $areaId)->firstOrFail();
-        // $area = Area::where('slug', $slug)->firstOrFail();
+        $userDivisionId = Auth::user()->division_id;
+        $usersPerDepartment = Department::withCount('users')->where('division_id', $userDivisionId)->get();
         // Mengambil data area dengan kriteria yang diinginkan
         $userArea = $user->department->division->area_id;
-
         // Ambil semua departemen yang berhubungan dengan area yang dipilih
         $departmentsInArea = Department::where('area_id', $request->area_id)->get();
-
-
         // Kirim data ke view, termasuk data area dan status area user
         return view('area.detail', [
             'areas' => $areas,
             'area' => $area,
             'userArea' => $userArea,
             'departmentsInArea' => $departmentsInArea, // Departemen dalam area ini
+            'usersPerDepartment' => $usersPerDepartment,
         ]);
     }
 }
