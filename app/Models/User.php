@@ -64,12 +64,11 @@ class User extends Authenticatable
             && $this->position->grade->max_grade >= $otherUser->position->grade->max_grade;
     }
 
-    public function isBranchManager()
+    public function isBranchManager(): bool
     {
-        // dd($this->positions, $this->positions->position_code);
-        // Cek apakah posisi user adalah Branch Manager
-        return $this->positions && $this->positions->position_code === "O1101";
+        return $this->position && $this->position->position_code === 'O1101';
     }
+
 
     public function area()
     {
