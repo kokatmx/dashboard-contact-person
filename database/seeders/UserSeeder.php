@@ -102,6 +102,17 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'no_hp' => '87342927739',
         ]);
+        User::create([
+            'name' => 'User I',
+            'email' => 'userI@example.com',
+            'password' => Hash::make('1234567890'),
+            'area_id' => 1,
+            'division_id' => 1,
+            'department_id' => 8,
+            'position_id' => 58,
+            'remember_token' => Str::random(10),
+            'no_hp' => '6273816',
+        ]);
 
 
 

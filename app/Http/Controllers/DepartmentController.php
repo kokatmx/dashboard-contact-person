@@ -34,12 +34,11 @@ class DepartmentController extends Controller
     public function showEmployees($uuid, Request $request)
     {
         // Temukan department berdasarkan uuid, bukan ID
-        $department = Department::where('uuid', $uuid)->firstOrFail();
+        $department = Department::with('area')->where('uuid', $uuid)->firstOrFail();
         $departments = Department::all();
         $area = Area::where('area_id', Auth::user()->area_id)->firstOrFail();
 
         $currentUser = Auth::user();
-        $currentDivisionId = $currentUser->division_id;
 
         // Mengambil semua user yang ada di department tersebut dengan pagination
         $users = $department->users()->paginate(10);

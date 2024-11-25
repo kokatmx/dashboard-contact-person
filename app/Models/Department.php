@@ -36,8 +36,9 @@ class Department extends Model
     }
     public function area()
     {
-        return $this->belongsTo(Area::class, 'area_id', 'id');
+        return $this->belongsTo(Area::class, 'area_id');
     }
+
 
     // using UUID
     protected static function boot()

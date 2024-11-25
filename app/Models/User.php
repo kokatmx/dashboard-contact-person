@@ -51,20 +51,20 @@ class User extends Authenticatable
 
     public function canUpdateUsers(User $otherUser): bool
     {
-        // Cek apakah user yang login adalah Branch Manager
         if ($this->isBranchManager()) {
-            // Jika Branch Manager, izinkan untuk mengupdate semua user
             return true;
         }
 
-        // Jika bukan Branch Manager, cek kondisi lain (area, divisi, departemen, grade)
-        return $this->area_id == $otherUser->area_id
+        $canUpdate =
+            $this->area_id == $otherUser->area_id
             && $this->division_id == $otherUser->division_id
             && $this->department_id == $otherUser->department_id
             && $this->position->grade->max_grade >= $otherUser->position->grade->max_grade;
+        return $canUpdate;
     }
 
-    public function isBranchManager(): bool
+
+    private function isBranchManager(): bool
     {
         return $this->position && $this->position->position_code === 'O1101';
     }

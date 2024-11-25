@@ -62,6 +62,7 @@ class UserController extends Controller
         $query = $request->input('query');
         $department = Department::where('uuid', $uuid)->firstOrFail(); // Cari data departemen berdasarkan UUID
         $departmentId = $department->department_id;
+        $area = $department->area;
 
         // Query untuk mencari users dalam departemen tertentu
         $users = User::where('department_id', $departmentId)
@@ -75,21 +76,28 @@ class UserController extends Controller
         $canUpdate = false;
         $currentDivisionId = $currentUser->division_id; // Ambil divisi dari user yang login
 
-        // Cek hak akses berdasarkan grade dan divisi
-        if ($users->isNotEmpty()) {
-            foreach ($users as $user) {
-                if ($currentDivisionId === $user->division_id && $currentUser->canUpdateUsers($user)) {
-                    $canUpdate = true;
-                    break;
-                }
-            }
-        }
+        // // Cek hak akses berdasarkan grade dan divisi
+        // if ($users->isNotEmpty()) {
+        //     foreach ($users as $user) {
+        //         if ($currentUser->canUpdateUsers($user)) {
+        //             $canUpdate = true;
+        //             break;
+        //         }
+        //     }
+        // }
+
+        $usersWithUpdateStatus = $users->map(function ($user) use ($currentUser) {
+            return [
+                'user' => $user,
+                'canUpdate' => $currentUser->canUpdateUsers($user),
+            ];
+        });
 
         if ($users->isEmpty()) {
             return redirect()->back()->with('error', 'User tidak ditemukan.');
         }
 
         // Return hasil pencarian ke view list users per department
-        return view('department.show', compact('department', 'users', 'currentUser', 'canUpdate'));
+        return view('department.show-employees', compact('area', 'usersWithUpdateStatus', 'department', 'users', 'currentUser', 'canUpdate'));
     }
 }

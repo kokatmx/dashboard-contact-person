@@ -49,7 +49,7 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
         Route::get('/area', [DepartmentController::class, 'deptAreaShow'])->name('department.area');
     });
 
-    Route::get('/area/{area_id}', [AreaController::class, 'showArea'])->name('area.details');
+    Route::get('/area/{area_name}', [AreaController::class, 'showArea'])->name('area.details');
 });
 
 require __DIR__ . '/auth.php';
