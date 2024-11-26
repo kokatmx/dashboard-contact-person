@@ -50,11 +50,6 @@ class DepartmentController extends Controller
             ];
         });
 
-        // khusus dept area ke view tersendiri
-        if ($department->department_code === 'O1200') {
-            return view('department.area.index',  compact('area', 'usersWithUpdateStatus',  'users', 'department', 'departments'))->with('success', 'Data user berhasil di perbarui');
-        }
-
         return view('department.show-employees',  compact('area', 'usersWithUpdateStatus',  'users', 'department', 'departments'))->with('success', 'Data user berhasil di perbarui');
     }
 
@@ -82,10 +77,5 @@ class DepartmentController extends Controller
         }
 
         return view('department.index', compact('departmentsInDivision', 'departmentsOutsideDivision', 'query'));
-    }
-
-    public function deptAreaShow()
-    {
-        return view('department.area.index', compact('area', 'departmentsInDivision', 'departmentsOutsideDivision', 'departments', 'usersPerDepartment'));
     }
 }

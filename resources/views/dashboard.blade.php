@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="mt-8">
-                    <a href="{{ route('department.index') }}" class="btn btn-accent btn-lg shadow-md">
+                    <a href="{{ route('department.index') }}" class="btn">
                         List Departemen
                     </a>
                 </div>
@@ -55,8 +55,7 @@
                         ][$area->area_name] ?? ['gradient' => 'from-gray-500 to-gray-400', 'icon' => 'fa-question-circle'];
                     @endphp
                     <div class="relative rounded-lg shadow-xl overflow-hidden transform transition-transform hover:scale-105">
-                        <div
-                            class="bg-gradient-to-br {{ $areaDetails['gradient'] }} p-6 h-full flex flex-col justify-between">
+                        <div class="bg-gradient-to-br {{ $areaDetails['gradient'] }} p-6 h-full flex flex-col justify-between">
                             <div class="absolute top-4 right-4 text-4xl opacity-20">
                                 <i class="fas {{ $areaDetails['icon'] }}"></i>
                             </div>

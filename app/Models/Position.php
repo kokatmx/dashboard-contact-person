@@ -31,4 +31,9 @@ class Position extends Model
     {
         return $this->hasMany(User::class, 'position_id');
     }
+
+    public function tokos()
+    {
+        return $this->hasMany(Toko::class, 'position_id');
+    }
 }

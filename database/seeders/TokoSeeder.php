@@ -15,15 +15,39 @@ class TokoSeeder extends Seeder
     {
         // Insert data to toko table
         Toko::create([
-            'nama_toko' => 'Toko A',
-            'alamat' => 'Jln. Jalan 1 No. 1',
-            'no_telp' => '081234567890',
+            'toko_code' => 'AT001',
+            'toko_name' => 'Toko 1',
+            'position_id' => '150',
         ]);
 
         Toko::create([
-            'nama_toko' => 'Toko B',
-            'alamat' => 'Jln. Jalan 2 No. 2',
-            'no_telp' => '089876543210',
+            'toko_code' => 'AT002',
+            'toko_name' => 'Toko 2',
+            'position_id' => '150',
+        ]);
+
+        Toko::create([
+            'toko_code' => 'AT003',
+            'toko_name' => 'Toko 3',
+            'position_id' => '151',
+        ]);
+
+        Toko::create([
+            'toko_code' => 'AT004',
+            'toko_name' => 'Toko 4',
+            'position_id' => '151',
+        ]);
+
+        Toko::create([
+            'toko_code' => 'AT005',
+            'toko_name' => 'Toko 5',
+            'position_id' => '152',
+        ]);
+
+        Toko::create([
+            'toko_code' => 'AT006',
+            'toko_name' => 'Toko 6',
+            'position_id' => '152',
         ]);
     }
 }

@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             GradeSeeder::class,
             PositionSeeder::class,
             UserSeeder::class,
+            TokoSeeder::class,
+            UserTokoSeeder::class,
         ]);
         // User::factory(200)->create();
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="synthwave">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,10 @@
         integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM+oY4D2a0W/9sohoZfiW9FJ8Z9j5l6MkPO6c0" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    {{-- font --}}
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
     <title>Sistem Informasi Pengelolaan Karyawan</title>
     <style>
         body {
@@ -18,9 +22,10 @@
             background-attachment: cover;
             background-size: cover;
             background-position: center;
+            font-family: 'Figtree';
         }
         .judul{
-            text-shadow: 3px 10px 3px black;
+            text-shadow: 3px 4px 3px black;
         }
     </style>
 </head>
@@ -30,7 +35,8 @@
     <!-- Hero Section -->
     <section class="hero flex items-center justify-center bg-cover bg-center min-h-screen text-white">
         <div class="container mx-auto text-center p-6">
-            <h1 class="text-5xl font-bold mb-4 judul">Dashboard Contact Person</h1>
+            <h1 class="text-4xl md:text-6xl font-extrabold shadow-text judul">Dashboard Contact Person Karyawan</h1>
+            <p class="text-lg md:text-xl font-medium mt-2 judul">Sistem Informasi Pengelolaan Contact Person Karyawan Alfamart</p>
             @php
                 $user = Auth::user();
                 $userDivision = $user->division->division_code ?? null; // Ambil kode divisi
@@ -68,7 +74,7 @@
                             </a>
                         @endif
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-info btn-lg" >
+                        <a href="{{ route('login') }}" class="btn btn-error btn-md " >
                             <i class="fas fa-sign-in-alt mr-5"></i> Log in
                         </a>
                     @endauth

@@ -42,28 +42,47 @@ class AreaController extends Controller
         ]);
     }
 
-    public function showArea(Request $request)
+    public function showAreaDetail(Request $request)
     {
-        // Ambil user login
+        // Ambil user login//-
+        // Get the authenticated user//+
         $user = Auth::user();
-        // Ambil area-area yang tersedia
-        $areas = Area::all(); // Ambil semua area dari database.
-        // Ambil area_id dari request
+        //+
+        // Fetch all areas from the database//+
+        $areas = Area::all(); //+
+        //+
+        // Get the area name from the request//+
         $areaName = $request->area_name;
-        // Ambil data area berdasarkan area_name
+        //+
+        // Find the area by name or throw a 404 error//+
         $area = Area::where('area_name', $areaName)->firstOrFail();
-        $userDivisionId = Auth::user()->division_id;
-        $usersPerDepartment = Department::withCount('users')->where('division_id', $userDivisionId)->get();
-        // Mengambil data area dengan kriteria yang diinginkan
+
+        // Get the user's division ID//+
+        $userDivisionId = $user->division_id; //+
+        //+
+        // Count users per department in the user's division//+
+        $usersPerDepartment = Department::withCount('users') //+
+            ->where('division_id', $userDivisionId) //+
+            ->get()
+            //+
+            ->keyBy('id');
+        //+
+        // Get the user's area ID//+
         $userArea = $user->department->division->area_id;
-        // Ambil semua departemen yang berhubungan dengan area yang dipilih
+        // Ambil semua departemen yang berhubungan dengan area yang dipilih//-
+        //+
+        // Get all departments related to the selected area//+
         $departmentsInArea = $area->departments;
-        // Kirim data ke view, termasuk data area dan status area user
+        // Ambil semua departemen dengan count jumlah user di setiap departemen
+
+        // Kirim data ke view, termasuk data area dan status area user//-
+        //+
+        // Return the view with all necessary data//+
         return view('area.detail', [
             'areas' => $areas,
             'area' => $area,
             'userArea' => $userArea,
-            'departmentsInArea' => $departmentsInArea, // Departemen dalam area ini
+            'departmentsInArea' => $departmentsInArea, //+
             'usersPerDepartment' => $usersPerDepartment,
         ]);
     }

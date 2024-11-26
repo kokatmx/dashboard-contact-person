@@ -20,7 +20,7 @@
                         @elseif (in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000']) &&
                                  in_array($userDept, ['C3100', 'F1500', 'F5100', 'G1600', 'H1800', 'H2600', 'K1300', 'M3200', 'R4300', 'R5800', 'YY002', 'YY004'])) {{ route('office.dashboard') }}
                         @endif"
-                    class="inline-block bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition">
+                    class="btn btn-error text-white">
                     Kembali
                 </a>
 
@@ -52,11 +52,15 @@
                             <div class="bg-white shadow-md rounded-md overflow-hidden border border-gray-300">
                                 <div class="p-5">
                                     <h3 class="text-lg font-semibold text-red-500">{{ $department->department_name }}</h3>
-                                    <p class="text-gray-600 mb-4">{{ $department->description }}</p>
+                                    <p class="text-gray-600 mb-4">Extension: <span class="font-bold">{{ $department->department_extension }}</span></p>
                                     <div class="flex justify-between items-center">
                                         <p class="text-gray-700">Karyawan: <span class="font-bold">{{ $department->users_count }}</span></p>
-                                        <a href="{{ route('department.employees', $department->uuid) }}"
-                                            class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
+                                        @if ($department->department_code === 'O1200')
+                                            <a href="{{ route('department.area', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
+                                        @else
+                                            <a href="{{ route('department.employees', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
@@ -67,15 +71,18 @@
                             <div class="bg-white shadow-md rounded-md overflow-hidden border border-gray-300">
                                 <div class="p-5">
                                     <h3 class="text-lg font-semibold text-red-500">{{ $department->department_name }}</h3>
-                                    <p class="text-gray-600 mb-4">{{ $department->description }}</p>
+                                    <p class="text-gray-600 mb-4">Extension: <span class="font-bold">{{ $department->department_extension }}</span></p>
                                     <div class="flex justify-between items-center">
                                         <p class="text-gray-700">Karyawan: <span class="font-bold">{{ $department->users_count }}</span></p>
                                         @if (strtolower($department->department_code) === 'O1200')
                                             <a href="{{ route('department.area', $department->uuid) }}"
                                                 class="text-yellow-500 font-semibold hover:underline">Area Detail</a>
                                         @else
-                                            <a href="{{ route('department.employees', $department->uuid) }}"
-                                                class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
+                                            @if ($department->department_code === 'O1200')
+                                                <a href="{{ route('department.area', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
+                                            @else
+                                                <a href="{{ route('department.employees', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>

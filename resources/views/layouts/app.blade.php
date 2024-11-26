@@ -22,10 +22,22 @@
      {{-- alpinejs --}}
      <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 
+     {{-- icon header --}}
+     <link rel="icon" type="image/x-icon" href="{{ asset('img/image.png') }}">
+
  </head>
 
+ <style>
+    body{
+            background-image: url('img/background_web.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+    }
+ </style>
+
  <body class="font-sans antialiased">
-     <div class="min-h-screen bg-gray-100">
+     <div class="min-h-screen">
          @include('layouts.navigation')
 
          <!-- Page Heading -->

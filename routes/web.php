@@ -3,6 +3,7 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DeptAreController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
@@ -46,10 +47,10 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
             Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
         });
         Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
-        Route::get('/area', [DepartmentController::class, 'deptAreaShow'])->name('department.area');
+        Route::get('{uuid}/area', [DeptAreController::class, 'deptAreaShow'])->name('department.area');
     });
 
-    Route::get('/area/{area_name}', [AreaController::class, 'showArea'])->name('area.details');
+    Route::get('/area/{area_name}', [AreaController::class, 'showAreaDetail'])->name('area.details');
 });
 
 require __DIR__ . '/auth.php';
