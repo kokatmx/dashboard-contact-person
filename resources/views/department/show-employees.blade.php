@@ -31,7 +31,9 @@
             @endif
 
             @if (session('error'))
-                <div class="alert alert-error mb-4">
+                <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
+                        x-transition:leave="transition ease-in duration-300"
+                class="alert alert-error mb-4">
                     <span>{{ session('error') }}</span>
                 </div>
             @endif

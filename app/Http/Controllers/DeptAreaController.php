@@ -6,11 +6,10 @@ use App\Models\Department;
 use App\Models\Position;
 use Illuminate\Http\Request;
 
-class DeptAreController extends Controller
+class DeptAreaController extends Controller
 {
-    public function deptAreaShow($areaId)
+    public function deptAreaShow()
     {
-
 
         return view('department.area.index',);
     }

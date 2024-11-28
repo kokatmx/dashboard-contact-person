@@ -19,7 +19,7 @@
     <style>
         body {
             background-image: url('img/background_web.jpg');
-            background-attachment: cover;
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
             font-family: 'Figtree';
