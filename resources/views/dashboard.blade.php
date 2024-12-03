@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="mt-8">
-                    <a href="{{ route('department.index') }}" class="btn">
+                    <a href="{{ route('department.index') }}" class="btn bg-white">
                         List Departemen
                     </a>
                 </div>

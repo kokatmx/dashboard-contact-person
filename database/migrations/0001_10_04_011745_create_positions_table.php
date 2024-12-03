@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('position_name');
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('grade_id');
+            $table->unsignedBigInteger('parent_position_id')->nullable();
             $table->timestamps();
+
+            // $table->foreignId('parent_position_id')->nullable()->constrained('positions')->onDelete('cascade'); // Relasi ke posisi induk (jika ada)
+            $table->foreign('parent_position_id')->references('position_id')->on('positions')->onDelete('cascade');
             $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade');
             $table->foreign('grade_id')->references('grade_id')->on('grades')->onDelete('cascade');
         });

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="container py-11 mx-auto sm:px-6 lg:px-8">
         <div class="bg-white shadow-md rounded-lg overflow-hidden p-6">
-            <div class="bg-gradient-to-r from-red-500 via-yellow-400 to-blue-500 text-white text-center py-6">
+            <div class="bg-red-500 text-white text-center py-6">
                 <h1 class="text-3xl font-bold">Dashboard Departemen Area {{ $area->area_name }}</h1>
                 <p class="mt-2 text-lg">Temukan departemen dan informasi karyawan dengan mudah!</p>
             </div>

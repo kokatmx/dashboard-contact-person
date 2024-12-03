@@ -19,4 +19,9 @@ class Toko extends Model
     {
         return $this->belongsTo(Position::class, 'position_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'store_user', 'toko_id', 'user_id');
+    }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DeptAreaController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckUserAccess;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +42,19 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
             Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
         });
         Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
-        Route::get('{uuid}/area', [DeptAreaController::class, 'deptAreaShow'])->name('department.area');
+
+        // Route untuk Departemen Area
+        Route::prefix('area')->group(function () {
+            // Route untuk Departemen di Area AM
+            Route::get('{uuid}', [DeptAreaController::class, 'showAreaDepartment'])->name('department.area');
+
+            // Route untuk Jabatan di Departemen Area AC
+            Route::get('{positionName}/coordinator', [DeptAreaController::class, 'showAreaCoordinator'])->name('position.coordinator');
+
+            // Route untuk Store atau Toko
+            Route::get('/coordinator/{positionName}/stores', [StoreController::class, 'showStores'])->name('stores.list');
+            Route::get('/coordinator/stores/{tokoId}/user', [StoreController::class, 'storeUserShow'])->name('stores.user');
+        });
     });
 
     Route::get('/area/{area_name}', [AreaController::class, 'showAreaDetail'])->name('area.details');

@@ -59,6 +59,7 @@ class User extends Authenticatable
             $this->area_id == $otherUser->area_id
             && $this->division_id == $otherUser->division_id
             && $this->department_id == $otherUser->department_id
+            && $this->toko_id == $otherUser->toko_id //TODO: check toko
             && $this->position->grade->max_grade >= $otherUser->position->grade->max_grade;
         return $canUpdate;
     }
@@ -88,6 +89,11 @@ class User extends Authenticatable
     public function position()
     {
         return $this->belongsTo(Position::class, 'position_id');
+    }
+
+    public function stores()
+    {
+        return $this->belongsToMany(Toko::class, 'store_user', 'user_id', 'toko_id');
     }
 
     // using UUID

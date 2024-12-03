@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="container py-11 mx-auto sm:px-6 lg:px-8">
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-red-500 via-yellow-400 to-blue-500 text-white text-center py-6">
+            <div class="bg-red-500 text-white text-center py-6">
                 <h1 class="text-3xl font-bold">Dashboard Departemen Alfamart</h1>
                 <p class="mt-2 text-lg">Temukan departemen dan informasi karyawan dengan mudah!</p>
             </div>
@@ -20,7 +20,7 @@
                         @elseif (in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000']) &&
                                  in_array($userDept, ['C3100', 'F1500', 'F5100', 'G1600', 'H1800', 'H2600', 'K1300', 'M3200', 'R4300', 'R5800', 'YY002', 'YY004'])) {{ route('office.dashboard') }}
                         @endif"
-                    class="btn btn-error text-white">
+                    class="btn bg-blue-500 text-white hover:bg-blue-600">
                     Kembali
                 </a>
 

@@ -32,8 +32,13 @@ class Position extends Model
         return $this->hasMany(User::class, 'position_id');
     }
 
-    public function tokos()
+    public function subPositions()
     {
-        return $this->hasMany(Toko::class, 'position_id');
+        return $this->hasMany(Position::class, 'parent_position_id'); // Relasi ke jabatan di bawahnya
+    }
+
+    public function stores()
+    {
+        return $this->hasMany(Toko::class, 'position_id'); // Relasi ke toko-toko
     }
 }

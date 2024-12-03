@@ -23,7 +23,7 @@
      <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 
      {{-- icon header --}}
-     <link rel="icon" type="image/x-icon" href="{{ asset('img/image.png') }}">
+     <link rel="icon" type="image/png" href="{{ asset('img/image.png') }}">
 
  </head>
 
