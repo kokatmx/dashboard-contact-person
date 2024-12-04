@@ -24,7 +24,7 @@ class Position extends Model
     }
     public function department()
     {
-        return $this->belongsTo(Department::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id', 'department_id');
     }
 
     public function users()
@@ -37,8 +37,8 @@ class Position extends Model
         return $this->hasMany(Position::class, 'parent_position_id'); // Relasi ke jabatan di bawahnya
     }
 
-    public function stores()
-    {
-        return $this->hasMany(Toko::class, 'position_id'); // Relasi ke toko-toko
-    }
+    // public function stores()
+    // {
+    //     return $this->belongsToMany(Toko::class, 'position_toko', 'position_id', 'toko_id');
+    // }
 }

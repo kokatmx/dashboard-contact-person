@@ -11,51 +11,69 @@ use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
-    public function showStores(Request $request, $positionName)
-    {
-        $positionAC = Position::where(
-            'position_name',
-            $positionName
-        )->firstOrFail();
-        $stores = $positionAC->stores;
-        return view('department.area.store.index', compact('stores', 'positionAC'));
-    }
+    // public function showStores(Request $request, $positionName)
+    // {
+    //     $positionAC = Position::where(
+    //         'position_name',
+    //         $positionName
+    //     )->firstOrFail();
+    //     $stores = $positionAC->stores;
+    //     return view('department.area.store.index', compact('stores', 'positionAC'));
+    // }
 
-    public function storeUserShow($tokoId)
+    // public function storeUserShow($tokoId)
+    // {
+    //     // Ambil toko berdasarkan ID
+    //     $store = Toko::with('users')->findOrFail($tokoId);
+
+    //     // Ambil semua user yang terkait dengan toko ini melalui tabel pivot
+    //     $users = $store->users;
+
+    //     return view('department.area.store.user.index', compact('users', 'store'));
+    // }
+
+    // /**
+    //  * Memeriksa apakah user dapat mengupdate user lain berdasarkan kode toko.
+    //  */
+    // public function updateUser(Request $request, $userId)
+    // {
+    //     // Ambil user yang sedang login
+    //     $currentUser = Auth::user();
+
+    //     // Ambil user yang ingin diupdate berdasarkan ID
+    //     $otherUser = User::findOrFail($userId);
+
+    //     // Panggil fungsi canUpdateUsers() untuk memeriksa apakah user dapat mengupdate
+    //     if ($currentUser->canUpdateUsers($otherUser)) {
+    //         // Lakukan proses update user sesuai dengan kebutuhan
+    //         // Misalnya, mengupdate data user
+    //         $otherUser->update([
+    //             'no_hp' => $request->input('no_hp'),
+    //             // Tambahkan field yang ingin diupdate
+    //         ]);
+
+    //         return redirect()->route('users.index')->with('success', 'User berhasil diupdate!');
+    //     } else {
+    //         // Jika user tidak memiliki izin untuk mengupdate
+    //         return redirect()->route('users.index')->with('error', 'Anda tidak memiliki izin untuk mengupdate user ini.');
+    //     }
+    // }
+
+    public function showUsersStore($tokoId)
     {
-        // Ambil toko berdasarkan ID
         $store = Toko::with('users')->findOrFail($tokoId);
-
-        // Ambil semua user yang terkait dengan toko ini melalui tabel pivot
-        $users = $store->users;
-
-        return view('department.area.store.user.index', compact('users', 'store'));
+        $users = $store->users()->paginate(10);
+        return view('department.area.store.user.index', compact('store', 'users'));
     }
 
-    /**
-     * Memeriksa apakah user dapat mengupdate user lain berdasarkan kode toko.
-     */
-    public function updateUser(Request $request, $userId)
+    public function showPositionUser($tokoId, $positionName)
     {
-        // Ambil user yang sedang login
-        $currentUser = Auth::user();
+        $store = Toko::findOrFail($tokoId);
 
-        // Ambil user yang ingin diupdate berdasarkan ID
-        $otherUser = User::findOrFail($userId);
+        $users = User::where('toko_id', $tokoId)->whereHas('position', function ($query) use ($positionName) {
+            $query->where('position_name', $positionName);
+        })->get();
 
-        // Panggil fungsi canUpdateUsers() untuk memeriksa apakah user dapat mengupdate
-        if ($currentUser->canUpdateUsers($otherUser)) {
-            // Lakukan proses update user sesuai dengan kebutuhan
-            // Misalnya, mengupdate data user
-            $otherUser->update([
-                'no_hp' => $request->input('no_hp'),
-                // Tambahkan field yang ingin diupdate
-            ]);
-
-            return redirect()->route('users.index')->with('success', 'User berhasil diupdate!');
-        } else {
-            // Jika user tidak memiliki izin untuk mengupdate
-            return redirect()->route('users.index')->with('error', 'Anda tidak memiliki izin untuk mengupdate user ini.');
-        }
+        return view();
     }
 }

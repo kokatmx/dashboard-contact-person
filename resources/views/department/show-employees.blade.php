@@ -42,7 +42,7 @@
             <div class="overflow-x-auto rounded-lg p-4">
                 <table class="table w-full">
                     <thead>
-                        <tr class="bg-red-100">
+                        <tr class="bg-red-100 text-black text-base">
                             <th class="text-left">#</th>
                             <th class="text-left">Nama Karyawan</th>
                             <th class="text-left">Nomor HP</th>

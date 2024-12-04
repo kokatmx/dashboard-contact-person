@@ -13,41 +13,12 @@ class TokoSeeder extends Seeder
      */
     public function run(): void
     {
-        // Insert data to toko table
-        Toko::create([
-            'toko_code' => 'AT001',
-            'toko_name' => 'Toko 1',
-            'position_id' => '150',
-        ]);
-
-        Toko::create([
-            'toko_code' => 'AT002',
-            'toko_name' => 'Toko 2',
-            'position_id' => '150',
-        ]);
-
-        Toko::create([
-            'toko_code' => 'AT003',
-            'toko_name' => 'Toko 3',
-            'position_id' => '151',
-        ]);
-
-        Toko::create([
-            'toko_code' => 'AT004',
-            'toko_name' => 'Toko 4',
-            'position_id' => '151',
-        ]);
-
-        Toko::create([
-            'toko_code' => 'AT005',
-            'toko_name' => 'Toko 5',
-            'position_id' => '152',
-        ]);
-
-        Toko::create([
-            'toko_code' => 'AT006',
-            'toko_name' => 'Toko 6',
-            'position_id' => '152',
-        ]);
+        // Toko::factory(100)->create();
+        Toko::create(['toko_code' => '2MZ1', 'toko_name' => 'DC MADIUN [MDU]', 'no_hp' => '091230890']);
+        Toko::create(['toko_code' => '2AJ4', 'toko_name' => 'KEDUNGDOWO REJOSO [MAJI]', 'no_hp' => '091230890']);
+        Toko::create(['toko_code' => 'M1M2', 'toko_name' => 'KH. BISIRI [BIBA]', 'no_hp' => '091230890']);
+        Toko::create(['toko_code' => 'M662', 'toko_name' => 'RAYA TEMBELANG JMBG [TEBE]', 'no_hp' => '091230890']);
+        Toko::create(['toko_code' => 'M766', 'toko_name' => 'NGLOROG SRAGEN [NGOS]', 'no_hp' => '091230890']);
+        Toko::create(['toko_code' => '2M62', 'toko_name' => 'MASTRIP TULUNGAGUNG [MTTG]', 'no_hp' => '091230890']);
     }
 }

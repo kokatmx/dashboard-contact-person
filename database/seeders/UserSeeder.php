@@ -13,505 +13,144 @@ class UserSeeder extends Seeder
 
     public function run(): void
     {
-        // todo: OFFICE
-        User::create([
-            'name' => 'User A',
-            'email' => 'userA@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 1,
-            'position_id' => 1,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User B',
-            'email' => 'userB@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 1,
-            'position_id' => 2,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User C',
-            'email' => 'userC@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 1,
-            'position_id' => 3,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User D',
-            'email' => 'userD@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 1,
-            'position_id' => 4,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User E',
-            'email' => 'userE@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 1,
-            'position_id' => 5,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User F',
-            'email' => 'userF@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 1,
-            'position_id' => 6,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User G',
-            'email' => 'userG@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 2,
-            'position_id' => 8,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User H',
-            'email' => 'userH@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 2,
-            'position_id' => 16,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User I',
-            'email' => 'userI@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 1,
-            'division_id' => 1,
-            'department_id' => 8,
-            'position_id' => 58,
-            'remember_token' => Str::random(10),
-            'no_hp' => '6273816',
-        ]);
+        // User::factory(200)->create();
+        User::create(['no_hp' => '032467829', 'name' => 'MUSTAFA', 'email' => 'userA@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 1]);
+        User::create(['no_hp' => '032467829', 'name' => 'SAEPUDIN SALEH', 'email' => 'userb@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 2,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DENI RAHMAN', 'email' => 'userC@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 3,]);
+        User::create(['no_hp' => '032467829', 'name' => 'SINGGIH LASANDI', 'email' => 'userD@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 4]);
+        User::create(['no_hp' => '032467829', 'name' => 'GIRI SRIMINARYO', 'email' => 'userE@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 5]);
+        User::create(['no_hp' => '032467829', 'name' => 'SUGIANTO', 'email' => 'userF@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 2]);
+        User::create(['no_hp' => '032467829', 'name' => 'HERI SUSANTO', 'email' => 'userG@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 3]);
+        User::create(['no_hp' => '032467829', 'name' => 'SUGENG PRASTIYO', 'email' => 'userH@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 4]);
+        User::create(['no_hp' => '032467829', 'name' => 'NOVIS DWI NUGROHO', 'email' => 'userI@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 5]);
+        User::create(['no_hp' => '032467829', 'name' => 'RETNA PUSPITA SARI', 'email' => 'userJ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 3]);
+        User::create(['no_hp' => '032467829', 'name' => 'RESKI FAUZI', 'email' => 'userK@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 5,]);
+        User::create(['no_hp' => '032467829', 'name' => 'RADI SUHARDIMAN', 'email' => 'userL@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 1, 'department_id' => 1, 'position_id' => 2,]);
+        User::create(['no_hp' => '032467829', 'name' => "A'ROF KHAFINUDIN", 'email' => 'userM@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 2, 'position_id' => 6,]);
+        User::create(['no_hp' => '032467829', 'name' => 'YUNITA AYU ASHARI', 'email' => 'userN@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 2, 'position_id' => 7,]);
+        User::create(['no_hp' => '032467829', 'name' => 'LORENSA FIRDA SASKYA', 'email' => 'userO@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 2, 'position_id' => 8,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MUHAMMAD DIAN NAVI', 'email' => 'userP@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 2, 'position_id' => 9,]);
+        User::create(['no_hp' => '032467829', 'name' => 'OKE HADI PRASETYO', 'email' => 'userQ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 2, 'position_id' => 10,]);
+        User::create(['no_hp' => '032467829', 'name' => 'NABILLA RIMA WITANTI', 'email' => 'userR@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 2, 'position_id' => 11,]);
+        User::create(['no_hp' => '032467829', 'name' => 'HALIMAH NURRAMADHANI', 'email' => 'userS@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 3, 'position_id' => 20,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DULAN ASMORO ARYOSENO', 'email' => 'userT@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 3, 'position_id' => 21,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ELNASYA DHIA NISRINA', 'email' => 'userU@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 3, 'position_id' => 22,]);
+        User::create(['no_hp' => '032467829', 'name' => 'YAYAN DIMAS AGUS SAPUTRA', 'email' => 'userV@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 3, 'position_id' => 23,]);
+        User::create(['no_hp' => '032467829', 'name' => 'AHMAD FAUZI', 'email' => 'userW@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 2, 'department_id' => 3, 'position_id' => 24,]);
+        User::create(['no_hp' => '032467829', 'name' => 'AULIA RAHMA', 'email' => 'userX@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 26,]);
+        User::create(['no_hp' => '032467829', 'name' => 'NUR HAYUNING RAMADHANIA', 'email' => 'userY@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 27,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ROFIATUL MUJAYANAH', 'email' => 'userZ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 28,]);
+        User::create(['no_hp' => '032467829', 'name' => 'TIARA MUDYANASARI', 'email' => 'userAA@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 29,]);
+        User::create(['no_hp' => '032467829', 'name' => 'JOGIK NURCAHYONO', 'email' => 'userBB@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 26,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ENDI PRAWOKO', 'email' => 'userCC@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 27,]);
+        User::create(['no_hp' => '032467829', 'name' => 'CHRISTIANA AYU MARDEWI', 'email' => 'userDD@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 28,]);
+        User::create(['no_hp' => '032467829', 'name' => 'GANJAR  TASLIM TARUTOMO', 'email' => 'userEE@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 29,]);
+        User::create(['no_hp' => '032467829', 'name' => 'IRWAN ABDUL AJID', 'email' => 'userFF@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 28,]);
+        User::create(['no_hp' => '032467829', 'name' => 'SHOLIKIN', 'email' => 'userGG@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 27,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ILHAM KURNIANTORO', 'email' => 'userHH@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 3, 'department_id' => 4, 'position_id' => 29,]);
+        User::create(['no_hp' => '032467829', 'name' => 'NOVA ARIYANTO', 'email' => 'userII@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 5, 'position_id' => 30,]);
+        User::create(['no_hp' => '032467829', 'name' => 'FAJAR DWI SETIAWAN', 'email' => 'userJJ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 5, 'position_id' => 31,]);
+        User::create(['no_hp' => '032467829', 'name' => 'PANDU FATIH FACHRURROZI', 'email' => 'userKK@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 5, 'position_id' => 32,]);
+        User::create(['no_hp' => '032467829', 'name' => 'NASAN SURYANTO', 'email' => 'userLL@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 5, 'position_id' => 33,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DIMAS ALIF SEKTIAWAN', 'email' => 'userMM@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 5, 'position_id' => 34,]);
+        User::create(['no_hp' => '032467829', 'name' => 'M CHOIRUL FAHROZI', 'email' => 'userNN@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 5, 'position_id' => 35,]);
+        User::create(['no_hp' => '032467829', 'name' => 'RIZKI BRIAN OKTAVIAN', 'email' => 'userOO@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 5, 'position_id' => 36,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ARYA AZIZ KURNIAWAN', 'email' => 'userPP@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 6, 'position_id' => 38,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MUHAMMAD BAIHAQI NUZULA ROSSI', 'email' => 'userQQ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 6, 'position_id' => 39,]);
+        User::create(['no_hp' => '032467829', 'name' => 'WAHYU SUNARTO', 'email' => 'userRR@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 6, 'position_id' => 40,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DWI JAYA SAPUTRA', 'email' => 'userSS@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 4, 'department_id' => 6, 'position_id' => 41,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ENRICO FERNANDA ANTONOV', 'email' => 'userTT@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 48,]);
+        User::create(['no_hp' => '032467829', 'name' => 'BAYU DWI ANDRIAS', 'email' => 'userUU@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 49,]);
+        User::create(['no_hp' => '032467829', 'name' => 'BAGUS NUR WIDIANTO', 'email' => 'userVV@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 50,]);
+        User::create(['no_hp' => '032467829', 'name' => 'RANGGA WIBOWO', 'email' => 'userWW@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 51,]);
+        User::create(['no_hp' => '032467829', 'name' => 'AGAM SETYO BUDI UTOMO', 'email' => 'userXX@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 52,]);
+        User::create(['no_hp' => '032467829', 'name' => 'AZIZ JULIO PUTRA PRADANA', 'email' => 'userYY@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 53,]);
+        User::create(['no_hp' => '032467829', 'name' => 'HIKMAL JAYA PUTRA FEBRYANTO', 'email' => 'userZZ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 53,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MOHAMMAD FAHRIZAL ERY SATRIA', 'email' => 'userAB@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 52,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MAHFUD GALIH ROSHIDI', 'email' => 'userAC@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 51,]);
+        User::create(['no_hp' => '032467829', 'name' => 'FARHAN SYARIFUDIN', 'email' => 'userAD@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 50,]);
+        User::create(['no_hp' => '032467829', 'name' => 'SANGGARA GPJB RAYA SAKTI', 'email' => 'userAE@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 5, 'department_id' => 7, 'position_id' => 49,]);
+        User::create(['no_hp' => '032467829', 'name' => 'INDRA SEPTIANTO', 'email' => 'userAF@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 54,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DIMAS BAGUS SUPRIYANTO', 'email' => 'userAG@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 55,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DWY ARYANTO', 'email' => 'userAH@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 56,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MOHAMMAD NUR BADRUTTAMAM', 'email' => 'userAI@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 57,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MOHAMMAD RIDHO WARDIANSYAH', 'email' => 'userAJ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 58,]);
+        User::create(['no_hp' => '032467829', 'name' => 'YANA HANUSASANA DARMA', 'email' => 'userAK@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 59,]);
+        User::create(['no_hp' => '032467829', 'name' => 'KHALIF SURYA DHAHA', 'email' => 'userAL@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 60,]);
+        User::create(['no_hp' => '032467829', 'name' => 'GALANG BUDI KUNCORO', 'email' => 'userAM@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 61,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DONY NUR RACHMAN', 'email' => 'userAN@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 56,]);
+        User::create(['no_hp' => '032467829', 'name' => 'RAMADANI RAKLIANO PRATAMA', 'email' => 'userAO@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 57,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MUHAMMAD AMIN FAUZI', 'email' => 'userAP@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 6, 'department_id' => 8, 'position_id' => 58,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ACHMAD ZAINURI', 'email' => 'userAQ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 13, 'position_id' => 119,]);
+        User::create(['no_hp' => '032467829', 'name' => "ANGGA HARI SETIAWAN", 'email' => 'userAR@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 13, 'position_id' => 120,]);
+        User::create(['no_hp' => '032467829', 'name' => "ADITYA PUTRA PRATAMA", 'email' => 'userAS@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 13, 'position_id' => 121,]);
+        User::create(['no_hp' => '032467829', 'name' => 'BUDI TRIANTO', 'email' => 'userAT@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 13, 'position_id' => 121,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ZAKIYYATUR ROHMAN', 'email' => 'userAU@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 13, 'position_id' => 120,]);
+        User::create(['no_hp' => '032467829', 'name' => 'SYAHRUL AHSANI', 'email' => 'userAV@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 14, 'position_id' => 122,]);
+        User::create(['no_hp' => '032467829', 'name' => 'MOCH ADAM FIRNANDA', 'email' => 'userAW@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 14, 'position_id' => 123,]);
+        User::create(['no_hp' => '032467829', 'name' => 'M.ANDRI KURNIAWAN', 'email' => 'userAX@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 14, 'position_id' => 124,]);
+        User::create(['no_hp' => '032467829', 'name' => 'GUNAWAN ADI SAPUTRO', 'email' => 'userAY@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 14, 'position_id' => 125,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ERVAM DWI SUKRAMA', 'email' => 'userAZ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 14, 'position_id' => 126,]);
+        User::create(['no_hp' => '032467829', 'name' => 'EKA CAHYO PRASETYO', 'email' => 'userBA@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 9, 'department_id' => 14, 'position_id' => 127,]);
+        User::create(['no_hp' => '032467829', 'name' => 'NUR SYAFIQ MAHERDANI', 'email' => 'userBBB@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 133,]);
+        User::create(['no_hp' => '032467829', 'name' => 'GANDHA PRAHARA HAMKA AYUBY', 'email' => 'userBC@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 133,]);
+        User::create(['no_hp' => '032467829', 'name' => 'NOVA BAGUS KURNIANTO', 'email' => 'userBD@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 134,]);
+        User::create(['no_hp' => '032467829', 'name' => 'M.YANA ARBIAN', 'email' => 'userBE@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 135,]);
+        User::create(['no_hp' => '032467829', 'name' => 'FEBRI JODI NUR WAHONO', 'email' => 'userBF@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 136,]);
+        User::create(['no_hp' => '032467829', 'name' => 'HAFIDZ SEPTIANTO', 'email' => 'userBG@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 137,]);
+        User::create(['no_hp' => '032467829', 'name' => 'SUSANTO WAHYU WIDODO', 'email' => 'userBH@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 138,]);
+        User::create(['no_hp' => '032467829', 'name' => 'FADHIIL NUR PRAMUDYA', 'email' => 'userBI@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 139,]);
+        User::create(['no_hp' => '032467829', 'name' => 'AJI KRIS MAULANA', 'email' => 'userBJ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 134,]);
+        User::create(['no_hp' => '032467829', 'name' => 'TRI HANDOKO', 'email' => 'userBK@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 133,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DEVID DWI CAHYONO', 'email' => 'userBL@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 135,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ANDIKA FERI QOIRUL ANAM', 'email' => 'userBM@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 15, 'position_id' => 135,]);
+        User::create(['no_hp' => '032467829', 'name' => 'ANDI RAHMAT', 'email' => 'userBN@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 136,]);
+        User::create(['no_hp' => '032467829', 'name' => 'STEFANUS DWI CAHYONO', 'email' => 'userBO@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 137,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DENY EKA PRASETYO', 'email' => 'userBP@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 138,]);
+        User::create(['no_hp' => '032467829', 'name' => 'NOVAL SATRIA RAMADHAN', 'email' => 'userBQ@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 139,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DIMAS PRATAMA TURNA WIDIYANTORO', 'email' => 'userBR@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 140,]);
+        User::create(['no_hp' => '032467829', 'name' => 'CATUR ANDI SAPUTRA', 'email' => 'userBS@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 141,]);
+        User::create(['no_hp' => '032467829', 'name' => 'DEPA AGUS KURNIAWAN', 'email' => 'userBT@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 142,]);
+        User::create(['no_hp' => '032467829', 'name' => 'FAUZI ADI PRAYOGA', 'email' => 'userBU@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 143,]);
+        User::create(['no_hp' => '032467829', 'name' => 'KRISNA ANDILA', 'email' => 'userBV@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 1, 'area_id' => 1, 'division_id' => 10, 'department_id' => 16, 'position_id' => 144,]);
 
-
-
-
-        // todo: STORE
-        // buatlah sepertini name => AA, BB, dst
-        User::create([
-            'name' => 'User AA',
-            'email' => 'userAA@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 63,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        // superADMIN superuser => userBB
-        User::create([
-            'name' => 'User BB',
-            'email' => 'userBB@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 64,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User CC',
-            'email' => 'userCC@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 66,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User DD',
-            'email' => 'userDD@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 67,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User EE',
-            'email' => 'userEE@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 69,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User FF',
-            'email' => 'userFF@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 70,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User GG',
-            'email' => 'userGG@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 71,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User HH',
-            'email' => 'userHH@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 72,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User II',
-            'email' => 'userII@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 73,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User JJ',
-            'email' => 'userJJ@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 74,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User KK',
-            'email' => 'userKK@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 75,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User LL',
-            'email' => 'userLL@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 76,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User MM',
-            'email' => 'userMM@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 77,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User NN',
-            'email' => 'userNN@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 74,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User OO',
-            'email' => 'userOO@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 63,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User PP',
-            'email' => 'userPP@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 74,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User QQ',
-            'email' => 'userQQ@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 65,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User RR',
-            'email' => 'userRR@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 76,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User SS',
-            'email' => 'userSS@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 67,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User TT',
-            'email' => 'userTT@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 10,
-            'position_id' => 68,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User UU',
-            'email' => 'userUU@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 69,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User VV',
-            'email' => 'userVV@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 75,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User WW',
-            'email' => 'userWW@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 77,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User XX',
-            'email' => 'userXX@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 72,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User YY',
-            'email' => 'userYY@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 73,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'User ZZ',
-            'email' => 'userZZ@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 11,
-            'position_id' => 74,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-
-        User::create([
-            'name' => 'user Branch Manager',
-            'email' => 'branch-manager@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 2,
-            'division_id' => 7,
-            'department_id' => 9,
-            'position_id' => 62,
-            'remember_token' => Str::random(10),
-            'no_hp' => '09236619',
-        ]);
-
-
-
-        // todo: WAREHOUSE
-        // name => AAA, BBB, dst
-        User::create([
-            'name' => 'User AAA',
-            'email' => 'userAAA@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 3,
-            'division_id' => 8,
-            'department_id' => 12,
-            'position_id' => 78,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User BBB',
-            'email' => 'userBBB@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 3,
-            'division_id' => 8,
-            'department_id' => 12,
-            'position_id' => 79,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User CCC',
-            'email' => 'userCCC@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 3,
-            'division_id' => 8,
-            'department_id' => 12,
-            'position_id' => 80,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User DDD',
-            'email' => 'userDDD@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 3,
-            'division_id' => 8,
-            'department_id' => 12,
-            'position_id' => 81,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User EEE',
-            'email' => 'userEEE@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 3,
-            'division_id' => 8,
-            'department_id' => 12,
-            'position_id' => 82,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
-        User::create([
-            'name' => 'User FFF',
-            'email' => 'userFFF@example.com',
-            'password' => Hash::make('1234567890'),
-            'area_id' => 3,
-            'division_id' => 8,
-            'department_id' => 12,
-            'position_id' => 83,
-            'remember_token' => Str::random(10),
-            'no_hp' => '87342927739',
-        ]);
+        // user area
+        User::create(['no_hp' => '032467829', 'name' => 'WIDIYANTO', 'email' => 'userTOKO1@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 2, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        User::create(['no_hp' => '032467829', 'name' => 'ITA RUKHIYATI', 'email' => 'userTOKO2@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 2, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        User::create(['no_hp' => '032467829', 'name' => 'BUDI WIBOWO', 'email' => 'userTOKO3@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 3, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        User::create(['no_hp' => '032467829', 'name' => 'AGUNG PURWONO', 'email' => 'userTOKO4@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 4, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        User::create(['no_hp' => '032467829', 'name' => 'YOYOK BUDIARSO', 'email' => 'userTOKO5@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 5, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        User::create(['no_hp' => '032467829', 'name' => 'EKO LESTARI', 'email' => 'userTOKO6@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 6, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        User::create(['no_hp' => '032467829', 'name' => 'WAHYUDI', 'email' => 'userTOKO7@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 3, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        User::create(['no_hp' => '032467829', 'name' => 'BAYU PRAMUDYA', 'email' => 'userTOKO8@example.com', 'password' => Hash::make('1234567890'), 'toko_id' => 5, 'area_id' => 2, 'division_id' => 7, 'department_id' => 10, 'position_id' => 65]);
+        // User::create(['no_hp' => '032467829','name' => 'BUDI UTOMO']);
+        // User::create(['no_hp' => '032467829','name' => 'AHMAD  FATKHUR ROZI']);
+        // User::create(['no_hp' => '032467829','name' => 'AGUS  WIDODO']);
+        // User::create(['no_hp' => '032467829','name' => 'DANIEL KRISTANTO']);
+        // User::create(['no_hp' => '032467829','name' => 'SITI ANA DEWI']);
+        // User::create(['no_hp' => '032467829','name' => 'TUMINO']);
+        // User::create(['no_hp' => '032467829','name' => 'SISYANTO']);
+        // User::create(['no_hp' => '032467829','name' => 'DWI ASTUTI']);
+        // User::create(['no_hp' => '032467829','name' => 'ALI MUSTOPA']);
+        // User::create(['no_hp' => '032467829','name' => 'HERI SRIYONO']);
+        // User::create(['no_hp' => '032467829','name' => 'M. HAMZAH']);
+        // User::create(['no_hp' => '032467829','name' => 'MUHAMMAD TONI ICHSANUDIN']);
+        // User::create(['no_hp' => '032467829','name' => 'SEPTI  ANDRIANI']);
+        // User::create(['no_hp' => '032467829','name' => 'SEPTIAN FERI FERDIAN']);
+        // User::create(['no_hp' => '032467829','name' => 'RACHMAD HERY NURSILO']);
+        // User::create(['no_hp' => '032467829','name' => 'AGUS  RIYANTO']);
+        // User::create(['no_hp' => '032467829','name' => 'TRI KISWANTORO']);
+        // User::create(['no_hp' => '032467829','name' => 'RENI  MIMIN  FATMAWATI']);
+        // User::create(['no_hp' => '032467829','name' => 'DICKY DWI CAHYONO']);
+        // User::create(['no_hp' => '032467829','name' => 'DHANY DWI SATRIA']);
+        // User::create(['no_hp' => '032467829','name' => 'AAN  MAHARDEKA']);
+        // User::create(['no_hp' => '032467829','name' => 'WAHYU SUHENDRI']);
+        // User::create(['no_hp' => '032467829','name' => 'AGUS DANANG KRISTANTO']);
+        // User::create(['no_hp' => '032467829','name' => 'AGUNG WAHYU SANTOSO']);
+        // User::create(['no_hp' => '032467829','name' => 'DWI RAHMAWATI']);
+        // User::create(['no_hp' => '032467829','name' => 'DIAN SARI']);
+        // User::create(['no_hp' => '032467829','name' => 'HADI NUR CAHYONO']);
+        // User::create(['no_hp' => '032467829','name' => 'MUHAMAD CHAFIDLUN ALIM']);
+        // User::create(['no_hp' => '032467829','name' => 'ARIK  JATMIKO']);
     }
 }

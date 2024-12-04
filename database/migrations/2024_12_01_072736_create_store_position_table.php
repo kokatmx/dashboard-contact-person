@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('store_user', function (Blueprint $table) {
+        Schema::create('store_position', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('position_id');
             $table->unsignedBigInteger('toko_id');
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade');
             $table->foreign('toko_id')->references('toko_id')->on('tokos')->onDelete('cascade');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('store_user');
+        Schema::dropIfExists('store_position');
     }
 };

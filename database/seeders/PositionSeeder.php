@@ -161,18 +161,18 @@ class PositionSeeder extends Seeder
         Position::create(['grade_id' => 146, 'department_id' => 16, 'position_code' => 'YY262', 'position_name' => 'Branch Engineering Support']);
 
         // khusus dept area AM
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM001', 'position_name' => 'Area Manager 1']);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM002', 'position_name' => 'Area Manager 2']);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM003', 'position_name' => 'Area Manager 3']);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM001', 'position_name' => 'Area Manager 1']);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM002', 'position_name' => 'Area Manager 2']);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM003', 'position_name' => 'Area Manager 3']);
         // AC
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC001', 'position_name' => 'Area Coordinator 1', 'parent_position_id' => 147]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC002', 'position_name' => 'Area Coordinator 2', 'parent_position_id' => 148]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC003', 'position_name' => 'Area Coordinator 3', 'parent_position_id' => 149]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC004', 'position_name' => 'Area Coordinator 4', 'parent_position_id' => 147]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC005', 'position_name' => 'Area Coordinator 5', 'parent_position_id' => 148]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC006', 'position_name' => 'Area Coordinator 6', 'parent_position_id' => 149]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC007', 'position_name' => 'Area Coordinator 7', 'parent_position_id' => 147]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC008', 'position_name' => 'Area Coordinator 8', 'parent_position_id' => 148]);
-        Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC009', 'position_name' => 'Area Coordinator 9', 'parent_position_id' => 149]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC001', 'position_name' => 'Area Coordinator 1', 'parent_position_id' => 147]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC002', 'position_name' => 'Area Coordinator 2', 'parent_position_id' => 148]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC003', 'position_name' => 'Area Coordinator 3', 'parent_position_id' => 149]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC004', 'position_name' => 'Area Coordinator 4', 'parent_position_id' => 147]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC005', 'position_name' => 'Area Coordinator 5', 'parent_position_id' => 148]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC006', 'position_name' => 'Area Coordinator 6', 'parent_position_id' => 149]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC007', 'position_name' => 'Area Coordinator 7', 'parent_position_id' => 147]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC008', 'position_name' => 'Area Coordinator 8', 'parent_position_id' => 148]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC009', 'position_name' => 'Area Coordinator 9', 'parent_position_id' => 149]);
     }
 }

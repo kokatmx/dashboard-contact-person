@@ -32,11 +32,33 @@ class Department extends Model
 
     public function positions()
     {
-        return $this->hasMany(Position::class, 'department_id');
+        return $this->hasMany(Position::class, 'department_id', 'department_id');
     }
     public function area()
     {
         return $this->belongsTo(Area::class, 'area_id');
+    }
+
+    // public function tokos()
+    // {
+    //     return $this->hasManyThrough(Toko::class, Position::class, 'department_id', 'position_id', 'department_id', 'position_id');
+    // }
+
+    public function stores()
+    {
+        // return $this->hasManyThrough(Toko::class, Position::class, 'department_id', 'position_id');
+        // return $this->hasManyThrough(
+        //     Toko::class,
+        //     Position::class,
+        //     'department_id', // Foreign key di tabel `positions` yang merujuk ke `departments`
+        //     'position_id',   // Foreign key di tabel `tokos` yang merujuk ke `positions`
+        //     'department_id', // Primary key di tabel `departments`
+        //     'position_id'    // Primary key di tabel `positions`
+        // );
+
+        return Toko::whereHas('position', function ($query) {
+            $query->where('department_id', $this->department_id);
+        })->get();
     }
 
 

@@ -15,13 +15,24 @@ class Toko extends Model
         'position_id',
     ];
 
+    // public function position()
+    // {
+    //     return $this->belongsTo(Position::class, 'position_id');
+    // }
+
     public function position()
     {
-        return $this->belongsTo(Position::class, 'position_id');
+        return $this->belongsTo(Position::class, 'position_id', 'position_id');
     }
+
+
+    // public function users()
+    // {
+    //     return $this->belongsToMany(User::class, 'store_user', 'toko_id', 'user_id');
+    // }
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'store_user', 'toko_id', 'user_id');
+        return $this->hasMany(User::class, 'toko_id'); // Relasi ke user-user
     }
 }

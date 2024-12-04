@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('tokos', function (Blueprint $table) {
             $table->id('toko_id');
-            $table->string('toko_code')->unique();
-            $table->string('toko_name');
-            $table->unsignedBigInteger('position_id');
+            $table->string('toko_code')->default('2MZ1')->unique();
+            $table->string('toko_name')->default('DC MADIUN [MDU]');
+            $table->string('no_hp');
+            // $table->unsignedBigInteger('position_id');
             $table->timestamps();
 
-            $table->foreign('position_id')->references('position_id')->on('positions')->cascadeOnDelete();
+            // $table->foreign('position_id')->references('position_id')->on('positions')->cascadeOnDelete();
         });
     }
 

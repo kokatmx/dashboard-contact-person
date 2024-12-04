@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('no_hp');
             $table->string('email')->unique();
+            $table->unsignedBigInteger('toko_id')->default(1);
             $table->unsignedBigInteger('area_id');
             $table->unsignedBigInteger('division_id');
             $table->unsignedBigInteger('department_id');
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->foreign('department_id')->references('department_id')->on('departments')->onDelete('cascade');
             $table->foreign('division_id')->references('division_id')->on('divisions')->onDelete('cascade');
             $table->foreign('position_id')->references('position_id')->on('positions')->onDelete('cascade');
+            $table->foreign('toko_id')->references('toko_id')->on('tokos')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

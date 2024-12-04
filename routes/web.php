@@ -46,14 +46,18 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
         // Route untuk Departemen Area
         Route::prefix('area')->group(function () {
             // Route untuk Departemen di Area AM
-            Route::get('{uuid}', [DeptAreaController::class, 'showAreaDepartment'])->name('department.area');
+            Route::get('{uuid}/stores', [DeptAreaController::class, 'showStores'])->name('department.stores');
+            Route::get('stores/{tokoId}/users', [StoreController::class, 'showUsersStore'])->name('stores.users');
+            Route::get('stores/{tokoId}/position/{positionName}', [StoreController::class, 'showPositionUser'])->name('stores.position.users');
+
+
 
             // Route untuk Jabatan di Departemen Area AC
-            Route::get('{positionName}/coordinator', [DeptAreaController::class, 'showAreaCoordinator'])->name('position.coordinator');
+            // Route::get('{positionName}/coordinator', [DeptAreaController::class, 'showAreaCoordinator'])->name('position.coordinator');
 
             // Route untuk Store atau Toko
-            Route::get('/coordinator/{positionName}/stores', [StoreController::class, 'showStores'])->name('stores.list');
-            Route::get('/coordinator/stores/{tokoId}/user', [StoreController::class, 'storeUserShow'])->name('stores.user');
+            // Route::get('/coordinator/{positionName}/stores', [StoreController::class, 'showStores'])->name('stores.list');
+            // Route::get('/coordinator/stores/{tokoId}/user', [StoreController::class, 'storeUserShow'])->name('stores.user');
         });
     });
 

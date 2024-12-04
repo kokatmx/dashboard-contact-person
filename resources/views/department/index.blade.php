@@ -56,7 +56,7 @@
                                     <div class="flex justify-between items-center">
                                         <p class="text-gray-700">Karyawan: <span class="font-bold">{{ $department->users_count }}</span></p>
                                         @if ($department->department_code === 'O1200')
-                                            <a href="{{ route('department.area', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
+                                            <a href="{{ route('department.stores', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
                                         @else
                                             <a href="{{ route('department.employees', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
                                         @endif
@@ -79,7 +79,7 @@
                                                 class="text-yellow-500 font-semibold hover:underline">Area Detail</a>
                                         @else
                                             @if ($department->department_code === 'O1200')
-                                                <a href="{{ route('department.area', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
+                                                <a href="{{ route('department.stores', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
                                             @else
                                                 <a href="{{ route('department.employees', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
                                             @endif

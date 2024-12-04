@@ -91,9 +91,14 @@ class User extends Authenticatable
         return $this->belongsTo(Position::class, 'position_id');
     }
 
-    public function stores()
+    // public function stores()
+    // {
+    //     return $this->belongsToMany(Toko::class, 'store_user', 'user_id', 'toko_id');
+    // }
+
+    public function store()
     {
-        return $this->belongsToMany(Toko::class, 'store_user', 'user_id', 'toko_id');
+        return $this->belongsTo(Toko::class, 'toko_id'); // Relasi ke toko
     }
 
     // using UUID

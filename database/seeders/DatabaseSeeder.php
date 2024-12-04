@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             GradeSeeder::class,
             PositionSeeder::class,
-            UserSeeder::class,
             TokoSeeder::class,
-            StoreUserSeeder::class,
+            UserSeeder::class,
+            // StoreUserSeeder::class,
         ]);
         // User::factory(200)->create();
     }

@@ -6,7 +6,7 @@ use App\Models\StoreUser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class StoreUserSeeder extends Seeder
+class StorePositionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
