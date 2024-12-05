@@ -152,5 +152,6 @@ class UserSeeder extends Seeder
         // User::create(['no_hp' => '032467829', 'name' => 'HADI NUR CAHYONO']);
         // User::create(['no_hp' => '032467829', 'name' => 'MUHAMAD CHAFIDLUN ALIM']);
         // User::create(['no_hp' => '032467829', 'name' => 'ARIK  JATMIKO']);
+
     }
 }
