@@ -47,6 +47,8 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
         Route::prefix('area')->group(function () {
             // Route untuk Departemen di Area AM
             Route::get('{uuid}/stores', [DeptAreaController::class, 'showStores'])->name('department.stores');
+            Route::get('{uuid}/stores/{tokoId}/edit', [StoreController::class, 'editStore'])->name('stores.edit');
+            Route::put('{uuid}/stores', [StoreController::class, 'updateStore'])->name('stores.update');;
             Route::get('stores/{tokoId}/users', [StoreController::class, 'showUsersStore'])->name('stores.users');
             Route::get('stores/{tokoId}/position/{positionName}', [StoreController::class, 'showPositionUser'])->name('stores.position.users');
 

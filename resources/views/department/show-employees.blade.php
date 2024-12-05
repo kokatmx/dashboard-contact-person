@@ -9,7 +9,7 @@
                     </a>
                 </h1>
                 <a href="{{ request()->has('area_name') === $area->area_name ? route('area.details', $area->area_name) : route('department.index') }}"
-                    class="btn btn-sm btn-outline btn-primary">
+                    class="btn btn-sm btn-outline hover:bg-blue-500">
                     Kembali
                 </a>
             </div>
@@ -20,7 +20,7 @@
                     class="input input-bordered input-primary w-1/3 mr-2"
                     value="{{ request('query') }}">
                 <input type="hidden" name="department_id" value="{{ $department->uuid }}">
-                <button type="submit" class="btn btn-primary">Cari</button>
+                <button type="submit" class="btn bg-blue-500">Cari</button>
             </form>
 
             <!-- Notifications -->
@@ -91,20 +91,20 @@
                 </p>
                 <div class="join">
                     @if ($users->previousPageUrl())
-                        <a href="{{ $users->previousPageUrl() }}" class="btn btn-sm btn-primary">
+                        <a href="{{ $users->previousPageUrl() }}" class="btn btn-sm bg-blue-500">
                             <i class="fas fa-angle-left"></i>
                         </a>
                     @endif
 
                     @foreach (range(1, $users->lastPage()) as $i)
                         <a href="{{ $users->url($i) }}"
-                            class="btn btn-sm {{ $i === $users->currentPage() ? 'btn-primary' : 'btn-outline' }}">
+                            class="btn btn-sm {{ $i === $users->currentPage() ? 'bg-blue-500' : 'btn-outline' }}">
                             {{ $i }}
                         </a>
                     @endforeach
 
                     @if ($users->nextPageUrl())
-                        <a href="{{ $users->nextPageUrl() }}" class="btn btn-sm btn-primary">
+                        <a href="{{ $users->nextPageUrl() }}" class="btn btn-sm bg-blue-500">
                             <i class="fas fa-angle-right"></i>
                         </a>
                     @endif

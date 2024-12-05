@@ -38,8 +38,22 @@ class DeptAreaController extends Controller
 
     public function showStores($uuid)
     {
-        $department = Department::where('uuid', $uuid)->firstOrFail();
+        $department = Department::with('positions')->where('uuid', $uuid)->firstOrFail();
         $stores = Toko::all();
+        // $positionsAM = $department->users->positions->filter(function ($position) {
+        //     return str_contains($position->position_name, 'Area Manager');
+        // });
+
+        // $positionsAM = $department->users;
         return view('department.area.store.index', compact('stores', 'department'));
+    }
+
+    public function searchStores()
+    {
+        $search = request('search');
+        $stores = Toko::where('toko_code', 'LIKE', '%' . $search . '%')
+            ->where('toko_name', 'LIKE', '%' . $search . '%')
+            ->paginate(10);
+        return view('department.area.store.index', compact('stores', 'search'));
     }
 }

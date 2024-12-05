@@ -4,21 +4,20 @@
             <h1 class="mx-auto font-bold text-xl">Toko {{ $store->toko_name }}</h1>
             <div class="overflow-x-auto rounded-lg p-4">
                 <table class="table w-full">
-                    <thead class="text-lg">
-                        <tr class="bg-red-100">
-                            <th class="text-left">#</th>
-                            <th class="text-left">Nama Karyawan</th>
-                            <th class="text-left">Nomor HP</th>
-                            <th class="text-left">Kode Toko</th>
-                            <th class="text-left">Jabatan</th>
-                            <th class="text-left">Grade</th>
-                            <th class="text-left">Aksi</th>
+                    <thead class="text-base">
+                        <tr class="bg-red-100 text-black text-left">
+                            <th>Nama Karyawan</th>
+                            <th>Nomor HP</th>
+                            <th>Kode Toko</th>
+                            <th>Jabatan</th>
+                            <th>Grade</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($users as $storeUser)
                         <tr class="hover:bg-red-50">
-                            <td>{{ $loop->index + 1 + ($storeUser->currentPage() - 1) * $storeUser->perPage() }}</td>
+                            {{-- <td>{{ $loop->index + 1 + ($storeUser->currentPage() - 1) * $storeUser->perPage() }}</td> --}}
                             <td>{{ $storeUser->name }}</td>
                             <td>{{ $storeUser->no_hp }}</td>
                             <td>{{ $store->toko_code }}</td>

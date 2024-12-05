@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Position;
 use App\Models\StoreUser;
 use App\Models\Toko;
@@ -11,26 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
-    // public function showStores(Request $request, $positionName)
-    // {
-    //     $positionAC = Position::where(
-    //         'position_name',
-    //         $positionName
-    //     )->firstOrFail();
-    //     $stores = $positionAC->stores;
-    //     return view('department.area.store.index', compact('stores', 'positionAC'));
-    // }
-
-    // public function storeUserShow($tokoId)
-    // {
-    //     // Ambil toko berdasarkan ID
-    //     $store = Toko::with('users')->findOrFail($tokoId);
-
-    //     // Ambil semua user yang terkait dengan toko ini melalui tabel pivot
-    //     $users = $store->users;
-
-    //     return view('department.area.store.user.index', compact('users', 'store'));
-    // }
 
     // /**
     //  * Memeriksa apakah user dapat mengupdate user lain berdasarkan kode toko.
@@ -66,14 +47,36 @@ class StoreController extends Controller
         return view('department.area.store.user.index', compact('store', 'users'));
     }
 
-    public function showPositionUser($tokoId, $positionName)
+    // public function showPositionUser($tokoId, $positionName)
+    // {
+    //     $store = Toko::findOrFail($tokoId);
+
+    //     $users = User::where('toko_id', $tokoId)->whereHas('position', function ($query) use ($positionName) {
+    //         $query->where('position_name', $positionName);
+    //     })->get();
+
+    //     return view();
+    // }
+
+
+    public function editStore($tokoId, $uuid)
+    {
+        $store = Toko::findOrFail($tokoId);
+        $department = Department::where('uuid', $uuid)->firstOrFail();
+        return view('department.area.store.edit', compact('store', 'department'));
+    }
+    public function updateStore(Request $request, $tokoId, $uuid)
     {
         $store = Toko::findOrFail($tokoId);
 
-        $users = User::where('toko_id', $tokoId)->whereHas('position', function ($query) use ($positionName) {
-            $query->where('position_name', $positionName);
-        })->get();
+        $request->validate([
+            'no_hp' => 'required|string|max:12',
+        ]);
 
-        return view();
+        $store->update([
+            'no_hp' => $request->input('no_hp'),
+        ]);
+
+        return redirect()->route('department.area.store.index')->with('success', 'Toko berhasil diupdate!');
     }
 }
