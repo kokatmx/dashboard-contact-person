@@ -36,15 +36,15 @@ class DeptAreaController extends Controller
     //     return view('department.area.sub_position', compact('department', 'positionAM', 'positionsAC'));
     // }
 
-    public function showStores($uuid)
+    // $positionsAM = $department->users->positions->filter(function ($position) {
+    //     return str_contains($position->position_name, 'Area Manager');
+    // });
+
+    public function showStores(Request $request, $uuid)
     {
         $department = Department::with('positions')->where('uuid', $uuid)->firstOrFail();
-        $stores = Toko::all();
-        // $positionsAM = $department->users->positions->filter(function ($position) {
-        //     return str_contains($position->position_name, 'Area Manager');
-        // });
+        $stores = Toko::with('users')->get();
 
-        // $positionsAM = $department->users;
         return view('department.area.store.index', compact('stores', 'department'));
     }
 

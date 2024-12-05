@@ -18,18 +18,30 @@
                 <a href="@if ($userDivision === 'O2222' && $userDept === 'O1900') {{ route('warehouse.dashboard') }}
                         @elseif ($userDivision === 'O0000' && in_array($userDept, ['O1100', 'O1200', 'O9400'])) {{ route('store.dashboard') }}
                         @elseif (in_array($userDivision, ['C0000', 'F0000', 'G0000', 'H0000', 'K0000', 'M0000', 'R0000', 'YY000']) &&
-                                 in_array($userDept, ['C3100', 'F1500', 'F5100', 'G1600', 'H1800', 'H2600', 'K1300', 'M3200', 'R4300', 'R5800', 'YY002', 'YY004'])) {{ route('office.dashboard') }}
-                        @endif"
+                                in_array($userDept, [
+                                    'C3100',
+                                    'F1500',
+                                    'F5100',
+                                    'G1600',
+                                    'H1800',
+                                    'H2600',
+                                    'K1300',
+                                    'M3200',
+                                    'R4300',
+                                    'R5800',
+                                    'YY002',
+                                    'YY004',
+                                ])) {{ route('office.dashboard') }} @endif"
                     class="btn bg-blue-500 text-white hover:bg-blue-600">
                     Kembali
                 </a>
 
                 <!-- Department Search Form -->
                 <form action="{{ route('department.search') }}" method="GET" class="my-6 flex items-center gap-4">
-                    <input type="text" name="query" placeholder="Cari department"
-                        value="{{ request('query') }}"
+                    <input type="text" name="query" placeholder="Cari department" value="{{ request('query') }}"
                         class="w-1/2 border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500">
-                    <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">
                         Cari
                     </button>
                 </form>
@@ -45,20 +57,30 @@
 
                 <!-- Departments Section -->
                 <div class="mt-10">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-5"><a href="{{ route('department.index') }}">Daftar Departemen</a></h2>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-5"><a
+                            href="{{ route('department.index') }}">Daftar Departemen</a></h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Departments in User's Division -->
                         @foreach ($departmentsInDivision as $department)
                             <div class="bg-white shadow-md rounded-md overflow-hidden border border-gray-300">
                                 <div class="p-5">
-                                    <h3 class="text-lg font-semibold text-red-500">{{ $department->department_name }}</h3>
-                                    <p class="text-gray-600 mb-4">Extension: <span class="font-bold">{{ $department->department_extension }}</span></p>
+                                    <h3 class="text-lg font-semibold text-red-500">{{ $department->department_name }}
+                                    </h3>
+                                    <p class="text-gray-600 mb-4">Extension: <span
+                                            class="font-bold">{{ $department->department_extension }}</span></p>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-gray-700">Karyawan: <span class="font-bold">{{ $department->users_count }}</span></p>
                                         @if ($department->department_code === 'O1200')
-                                            <a href="{{ route('department.stores', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
+                                            {{-- <p class="text-gray-700">Toko: <span
+                                                    class="font-bold">{{ $department->users->count() }}</span>
+                                            </p> --}}
+                                            <a href="{{ route('department.stores', $department->uuid) }}"
+                                                class="text-blue-500 font-semibold hover:underline">Lihat Detail Area
+                                            </a>
                                         @else
-                                            <a href="{{ route('department.employees', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
+                                            <p class="text-gray-700">Karyawan: <span
+                                                    class="font-bold">{{ $department->users_count }}</span></p>
+                                            <a href="{{ route('department.employees', $department->uuid) }}"
+                                                class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
                                         @endif
 
                                     </div>
@@ -70,18 +92,24 @@
                         @foreach ($departmentsOutsideDivision as $department)
                             <div class="bg-white shadow-md rounded-md overflow-hidden border border-gray-300">
                                 <div class="p-5">
-                                    <h3 class="text-lg font-semibold text-red-500">{{ $department->department_name }}</h3>
-                                    <p class="text-gray-600 mb-4">Extension: <span class="font-bold">{{ $department->department_extension }}</span></p>
+                                    <h3 class="text-lg font-semibold text-red-500">{{ $department->department_name }}
+                                    </h3>
+                                    <p class="text-gray-600 mb-4">Extension: <span
+                                            class="font-bold">{{ $department->department_extension }}</span></p>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-gray-700">Karyawan: <span class="font-bold">{{ $department->users_count }}</span></p>
+                                        <p class="text-gray-700">Karyawan: <span
+                                                class="font-bold">{{ $department->users_count }}</span></p>
                                         @if (strtolower($department->department_code) === 'O1200')
                                             <a href="{{ route('department.area', $department->uuid) }}"
                                                 class="text-yellow-500 font-semibold hover:underline">Area Detail</a>
                                         @else
                                             @if ($department->department_code === 'O1200')
-                                                <a href="{{ route('department.stores', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
+                                                <a href="{{ route('department.stores', $department->uuid) }}"
+                                                    class="text-blue-500 font-semibold hover:underline">Lihat Detail
+                                                    Area </a>
                                             @else
-                                                <a href="{{ route('department.employees', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
+                                                <a href="{{ route('department.employees', $department->uuid) }}"
+                                                    class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
                                             @endif
                                         @endif
                                     </div>

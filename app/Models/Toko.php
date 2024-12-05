@@ -28,11 +28,26 @@ class Toko extends Model
 
     // public function users()
     // {
-    //     return $this->belongsToMany(User::class, 'store_user', 'toko_id', 'user_id');
+    //     return $this->hasManyThrough(User::class, Position::class, 'position_id', 'position_id', 'position_id', 'position_id');
     // }
+
 
     public function users()
     {
-        return $this->hasMany(User::class, 'toko_id'); // Relasi ke user-user
+        return $this->hasMany(User::class, 'toko_id', 'toko_id'); // Relasi ke user-user
+    }
+
+    public function getAreaManager()
+    {
+        return $this->users->filter(function ($user) {
+            return str_contains($user->position->position_name, 'Area Manager');
+        })->first();
+    }
+
+    public function getAreaCoordinator()
+    {
+        return $this->users->filter(function ($user) {
+            return str_contains($user->position->position_name, 'Area Coordinator');
+        })->first();
     }
 }

@@ -17,8 +17,7 @@
             <!-- Search Form -->
             <form action="{{ route('user.search', $department->uuid) }}" method="GET" class="flex items-center mb-6">
                 <input type="text" name="query" placeholder="Cari karyawan"
-                    class="input input-bordered input-primary w-1/3 mr-2"
-                    value="{{ request('query') }}">
+                    class="input input-bordered input-primary w-1/2 mr-2" value="{{ request('query') }}">
                 <input type="hidden" name="department_id" value="{{ $department->uuid }}">
                 <button type="submit" class="btn bg-blue-500">Cari</button>
             </form>
@@ -32,14 +31,13 @@
 
             @if (session('error'))
                 <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-                        x-transition:leave="transition ease-in duration-300"
-                class="alert alert-error mb-4">
+                    x-transition:leave="transition ease-in duration-300" class="alert alert-error mb-4">
                     <span>{{ session('error') }}</span>
                 </div>
             @endif
 
             <!-- Employee List Table -->
-            <div class="overflow-x-auto rounded-lg p-4">
+            <div class="overflow-x-auto rounded-lg">
                 <table class="table w-full">
                     <thead>
                         <tr class="bg-red-100 text-black text-base">
@@ -63,7 +61,8 @@
                                 <td>{{ $item['user']->position->grade->max_grade }}</td>
                                 <td>
                                     @if ($item['canUpdate'])
-                                        <a href="{{ route('user.edit', $item['user']->uuid) }}" class="text-blue-600 hover:underline">
+                                        <a href="{{ route('user.edit', $item['user']->uuid) }}"
+                                            class="text-blue-600 hover:underline">
                                             Update
                                         </a>
                                     @else
