@@ -12,34 +12,35 @@ use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
+    public function searchStores(Request $request, $uuid)
+    {
+        // Cari department berdasarkan UUID
+        $department = Department::where('uuid', $uuid)->firstOrFail();
 
-    // /**
-    //  * Memeriksa apakah user dapat mengupdate user lain berdasarkan kode toko.
-    //  */
-    // public function updateUser(Request $request, $userId)
-    // {
-    //     // Ambil user yang sedang login
-    //     $currentUser = Auth::user();
+        // Ambil ID department
+        $departmentId = $department->department_id;
 
-    //     // Ambil user yang ingin diupdate berdasarkan ID
-    //     $otherUser = User::findOrFail($userId);
+        // Ambil input pencarian
+        $search = $request->input('search');
 
-    //     // Panggil fungsi canUpdateUsers() untuk memeriksa apakah user dapat mengupdate
-    //     if ($currentUser->canUpdateUsers($otherUser)) {
-    //         // Lakukan proses update user sesuai dengan kebutuhan
-    //         // Misalnya, mengupdate data user
-    //         $otherUser->update([
-    //             'no_hp' => $request->input('no_hp'),
-    //             // Tambahkan field yang ingin diupdate
-    //         ]);
+        // Cari toko berdasarkan relasi melalui users
+        $stores = Toko::whereHas('users', function ($query) use ($departmentId) {
+            $query->where('department_id', $departmentId);
+        })
+            ->where(function ($query) use ($search) {
+                $query->where('toko_code', 'LIKE', '%' . $search . '%')
+                    ->orWhere('toko_name', 'LIKE', '%' . $search . '%');
+            })
+            ->paginate(10);
 
-    //         return redirect()->route('users.index')->with('success', 'User berhasil diupdate!');
-    //     } else {
-    //         // Jika user tidak memiliki izin untuk mengupdate
-    //         return redirect()->route('users.index')->with('error', 'Anda tidak memiliki izin untuk mengupdate user ini.');
-    //     }
-    // }
+        // Jika data tidak ditemukan
+        if ($stores->total() === 0) {
+            return redirect()->back()->with('error', 'Toko tidak ditemukan.');
+        }
 
+        // Kirim data ke view
+        return view('department.area.store.index', compact('stores', 'search', 'department'));
+    }
 
 
     public function showPositionUser($tokoId, $userName)
@@ -62,9 +63,37 @@ class StoreController extends Controller
         return view('department.area.store.position.user', compact('store', 'users', 'usersWithUpdateStatus'));
     }
 
+    public function editStore($uuid, $tokoId)
+    {
+        $department = Department::where('uuid', $uuid)->firstOrFail(); // Validasi UUID
+        $store = Toko::findOrFail($tokoId); // Validasi Toko
+        return view('department.area.store.edit', compact('store', 'department'));
+    }
+
+    public function updateStore(Request $request, $uuid, $tokoId)
+    {
+        $department = Department::where('uuid', $uuid)->firstOrFail();
+        $store = Toko::findOrFail($tokoId);
+
+        $request->validate([
+            'no_hp' => 'required|string|max:15|regex:/^[0-9]+$/ ',
+        ], [
+            'no_hp.max' => 'Nomor HP tidak boleh lebih dari :max karakter',
+            'no_hp.regex' => 'Nomor HP hanya boleh berisi angka.',
+        ]);
+
+        $store->update([
+            'no_hp' => $request->input('no_hp'),
+        ]);
+
+        return redirect()->route('department.stores', ['uuid' => $department->uuid])
+            ->with('success', 'Toko berhasil diperbarui.');
+    }
+
     public function showUsersStore($tokoId)
     {
         $store = Toko::with('users')->findOrFail($tokoId);
+        // $department = $store->users->department;
         $users = $store->users()->paginate(10);
         $currentUser = Auth::user();
         $usersWithUpdateStatus = $users->map(function ($user) use ($currentUser) {
@@ -77,24 +106,26 @@ class StoreController extends Controller
         return view('department.area.store.user.index', compact('store', 'users', 'usersWithUpdateStatus'));
     }
 
-    public function editStore($tokoId, $uuid)
+    public function searchUsersStore(Request $request, $tokoId)
     {
-        $department = Department::where('uuid', $uuid)->firstOrFail();
-        $store = Toko::findOrFail($tokoId);
-        return view('department.area.store.edit', compact('store', 'department'));
-    }
-    public function updateStore(Request $request, $tokoId, $uuid)
-    {
-        $store = Toko::findOrFail($tokoId);
+        $search = $request->input('search');
+        $store = Toko::with('users')->findOrFail($tokoId);
+        $users = $store->users()->where('name', 'LIKE', '%' . $search . '%')->paginate(10);
 
-        $request->validate([
-            'no_hp' => 'required|string|max:12',
-        ]);
+        $currentUser = Auth::user();
 
-        $store->update([
-            'no_hp' => $request->input('no_hp'),
-        ]);
+        $usersWithUpdateStatus = $users->map(function ($user) use ($currentUser) {
+            return [
+                'user' => $user,
+                'canUpdate' => $currentUser->canUpdateUsers($user),
+            ];
+        });
 
-        return redirect()->route('department.area.store.index')->with('success', 'Toko berhasil diupdate!');
+        // Jika data tidak ditemukan
+        if ($users->total() === 0) {
+            return redirect()->back()->with('error', 'User tidak ditemukan.');
+        }
+
+        return view('department.area.store.user.index', compact('users', 'usersWithUpdateStatus', 'store'));
     }
 }

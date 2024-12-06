@@ -12,6 +12,7 @@ class Toko extends Model
     protected $fillable = [
         'toko_code',
         'toko_name',
+        'no_hp',
         'position_id',
     ];
 
