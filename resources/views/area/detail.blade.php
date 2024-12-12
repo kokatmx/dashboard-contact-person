@@ -2,7 +2,7 @@
     <div class="container py-11 mx-auto sm:px-6 lg:px-8">
         <div class="bg-white shadow-md rounded-lg overflow-hidden p-6">
             <div class="bg-red-500 text-white text-center py-6">
-                <h1 class="text-3xl font-bold">Dashboard Departemen Area {{ $area->area_name }}</h1>
+                <h1 class="text-3xl font-bold">Dashboard Departemen | Area {{ $area->area_name }}</h1>
                 <p class="mt-2 text-lg">Temukan departemen dan informasi karyawan dengan mudah!</p>
             </div>
 
@@ -55,10 +55,10 @@
                                     <h3 class="text-lg font-semibold text-red-500">{{ $department->department_name }}</h3>
                                     <p class="text-gray-600 mb-4">Extension: {{ $department->department_extension }}</p>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-gray-700">Karyawan: <span class="font-bold">{{ $usersPerDepartment[$department->department_id]->users_count ?? 0 }}</span></p>
                                         @if ($department->department_code === 'O1200')
-                                            <a href="{{ route('department.stores', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
+                                            <a href="{{ route('department.area.stores.index', ['departmentUuid' => $department->uuid]) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
                                         @else
+                                        <p class="text-gray-700">Karyawan: <span class="font-bold">{{ $usersPerDepartment[$department->department_id]->users_count ?? 0 }}</span></p>
                                             <a href="{{ route('department.employees', $department->uuid) }}" class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
                                         @endif
                                     </div>

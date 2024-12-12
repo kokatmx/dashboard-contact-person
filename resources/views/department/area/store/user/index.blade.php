@@ -3,10 +3,10 @@
         <div class="bg-white shadow-md rounded-lg overflow-hidden p-6">
             <div class="flex justify-between mb-4">
                 <h1 class="font-bold text-xl">Toko {{ $store->toko_name }}</h1>
-                <a href="" class="btn btn-sm btn-outline hover:bg-blue-600">Kembali</a>
+                <a href="{{ route('department.area.stores.index', ['departmentUuid' => $department->uuid]) }}" class="btn btn-sm btn-outline hover:bg-blue-600">Kembali</a>
             </div>
 
-            <form action="{{ route('stores.users.search', ['tokoId' => $store->toko_id]) }}" method="get"
+            <form action="{{ route('department.area.stores.users.search', ['departmentUuid' => $department->uuid,'tokoId' => $store->toko_id]) }}" method="get"
                 class="flex items-center my-6">
                 <input type="text" id="search" name="search"
                     class="sm:w-1/2 md:w-1/3 lg:w-1/3 mr-2 px-3 py-2 text-gray-700 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -15,12 +15,43 @@
             </form>
 
             <!-- Notifications -->
+            <div class="fixed top-5 inset-x-0 md:inset-x-1/2 z-50 sm:w-full md:w-1/2 lg:w-1/3">
             @if (session('success'))
                 <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-                    x-transition:leave="transition ease-in duration-300" class="alert alert-success mb-4">
+                    x-transition:leave="transition ease-in duration-300" class="alert alert-success mb-4 bg-green-500">
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 shrink-0 stroke-current"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                     <span>{{ session('success') }}</span>
                 </div>
             @endif
+
+            @if (session('error'))
+                <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
+                    x-transition:leave="transition ease-in duration-300" class="alert alert-error mb-4 bg-red-500">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 shrink-0 stroke-current"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ session('error') }}</span>
+                </div>
+            @endif
+            </div>
 
             @if (session('error'))
                 <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
@@ -58,7 +89,7 @@
                                 <td>{{ $storeUser['user']->position->grade->max_grade }}</td>
                                 <td>
                                     @if ($storeUser['canUpdate'])
-                                        <a href="{{ route('user.edit', $storeUser['user']->uuid) }}"
+                                        <a href="{{ route('department.area.stores.users.edit', ['departmentUuid' => optional($storeUser['user']->department)->uuid,'userUuid'=>$storeUser['user']->uuid, 'tokoId' => $store->toko_id]) }}"
                                             class="hover:underline text-blue-600">Update</a>
                                     @else
                                         <span class="text-gray-500">Tidak bisa update</span>

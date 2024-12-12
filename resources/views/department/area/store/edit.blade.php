@@ -3,7 +3,7 @@
         class="max-w-lg mx-auto p-6 bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-lg mt-10 border-t-4 border-red-600">
 
         <!-- Back Button -->
-        <a href="{{ route('department.stores', ['uuid' => $department->uuid]) }}"
+        <a href="{{ route('department.area.stores.index', ['departmentUuid' => $department->uuid]) }}"
             class="flex items-center text-blue-600 hover:text-blue-800 font-semibold mb-10">
             <i class="fas fa-arrow-left mr-2"></i> Kembali
         </a>
@@ -16,7 +16,7 @@
             Perbarui informasi karyawan untuk divisi dan jabatan tertentu.
         </p>
 
-        <form action="{{ route('stores.update', ['tokoId' => $store->toko_id, 'uuid' => $department->uuid]) }}"
+        <form action="{{ route('department.area.stores.update', ['tokoId' => $store->toko_id, 'departmentUuid' => $department->uuid]) }}"
             method="POST" class="space-y-5">
             @csrf
             @method('PUT')

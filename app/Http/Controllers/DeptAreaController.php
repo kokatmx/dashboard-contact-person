@@ -15,6 +15,14 @@ class DeptAreaController extends Controller
     {
         $department = Department::with('positions')->where('uuid', $uuid)->firstOrFail();
         $stores = Toko::with('users')->paginate(10);
+        // if ($tokoId) {
+        //     // jika didalam toko
+        //     $store = Toko::findOrFail($tokoId);
+        //     $redirectRoute = route('stores.users', $store->id);
+        // } else {
+        //     $department = Department::where('uuid', $contextUuid)->firstOrFail();
+        //     $redirectRoute = route('departments.employees', $contextUuid);
+        // }
 
         return view('department.area.store.index', compact('stores', 'department'));
     }

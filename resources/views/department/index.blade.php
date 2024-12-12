@@ -46,14 +46,44 @@
                     </button>
                 </form>
 
-                <!-- Error Message -->
-                @if (session('error'))
+                <!-- Notifications -->
+            <div class="fixed top-5 inset-x-0 md:inset-x-1/2 z-50 sm:w-full md:w-1/2 lg:w-1/3">
+                @if (session('success'))
                     <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-                        x-transition:leave="transition ease-in duration-300"
-                        class="bg-red-500 text-white p-4 rounded-md mb-5">
-                        <strong>Error:</strong> {{ session('error') }}
+                        x-transition:leave="transition ease-in duration-300" class="alert alert-success mb-4 bg-green-500">
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 shrink-0 stroke-current"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                        <span>{{ session('success') }}</span>
                     </div>
                 @endif
+
+                @if (session('error'))
+                    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
+                        x-transition:leave="transition ease-in duration-300" class="alert alert-error mb-4 bg-red-500">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 shrink-0 stroke-current"
+                            fill="none"
+                            viewBox="0 0 24 24">
+                            <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{{ session('error') }}</span>
+                    </div>
+                @endif
+            </div>
 
                 <!-- Departments Section -->
                 <div class="mt-10">
@@ -73,7 +103,7 @@
                                             {{-- <p class="text-gray-700">Toko: <span
                                                     class="font-bold">{{ $department->users->count() }}</span>
                                             </p> --}}
-                                            <a href="{{ route('department.stores', $department->uuid) }}"
+                                            <a href="{{ route('department.area.stores.index', $department->uuid) }}"
                                                 class="text-blue-500 font-semibold hover:underline">Lihat Detail Area
                                             </a>
                                         @else
@@ -97,17 +127,17 @@
                                     <p class="text-gray-600 mb-4">Extension: <span
                                             class="font-bold">{{ $department->department_extension }}</span></p>
                                     <div class="flex justify-between items-center">
-                                        <p class="text-gray-700">Karyawan: <span
-                                                class="font-bold">{{ $department->users_count }}</span></p>
+                                        {{-- <p class="text-gray-700">Karyawan: <span
+                                                class="font-bold">{{ $department->users_count }}</span></p> --}}
                                         @if (strtolower($department->department_code) === 'O1200')
                                             <a href="{{ route('department.area', $department->uuid) }}"
                                                 class="text-yellow-500 font-semibold hover:underline">Area Detail</a>
                                         @else
                                             @if ($department->department_code === 'O1200')
-                                                <a href="{{ route('department.stores', $department->uuid) }}"
-                                                    class="text-blue-500 font-semibold hover:underline">Lihat Detail
-                                                    Area </a>
+                                                <a href="{{ route('department.area.stores.index', $department->uuid) }}"class="text-blue-500 font-semibold hover:underline">Lihat Detail Area </a>
                                             @else
+                                                <p class="text-gray-700">Karyawan: <span
+                                                class="font-bold">{{ $department->users_count }}</span></p>
                                                 <a href="{{ route('department.employees', $department->uuid) }}"
                                                     class="text-blue-500 font-semibold hover:underline">Lihat Detail</a>
                                             @endif

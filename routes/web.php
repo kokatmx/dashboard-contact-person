@@ -33,41 +33,40 @@ Route::middleware(['auth', 'verified', CheckUserAccess::class])->group(function 
     // Akses hanya untuk role warehouse
     Route::get('/warehouse', [DashboardController::class, 'index'])->name('warehouse.dashboard');
 
-    Route::prefix('department')->group(function () {
-        Route::get('/', [DepartmentController::class, 'index'])->name('department.index');
-        Route::get('{uuid}/employees', [DepartmentController::class, 'showEmployees'])->name('department.employees');
-        Route::get('/search', [DepartmentController::class, 'search'])->name('department.search');
-        Route::prefix('employees')->group(function () {
-            Route::get('{uuid}/edit', [UserController::class, 'edit'])->name('user.edit');
-            Route::put('{uuid}', [UserController::class, 'update'])->name('user.update');
-        });
-        Route::get('{uuid}/employees/search', [UserController::class, 'search'])->name('user.search');
+    // Rute untuk Department
+    Route::prefix('department')->name('department.')->group(function () {
+        Route::get('/', [DepartmentController::class, 'index'])->name('index');
+        Route::get('{departmentUuid}/employees', [DepartmentController::class, 'showEmployees'])->name('employees');
+        Route::get('/search', [DepartmentController::class, 'search'])->name('search');
 
-        // Route untuk Departemen Area
-        Route::prefix('area')->group(function () {
-            Route::get('{uuid}/stores', [DeptAreaController::class, 'showStores'])->name('department.stores');
-            Route::get('{uuid}/stores/search', [StoreController::class, 'searchStores'])->name('department.stores.search');
-            Route::get('{uuid}/stores/{tokoId}/edit', [StoreController::class, 'editStore'])->name('stores.edit');
-            Route::put('{uuid}/stores/{tokoId}', [StoreController::class, 'updateStore'])->name('stores.update');;
-            Route::prefix('/stores')->group(function () {
-                Route::get('{tokoId}/users', [StoreController::class, 'showUsersStore'])->name('stores.users');
-                Route::get('{tokoId}/users/search', [StoreController::class, 'searchUsersStore'])->name('stores.users.search');
-                Route::get('{tokoId}/position/{userName}', [StoreController::class, 'showPositionUser'])->name('stores.position.users');
+        // Rute untuk pengguna (employees) di department
+        Route::prefix('{departmentUuid}/employees')->name('employees.')->group(function () {
+            Route::get('{userUuid}/edit', [UserController::class, 'edit'])->name('edit');
+            Route::put('{userUuid}', [UserController::class, 'update'])->name('update');
+            Route::get('/search', [UserController::class, 'search'])->name('search');
+        });
+
+        // Rute untuk department Area
+        Route::prefix('area')->name('area.')->group(function () {
+
+            // Route untuk store di dalam department area
+            Route::prefix('{departmentUuid}/stores')->name('stores.')->group(function () {
+                Route::get('/', [DeptAreaController::class, 'showStores'])->name('index');
+                Route::get('/search', [StoreController::class, 'searchStores'])->name('search');
+                Route::get('/{tokoId}/edit', [StoreController::class, 'editStore'])->name('edit');
+                Route::put('/{tokoId}', [StoreController::class, 'updateStore'])->name('update');
+
+                Route::prefix('{tokoId}/employees')->name('users.')->group(function () {
+                    Route::get('/', [StoreController::class, 'showUsersStore'])->name('index');
+                    Route::get('/search', [StoreController::class, 'searchUsersStore'])->name('search');
+                    Route::get('{userUuid}/edit', [StoreController::class, 'userStoreEdit'])->name('edit');
+                    Route::put('{userUuid}', [StoreController::class, 'userStoreUpdate'])->name('update');
+                    Route::get('/position/{userName}', [StoreController::class, 'showPositionUser'])->name('position');
+                    Route::get('/position/{userName}/edit', [StoreController::class, 'userPositionEdit'])->name('position.edit');
+                    Route::put('/position/{userName}', [StoreController::class, 'userPositionUpdate'])->name('position.update');
+                });
             });
         });
-
-        // Route::prefix('area/{uuid}/stores')->group(function () {
-        //     // Rute utama untuk toko dalam departemen
-        //     Route::get('/', [DeptAreaController::class, 'showStores'])->name('department.stores');
-        //     Route::get('/search', [StoreController::class, 'searchStores'])->name('department.stores.search');
-        //     Route::get('/{tokoId}/edit', [StoreController::class, 'editStore'])->name('stores.edit');
-        //     Route::put('/{tokoId}', [StoreController::class, 'updateStore'])->name('stores.update');
-
-        //     // Rute terkait pengguna dalam toko
-        //     Route::get('/{tokoId}/users', [StoreController::class, 'showUsersStore'])->name('stores.users');
-        //     Route::get('/{tokoId}/users/search', [StoreController::class, 'searchUsersStore'])->name('stores.users.search');
-        //     Route::get('/{tokoId}/position/{userName}', [StoreController::class, 'showPositionUser'])->name('stores.position.users');
-        // });
     });
 
     Route::get('/area/{area_name}', [AreaController::class, 'showAreaDetail'])->name('area.details');

@@ -47,18 +47,18 @@ class Department extends Model
     public function stores()
     {
         // return $this->hasManyThrough(Toko::class, Position::class, 'department_id', 'position_id');
-        // return $this->hasManyThrough(
-        //     Toko::class,
-        //     Position::class,
-        //     'department_id', // Foreign key di tabel `positions` yang merujuk ke `departments`
-        //     'position_id',   // Foreign key di tabel `tokos` yang merujuk ke `positions`
-        //     'department_id', // Primary key di tabel `departments`
-        //     'position_id'    // Primary key di tabel `positions`
-        // );
+        return $this->hasManyThrough(
+            Toko::class,
+            Position::class,
+            'department_id', // Foreign key di tabel `positions` yang merujuk ke `departments`
+            'position_id',   // Foreign key di tabel `tokos` yang merujuk ke `positions`
+            'department_id', // Primary key di tabel `departments`
+            'position_id'    // Primary key di tabel `positions`
+        );
 
-        return Toko::whereHas('position', function ($query) {
-            $query->where('department_id', $this->department_id);
-        })->get();
+        // return Toko::whereHas('position', function ($query) {
+        //     $query->where('department_id', $this->department_id);
+        // })->get();
     }
 
 

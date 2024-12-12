@@ -32,10 +32,10 @@ class Position extends Model
         return $this->hasMany(User::class, 'position_id');
     }
 
-    public function subPositions()
-    {
-        return $this->hasMany(Position::class, 'parent_position_id'); // Relasi ke jabatan di bawahnya
-    }
+    // public function subPositions()
+    // {
+    //     return $this->hasMany(Position::class, 'parent_position_id'); // Relasi ke jabatan di bawahnya
+    // }
 
     // public function stores()
     // {
