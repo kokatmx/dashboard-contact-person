@@ -90,28 +90,28 @@ class PositionSeeder extends Seeder
         Position::create(['grade_id' => 75, 'department_id' => 11, 'position_code' => 'O1603', 'position_name' => 'Task Force Leader']);
         Position::create(['grade_id' => 76, 'department_id' => 11, 'position_code' => 'O3949', 'position_name' => 'Task Force Leader']);
         Position::create(['grade_id' => 77, 'department_id' => 11, 'position_code' => 'O3951', 'position_name' => 'Task Force Leader']);
-        Position::create(['grade_id' => 78, 'department_id' => 12, 'position_code' => 'O2112', 'position_name' => 'Receiving Administration Officer']);
-        Position::create(['grade_id' => 79, 'department_id' => 12, 'position_code' => 'O2113', 'position_name' => 'Receiving Administration Officer']);
-        Position::create(['grade_id' => 80, 'department_id' => 12, 'position_code' => 'O2115', 'position_name' => 'Issuing Administration Officer']);
-        Position::create(['grade_id' => 81, 'department_id' => 12, 'position_code' => 'O2116', 'position_name' => 'Issuing Administration Officer']);
-        Position::create(['grade_id' => 82, 'department_id' => 12, 'position_code' => 'O2130', 'position_name' => 'Receiving Coordinator']);
-        Position::create(['grade_id' => 83, 'department_id' => 12, 'position_code' => 'O2132', 'position_name' => 'Receiving Officer']);
-        Position::create(['grade_id' => 84, 'department_id' => 12, 'position_code' => 'O2133', 'position_name' => 'Receiving Officer']);
-        Position::create(['grade_id' => 85, 'department_id' => 12, 'position_code' => 'O2137', 'position_name' => 'Retur Officer']);
-        Position::create(['grade_id' => 86, 'department_id' => 12, 'position_code' => 'O2138', 'position_name' => 'Retur Officer']);
-        Position::create(['grade_id' => 87, 'department_id' => 12, 'position_code' => 'O2141', 'position_name' => 'Helper (Retur)']);
-        Position::create(['grade_id' => 88, 'department_id' => 12, 'position_code' => 'O2152', 'position_name' => 'Progress Officer']);
-        Position::create(['grade_id' => 89, 'department_id' => 12, 'position_code' => 'O2153', 'position_name' => 'Progress Officer']);
-        Position::create(['grade_id' => 90, 'department_id' => 12, 'position_code' => 'O2156', 'position_name' => 'Helper (Progress)']);
-        Position::create(['grade_id' => 91, 'department_id' => 12, 'position_code' => 'O2157', 'position_name' => 'Floor Officer']);
-        Position::create(['grade_id' => 92, 'department_id' => 12, 'position_code' => 'O2158', 'position_name' => 'Floor Officer']);
-        Position::create(['grade_id' => 93, 'department_id' => 12, 'position_code' => 'O2160', 'position_name' => 'Picker']);
-        Position::create(['grade_id' => 94, 'department_id' => 12, 'position_code' => 'O2181', 'position_name' => 'Issuing Coordinator']);
-        Position::create(['grade_id' => 95, 'department_id' => 12, 'position_code' => 'O2186', 'position_name' => 'Helper (Issuing)']);
-        Position::create(['grade_id' => 96, 'department_id' => 12, 'position_code' => 'O2190', 'position_name' => 'Issuing Officer']);
-        Position::create(['grade_id' => 97, 'department_id' => 12, 'position_code' => 'O2191', 'position_name' => 'Issuing Officer']);
-        Position::create(['grade_id' => 98, 'department_id' => 12, 'position_code' => 'O2204', 'position_name' => 'Warehouse Manager']);
-        Position::create(['grade_id' => 99, 'department_id' => 12, 'position_code' => 'O2205', 'position_name' => 'Deputy Warehouse Manager']);
+        Position::create(['grade_id' => 78, 'department_id' =>  12, 'position_code' => 'O2112', 'position_name' => 'Receiving Administration Officer']);
+        Position::create(['grade_id' => 79, 'department_id' =>  12, 'position_code' => 'O2113', 'position_name' => 'Receiving Administration Officer']);
+        Position::create(['grade_id' => 80, 'department_id' =>  12, 'position_code' => 'O2115', 'position_name' => 'Issuing Administration Officer']);
+        Position::create(['grade_id' => 81, 'department_id' =>  12, 'position_code' => 'O2116', 'position_name' => 'Issuing Administration Officer']);
+        Position::create(['grade_id' => 82, 'department_id' =>  12, 'position_code' => 'O2130', 'position_name' => 'Receiving Coordinator']);
+        Position::create(['grade_id' => 83, 'department_id' =>  12, 'position_code' => 'O2132', 'position_name' => 'Receiving Officer']);
+        Position::create(['grade_id' => 84, 'department_id' =>  12, 'position_code' => 'O2133', 'position_name' => 'Receiving Officer']);
+        Position::create(['grade_id' => 85, 'department_id' =>  12, 'position_code' => 'O2137', 'position_name' => 'Retur Officer']);
+        Position::create(['grade_id' => 86, 'department_id' =>  12, 'position_code' => 'O2138', 'position_name' => 'Retur Officer']);
+        Position::create(['grade_id' => 87, 'department_id' =>  12, 'position_code' => 'O2141', 'position_name' => 'Helper (Retur)']);
+        Position::create(['grade_id' => 88, 'department_id' =>  12, 'position_code' => 'O2152', 'position_name' => 'Progress Officer']);
+        Position::create(['grade_id' => 89, 'department_id' =>  12, 'position_code' => 'O2153', 'position_name' => 'Progress Officer']);
+        Position::create(['grade_id' => 90, 'department_id' =>  12, 'position_code' => 'O2156', 'position_name' => 'Helper (Progress)']);
+        Position::create(['grade_id' => 91, 'department_id' =>  12, 'position_code' => 'O2157', 'position_name' => 'Floor Officer']);
+        Position::create(['grade_id' => 92, 'department_id' =>  12, 'position_code' => 'O2158', 'position_name' => 'Floor Officer']);
+        Position::create(['grade_id' => 93, 'department_id' =>  12, 'position_code' => 'O2160', 'position_name' => 'Picker']);
+        Position::create(['grade_id' => 94, 'department_id' =>  12, 'position_code' => 'O2181', 'position_name' => 'Issuing Coordinator']);
+        Position::create(['grade_id' => 95, 'department_id' =>  12, 'position_code' => 'O2186', 'position_name' => 'Helper (Issuing)']);
+        Position::create(['grade_id' => 96, 'department_id' =>  12, 'position_code' => 'O2190', 'position_name' => 'Issuing Officer']);
+        Position::create(['grade_id' => 97, 'department_id' =>  12, 'position_code' => 'O2191', 'position_name' => 'Issuing Officer']);
+        Position::create(['grade_id' => 98, 'department_id' =>  12, 'position_code' => 'O2204', 'position_name' => 'Warehouse Manager']);
+        Position::create(['grade_id' => 99, 'department_id' =>  12, 'position_code' => 'O2205', 'position_name' => 'Deputy Warehouse Manager']);
         Position::create(['grade_id' => 100, 'department_id' => 12, 'position_code' => 'O2206', 'position_name' => 'Warehouse Administration Coordinator']);
         Position::create(['grade_id' => 101, 'department_id' => 12, 'position_code' => 'O2207', 'position_name' => 'Warehouse Administration Coordinator']);
         Position::create(['grade_id' => 102, 'department_id' => 12, 'position_code' => 'O2210', 'position_name' => 'Godown Coordinator']);
@@ -159,5 +159,20 @@ class PositionSeeder extends Seeder
         Position::create(['grade_id' => 144, 'department_id' => 16, 'position_code' => 'YY258', 'position_name' => 'Branch Engineering Coordinator']);
         Position::create(['grade_id' => 145, 'department_id' => 16, 'position_code' => 'YY260', 'position_name' => 'Branch Engineering Support']);
         Position::create(['grade_id' => 146, 'department_id' => 16, 'position_code' => 'YY262', 'position_name' => 'Branch Engineering Support']);
+
+        // khusus dept area AM
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM001', 'position_name' => 'Area Manager 1']);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM002', 'position_name' => 'Area Manager 2']);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AM003', 'position_name' => 'Area Manager 3']);
+        // AC
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC001', 'position_name' => 'Area Coordinator 1', 'parent_position_id' => 147]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC002', 'position_name' => 'Area Coordinator 2', 'parent_position_id' => 148]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC003', 'position_name' => 'Area Coordinator 3', 'parent_position_id' => 149]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC004', 'position_name' => 'Area Coordinator 4', 'parent_position_id' => 147]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC005', 'position_name' => 'Area Coordinator 5', 'parent_position_id' => 148]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC006', 'position_name' => 'Area Coordinator 6', 'parent_position_id' => 149]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC007', 'position_name' => 'Area Coordinator 7', 'parent_position_id' => 147]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC008', 'position_name' => 'Area Coordinator 8', 'parent_position_id' => 148]);
+        // Position::create(['grade_id' => 146, 'department_id' => 10, 'position_code' => 'AC009', 'position_name' => 'Area Coordinator 9', 'parent_position_id' => 149]);
     }
 }

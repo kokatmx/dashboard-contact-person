@@ -3,58 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Toko;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function edit($uuid, Department $department)
+    public function edit($departmentUuid, $userUuid)
     {
-        // Cari user berdasarkan id
-        $user = User::where('uuid', $uuid)->firstOrFail();
-        $departments = Department::all();
-        $department = Department::find($user->department_id);
+        $user = User::where('uuid', $userUuid)->firstOrFail();
+        $department = $user->department; // Ambil department langsung dari relasi user
 
-        // Ambil user yang sedang login
-        $currentUser = Auth::user();
 
-        // Cek apakah user yang sedang login memiliki akses untuk mengedit
-        // if (!$currentUser->canUpdateUsers($user)) {
-        //     return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengedit user ini.');
-        // }
-
-        // Kirim data user ke view edit
-        return view('user.edit', compact('user', 'departments', 'department'));
+        return view('user.edit', compact('user', 'department'));
     }
-
-    public function update(Request $request, $uuid)
+    public function update(Request $request, $departmentUuid, $userUuid)
     {
         // Validasi input
         $request->validate([
-            'name' => 'nullable',
             'no_hp' => 'required|string|max:255',
         ]);
 
-        // Cari user berdasarkan ID
-        $user = User::where('uuid', $uuid)->firstOrFail();
+        $department = Department::where('uuid', $departmentUuid)->firstOrFail();
 
-        // Ambil user yang sedang login
-        $currentUser = Auth::user();
-
-        // // Cek apakah user yang sedang login memiliki akses untuk mengupdate
-        // if (!$currentUser->canUpdateUsers($user)) {
-        //     return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengupdate user ini.');
-        // }
+        // Cari user berdasarkan UUID
+        $user = User::where('uuid', $userUuid)->firstOrFail();
 
         // Update data user
         $user->update([
-            // 'name' => $request->name,
             'no_hp' => $request->no_hp,
         ]);
-        $departmentUuid = optional($user->department)->uuid; // Menggunakan optional untuk mencegah error jika department null
-        return redirect()->route('department.employees', ['uuid' => $departmentUuid])
-            ->with('success', 'Data user berhasil diperbarui.');
+
+        // Redirect berdasarkan konteks
+        return redirect()->route('department.employees', ['departmentUuid' => $department->uuid])
+            ->with('success', 'Data karyawan berhasil diperbarui.');
     }
 
     public function search(Request $request, $uuid)
@@ -62,6 +45,7 @@ class UserController extends Controller
         $query = $request->input('query');
         $department = Department::where('uuid', $uuid)->firstOrFail(); // Cari data departemen berdasarkan UUID
         $departmentId = $department->department_id;
+        $area = $department->area;
 
         // Query untuk mencari users dalam departemen tertentu
         $users = User::where('department_id', $departmentId)
@@ -75,21 +59,18 @@ class UserController extends Controller
         $canUpdate = false;
         $currentDivisionId = $currentUser->division_id; // Ambil divisi dari user yang login
 
-        // Cek hak akses berdasarkan grade dan divisi
-        if ($users->isNotEmpty()) {
-            foreach ($users as $user) {
-                if ($currentDivisionId === $user->division_id && $currentUser->canUpdateUsers($user)) {
-                    $canUpdate = true;
-                    break;
-                }
-            }
-        }
+        $usersWithUpdateStatus = $users->map(function ($user) use ($currentUser) {
+            return [
+                'user' => $user,
+                'canUpdate' => $currentUser->canUpdateUsers($user),
+            ];
+        });
 
         if ($users->isEmpty()) {
-            return redirect()->back()->with('error', 'User tidak ditemukan.');
+            return redirect()->back()->with('error', 'Data Karyawan tidak ditemukan.');
         }
 
         // Return hasil pencarian ke view list users per department
-        return view('department.show', compact('department', 'users', 'currentUser', 'canUpdate'));
+        return view('department.show-employees', compact('area', 'usersWithUpdateStatus', 'department', 'users', 'currentUser', 'canUpdate'));
     }
 }

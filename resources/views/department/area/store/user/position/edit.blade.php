@@ -2,10 +2,25 @@
     <div class="max-w-lg mx-auto p-6 bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-lg mt-10 border-t-4 border-red-600">
 
         <!-- Back Button -->
-        <a href="{{ route('department.employees', $department->uuid) }}"
-            class="flex items-center text-blue-600 hover:text-blue-800 font-semibold mb-10">
-            <i class="fas fa-arrow-left mr-2"></i> Kembali
-        </a>
+        @php
+            $previousUrl = url()->previous();
+            $isFromPosition = str_contains($previousUrl, 'position');
+            $isFromStore = str_contains($previousUrl, 'stores');
+        @endphp
+
+        @if ($isFromPosition)
+            <a href="{{ route('department.area.stores.users.position', ['departmentUuid' => $department->uuid, 'tokoId' => $store->toko_id, 'userName' => $user->name]) }}" class="flex items-center text-blue-600 hover:text-blue-800 font-semibold mb-10">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Position
+            </a>
+        @elseif ($isFromStore)
+            <a href="{{ route('department.area.stores.users.index', ['departmentUuid' => $department->uuid, 'tokoId' => $store->toko_id]) }}" class="flex items-center text-blue-600 hover:text-blue-800 font-semibold mb-10">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Toko
+            </a>
+        @else
+            <a href="{{ url()->previous() }}" class="flex items-center text-blue-600 hover:text-blue-800 font-semibold mb-10">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali
+            </a>
+        @endif
 
         <!-- Form Header -->
         <h2 class="text-3xl font-extrabold text-red-600 mb-8 text-center">
@@ -16,7 +31,7 @@
         </p>
 
         <!-- Edit Form -->
-        <form action="{{ route('department.employees.update', ['departmentUuid'=> $department->uuid, 'userUuid' => $user->uuid]) }}" method="POST" class="space-y-5">
+        <form action="{{ route('department.area.stores.users.position.update', ['departmentUuid' => $department->uuid, 'tokoId' => $store->toko_id, 'userName' => $user->name]) }}" method="POST" class="space-y-5">
             @csrf
             @method('PUT')
 

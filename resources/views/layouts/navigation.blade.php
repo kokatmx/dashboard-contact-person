@@ -68,6 +68,19 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        @php
+                            $position = \App\Models\Position::with('grade')->get();
+                            $department = \App\Models\Department::get();
+                        @endphp
+                        <div class="w-full flex flex-col">
+                            <p class="px-4 font-medium text-base text-gray-800">Departemen
+                                {{ Auth::user()->department->department_name }}</p>
+                            <p class="px-4 font-medium text-sm text-gray-500">Grade
+                                {{ Auth::user()->position->grade->max_grade }}</p>
+                            <p class="px-4 font-medium text-sm text-black">Toko {{ Auth::user()->store->toko_name }}
+                            </p>
+
+                        </div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -100,7 +113,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="pt-2 pb-3 space-y-1 mx-4">
             @php
                 $user = Auth::user();
                 $userDivision = $user->division->division_code ?? null; // Ambil kode divisi
@@ -144,9 +157,19 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                {{-- <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link> --}}
+                <x-responsive-nav-link>
+                    @php
+                        $position = \App\Models\Position::with('grade')->get();
+                        $department = \App\Models\Department::get();
+                    @endphp
+                    <div class="w-full flex flex-col gap-1">
+                        <p class="font-medium text-base text-gray-800 hover:bg-gray-100">Departemen
+                            {{ Auth::user()->department->department_name }}</p>
+                        <p class="font-medium text-sm text-gray-500">Grade
+                            {{ Auth::user()->position->grade->max_grade }}</p>
+                        <p class="font-medium text-base text-black">Toko {{ Auth::user()->store->toko_name }}</p>
+                    </div>
+                </x-responsive-nav-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

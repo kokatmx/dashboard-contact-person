@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('division_id');
             $table->string('department_code')->unique();
             $table->string('department_name');
-            $table->string('description');
+            $table->string('department_extension')->unique();
             $table->timestamps();
             $table->foreign('area_id')->references('area_id')->on('areas')->onDelete('cascade');
             $table->foreign('division_id')->references('division_id')->on('divisions')->onDelete('cascade');

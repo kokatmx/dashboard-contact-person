@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Department;
 use App\Models\Divisi;
+use App\Models\StoreUser;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,7 +24,9 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             GradeSeeder::class,
             PositionSeeder::class,
+            TokoSeeder::class,
             UserSeeder::class,
+            // StoreUserSeeder::class,
         ]);
         // User::factory(200)->create();
     }

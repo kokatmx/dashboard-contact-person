@@ -75,13 +75,10 @@ class DashboardController extends Controller
     {
         return [
             'areas' => Area::all(),
-            'warehouseArea' => Area::where('area_code', 'WRH')->first(),
-            'storeArea' => Area::where('area_code', 'STO')->first(),
-            'officeArea' => Area::where('area_code', 'OFF')->first(),
+            // 'warehouseArea' => Area::where('area_code', 'WRH')->first(),
+            // 'storeArea' => Area::where('area_code', 'STO')->first(),
+            // 'officeArea' => Area::where('area_code', 'OFF')->first(),
             'department' => Department::all(),
-            'totalDepartments' => Department::count(),
-            'totalUsers' => User::count(),
-            'totalDivisions' => Division::count(),
         ];
     }
 }

@@ -26,14 +26,18 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => Hash::make('password'), // Default password
+            'password' => Hash::make('1234567890'), // Default password
             'remember_token' => Str::random(10),
+            'no_hp' => $this->faker->phoneNumber(),
             'email_verified_at' => now(),
 
             // Menggunakan nilai acak sesuai jumlah data yang ada
             'division_id' => $this->faker->numberBetween(1, 10),
             'department_id' => $this->faker->numberBetween(1, 15),
-            'grade_id' => $this->faker->numberBetween(1, 146),
+            'position_id' => $this->faker->numberBetween(1, 146),
+            'area_id' => $this->faker->numberBetween(1, 3),
+            'toko_id' => $this->faker->numberBetween(1, 100),
+
         ];
     }
 

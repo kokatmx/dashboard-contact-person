@@ -48,8 +48,9 @@ class Area extends Model
 
     public function departments()
     {
-        return $this->hasMany(Department::class, 'area_id', 'id');
+        return $this->hasMany(Department::class, 'area_id');
     }
+
 
     public function users()
     {

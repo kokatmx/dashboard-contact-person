@@ -9,7 +9,7 @@ class Position extends Model
 {
     use HasFactory;
 
-    protected $table = 'positions';
+    // protected $table = 'positions';
     protected $primaryKey = 'position_id';
     protected $fillable = [
         'position_name',
@@ -24,11 +24,21 @@ class Position extends Model
     }
     public function department()
     {
-        return $this->belongsTo(Department::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id', 'department_id');
     }
 
     public function users()
     {
         return $this->hasMany(User::class, 'position_id');
     }
+
+    // public function subPositions()
+    // {
+    //     return $this->hasMany(Position::class, 'parent_position_id'); // Relasi ke jabatan di bawahnya
+    // }
+
+    // public function stores()
+    // {
+    //     return $this->belongsToMany(Toko::class, 'position_toko', 'position_id', 'toko_id');
+    // }
 }

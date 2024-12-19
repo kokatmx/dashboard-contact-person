@@ -11,7 +11,7 @@ class Grade extends Model
     protected $primaryKey = 'grade_id';
 
     protected $table = 'grades';
-    protected $fillable = ['min_grade', 'max_grade'];
+    protected $guarded = ['grade_id'];
     public function position()
     {
         return $this->hasOne(Position::class, 'grade_id');
