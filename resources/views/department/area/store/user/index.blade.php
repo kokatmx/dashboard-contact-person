@@ -2,12 +2,19 @@
     <div class="container py-11 mx-auto sm:px-6 lg:px-8">
         <div class="bg-white shadow-md rounded-lg overflow-hidden p-6">
             <div class="flex justify-between mb-4">
-                <h1 class="font-bold text-xl">Toko {{ $store->toko_name }}</h1>
-                <a href="{{ route('department.area.stores.index', ['departmentUuid' => $department->uuid]) }}" class="btn btn-sm btn-outline hover:bg-blue-600">Kembali</a>
+                <h1 class="font-bold text-xl">
+                    <a href="{{ route('department.area.stores.employees.index', ['departmentUuid' => $department->uuid, 'tokoCode' => $store->toko_code]) }}"
+                        class="hover:underline">
+                        TOKO {{ $store->toko_name }}
+                    </a>
+                </h1>
+                <a href="{{ route('department.area.stores.index', ['departmentUuid' => $department->uuid]) }}"
+                    class="btn btn-md btn-info">Kembali</a>
             </div>
 
-            <form action="{{ route('department.area.stores.users.search', ['departmentUuid' => $department->uuid,'tokoId' => $store->toko_id]) }}" method="get"
-                class="flex items-center my-6">
+            <form
+                action="{{ route('department.area.stores.employees.search', ['departmentUuid' => $department->uuid, 'tokoCode' => $store->toko_code]) }}"
+                method="get" class="flex items-center my-6">
                 <input type="text" id="search" name="search"
                     class="sm:w-1/2 md:w-1/3 lg:w-1/3 mr-2 px-3 py-2 text-gray-700 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Masukkan kode toko atau nama toko">
@@ -15,82 +22,68 @@
             </form>
 
             <!-- Notifications -->
-            <div class="fixed top-5 inset-x-0 md:inset-x-1/2 z-50 sm:w-full md:w-1/2 lg:w-1/3">
-            @if (session('success'))
-                <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-                    x-transition:leave="transition ease-in duration-300" class="alert alert-success mb-4 bg-green-500">
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 shrink-0 stroke-current"
-                    fill="none"
-                    viewBox="0 0 24 24">
-                    <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                    <span>{{ session('success') }}</span>
-                </div>
-            @endif
+            <div class="fixed top-5 inset-x-0 md:inset-x-1/3 z-50 sm:w-full md:w-1/2 lg:w-1/3">
+                @if (session('success'))
+                    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
+                        x-transition:leave="transition ease-in duration-300"
+                        class="alert alert-success mb-4 bg-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{{ session('success') }}</span>
+                    </div>
+                @endif
 
-            @if (session('error'))
-                <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-                    x-transition:leave="transition ease-in duration-300" class="alert alert-error mb-4 bg-red-500">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 shrink-0 stroke-current"
-                        fill="none"
-                        viewBox="0 0 24 24">
-                        <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>{{ session('error') }}</span>
-                </div>
-            @endif
+                @if (session('error'))
+                    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
+                        x-transition:leave="transition ease-in duration-300" class="alert alert-error mb-4 bg-red-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{{ session('error') }}</span>
+                    </div>
+                @endif
             </div>
-
-            @if (session('error'))
-                <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-                    x-transition:leave="transition ease-in duration-300" class="alert alert-error mb-4">
-                    <span>{{ session('error') }}</span>
-                </div>
-            @endif
 
             <div class="overflow-x-auto rounded-lg">
                 <table class="table w-full border-collapse border border-gray-200">
                     <thead class="text-base">
-                        <tr class="bg-red-100 text-black text-left">
-                            {{-- <th>#</th> --}}
-                            <th>Nama Karyawan</th>
-                            <th>Nomor HP</th>
-                            <th>Kode Toko</th>
-                            <th>Departemen</th>
-                            <th>Divisi</th>
-                            <th>Jabatan</th>
-                            <th>Grade</th>
-                            <th>Aksi</th>
+                        <tr class="bg-red-500 text-black text-left">
+                            <th class="border border-gray-300">Nama Karyawan</th>
+                            <th class="border border-gray-300">Nomor HP</th>
+                            <th class="border border-gray-300">Kode Toko</th>
+                            <th class="border border-gray-300">Departemen</th>
+                            <th class="border border-gray-300">Divisi</th>
+                            <th class="border border-gray-300">Jabatan</th>
+                            <th class="border border-gray-300">Grade</th>
+                            <th class="border border-gray-300">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($usersWithUpdateStatus as $storeUser)
                             <tr class="hover:bg-red-50">
-                                {{-- <td>{{ $loop->index + 1 + ($storeUser['user']->currentPage() - 1) * $storeUser['user']->perPage() }} --}}
                                 </td>
-                                <td>{{ $storeUser['user']->name }}</td>
-                                <td>{{ $storeUser['user']->no_hp }}</td>
-                                <td>{{ $store->toko_code }}</td>
-                                <td>{{ $storeUser['user']->department->department_name }}</td>
-                                <td>{{ $storeUser['user']->division->division_name }}</td>
-                                <td>{{ $storeUser['user']->position->position_name }}</td>
-                                <td>{{ $storeUser['user']->position->grade->max_grade }}</td>
-                                <td>
+                                <td class="border border-gray-300">{{ $storeUser['user']->name }}</td>
+                                <td class="border border-gray-300">{{ $storeUser['user']->no_hp }}</td>
+                                <td class="border border-gray-300">{{ $store->toko_code }}</td>
+                                <td class="border border-gray-300">
+                                    {{ $storeUser['user']->department->department_name }}
+                                </td>
+                                <td class="border border-gray-300">{{ $storeUser['user']->division->division_name }}
+                                </td>
+                                <td class="border border-gray-300">{{ $storeUser['user']->position->position_name }}
+                                </td>
+                                <td class="border border-gray-300">{{ $storeUser['user']->position->grade->max_grade }}
+                                </td>
+                                <td class="border border-gray-300">
                                     @if ($storeUser['canUpdate'])
-                                        <a href="{{ route('department.area.stores.users.edit', ['departmentUuid' => optional($storeUser['user']->department)->uuid,'userUuid'=>$storeUser['user']->uuid, 'tokoId' => $store->toko_id]) }}"
-                                            class="hover:underline text-blue-600">Update</a>
+                                        <a href="{{ route('department.area.stores.employees.edit', ['departmentUuid' => optional($storeUser['user']->department)->uuid, 'userUuid' => $storeUser['user']->uuid, 'tokoCode' => $store->toko_code]) }}"
+                                            class="btn btn-sm btn-info"><i class="fa-regular fa-pen-to-square"></i>
+                                            Update</a>
                                     @else
                                         <span class="text-gray-500">Tidak bisa update</span>
                                     @endif

@@ -33,12 +33,12 @@
                         <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
                     </div>
 
-                    <!-- Remember Me -->
+                    {{-- <!-- Remember Me -->
                     <div class="flex items-center mt-4">
                         <input id="remember_me" type="checkbox" name="remember"
                             class="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring focus:ring-red-300">
                         <label for="remember_me" class="ml-2 text-sm text-gray-700">Ingat Saya</label>
-                    </div>
+                    </div> --}}
 
                     <!-- Actions -->
                     <div class="mt-6 flex items-center justify-between">

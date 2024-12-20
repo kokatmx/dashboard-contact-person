@@ -12,7 +12,31 @@ use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
-    public function searchStores(Request $request, $uuid)
+    public function index(Request $request, $uuid)
+    {
+        $department = Department::with('positions')->where('uuid', $uuid)->firstOrFail();
+        $stores = Toko::with('users.position')->paginate(10);
+        $currentUser = Auth::user();
+        $storesWithUpdateStatus = $stores->map(function ($store) use ($currentUser) {
+            $areaManager = $store->getAreaManager(); // Asumsikan method ini mengembalikan user dengan posisi AM
+            $areaCoordinator = $store->getAreaCoordinator(); // Asumsikan method ini mengembalikan user dengan posisi AC
+
+            $canUpdate = false;
+            if ($areaManager && $areaManager->id === $currentUser->id) {
+                $canUpdate = $currentUser->position->position_name === 'Area Manager';
+            } elseif ($areaCoordinator && $areaCoordinator->id === $currentUser->id) {
+                $canUpdate = $currentUser->position->position_name === 'Area Coordinator';
+            }
+
+            return [
+                'store' => $store,
+                'canUpdate' => $canUpdate,
+            ];
+        });
+        return view('department.area.store.index', compact('stores', 'department', 'storesWithUpdateStatus'));
+    }
+
+    public function search(Request $request, $uuid)
     {
         // Cari department berdasarkan UUID
         $department = Department::where('uuid', $uuid)->firstOrFail();
@@ -42,65 +66,17 @@ class StoreController extends Controller
         return view('department.area.store.index', compact('stores', 'search', 'department'));
     }
 
-    public function showPositionUser($departmentUuid, $tokoId, $userName)
-    {
-        $store = Toko::findOrFail($tokoId);
-        $department = Department::where('uuid', $departmentUuid)->firstOrFail();
-
-        $users = $store->users()->where('name', 'LIKE', "%{$userName}%")->get();
-
-        $currentUser = Auth::user();
-        $usersWithUpdateStatus = $users->map(function ($user) use ($currentUser) {
-            return [
-                'user' => $user,
-                'canUpdate' => $currentUser->canUpdateUsers($user)
-            ];
-        });
-
-        return view('department.area.store.user.position.position', compact('department', 'store', 'users', 'usersWithUpdateStatus'));
-    }
-
-    public function userPositionEdit($departmentUuid, $tokoId, $userName)
-    {
-        $store = Toko::where('toko_id', $tokoId)->firstOrFail();
-        $user = User::where('name', 'LIKE', "%{$userName}%")->firstOrFail();
-        $department = $user->department; // Ambil department langsung dari relasi user
-
-        return view('department.area.store.user.position.edit', compact('user', 'department', 'store'));
-    }
-
-    public function userPositionUpdate(Request $request, $departmentUuid, $tokoId, $userName)
-    {
-        // Validasi input
-        $request->validate([
-            'no_hp' => 'required|string|max:255',
-        ]);
-
-        $department = Department::where('uuid', $departmentUuid)->firstOrFail();
-        $store = Toko::where('toko_id', $tokoId)->firstOrFail();
-        // Cari user berdasarkan Name
-        $user = User::where('name', 'LIKE', "%{$userName}%")->firstOrFail();
-
-        // Update data user
-        $user->update([
-            'no_hp' => $request->no_hp,
-        ]);
-        $store = Toko::where('toko_id', $tokoId)->firstOrFail();
-
-        return redirect()->route('department.area.stores.users.position', ['tokoId' => $store->toko_id, 'departmentUuid' => $department->uuid, 'userName' => $user->name])->with('success', 'Data karyawan berhasil diperbarui.');
-    }
-
-    public function editStore($uuid, $tokoId)
+    public function edit($uuid, $tokoCode)
     {
         $department = Department::where('uuid', $uuid)->firstOrFail(); // Validasi UUID
-        $store = Toko::findOrFail($tokoId); // Validasi Toko
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail(); // Validasi Toko
         return view('department.area.store.edit', compact('store', 'department'));
     }
 
-    public function updateStore(Request $request, $uuid, $tokoId)
+    public function update(Request $request, $uuid, $tokoCode)
     {
         $department = Department::where('uuid', $uuid)->firstOrFail();
-        $store = Toko::findOrFail($tokoId);
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
 
         $request->validate([
             'no_hp' => 'required|string|max:15|regex:/^[0-9]+$/ ',
@@ -117,9 +93,58 @@ class StoreController extends Controller
             ->with('success', 'Toko berhasil diperbarui.');
     }
 
-    public function showUsersStore($departmentUuid, $tokoId)
+
+    public function showPositionUser($departmentUuid, $tokoCode, $userName)
     {
-        $store = Toko::with('users')->findOrFail($tokoId);
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
+        $department = Department::where('uuid', $departmentUuid)->firstOrFail();
+
+        $users = $store->users()->where('name', 'LIKE', "%{$userName}%")->get();
+
+        $currentUser = Auth::user();
+        $usersWithUpdateStatus = $users->map(function ($user) use ($currentUser) {
+            return [
+                'user' => $user,
+                'canUpdate' => $currentUser->canUpdateUsers($user)
+            ];
+        });
+
+        return view('department.area.store.user.position.show-user', compact('department', 'store', 'users', 'usersWithUpdateStatus'));
+    }
+
+    public function userPositionEdit($departmentUuid, $tokoCode, $userName, $userUuid)
+    {
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
+        $user = User::where('uuid',  $userUuid)->firstOrFail();
+        $department = $user->department; // Ambil department langsung dari relasi user
+
+        return view('department.area.store.user.position.edit', compact('user', 'department', 'store'));
+    }
+
+    public function userPositionUpdate(Request $request, $departmentUuid, $tokoCode, $userName)
+    {
+        // Validasi input
+        $request->validate([
+            'no_hp' => 'required|string|max:255',
+        ]);
+
+        $department = Department::where('uuid', $departmentUuid)->firstOrFail();
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
+        // Cari user berdasarkan Name
+        $user = User::where('name', 'LIKE', "%{$userName}%")->firstOrFail();
+
+        // Update data user
+        $user->update([
+            'no_hp' => $request->no_hp,
+        ]);
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
+
+        return redirect()->route('department.area.stores.employees.position.index', ['tokoCode' => $store->toko_code, 'departmentUuid' => $department->uuid, 'userName' => $user->name])->with('success', 'Data karyawan berhasil diperbarui.');
+    }
+
+    public function showUsersStore($departmentUuid, $tokoCode)
+    {
+        $store = Toko::with('users')->where('toko_code', $tokoCode)->firstOrFail();
         $department = Department::where('uuid', $departmentUuid)->firstOrFail();
         $users = $store->users()->paginate(10);
         // $user = User::where('uuid', $userUuid)->firstOrFail();
@@ -134,16 +159,16 @@ class StoreController extends Controller
         return view('department.area.store.user.index', compact('department', 'store', 'users', 'usersWithUpdateStatus',));
     }
 
-    public function userStoreEdit($departmentUuid, $tokoId, $userUuid)
+    public function userStoreEdit($departmentUuid, $tokoCode, $userUuid)
     {
         $user = User::where('uuid', $userUuid)->firstOrFail();
         $department = $user->department; // Ambil department langsung dari relasi user
-        $store = Toko::where('toko_id', $tokoId)->firstOrFail();
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
 
         return view('department.area.store.user.edit', compact('user', 'department', 'store'));
     }
 
-    public function userStoreUpdate(Request $request, $departmentUuid, $tokoId, $userUuid)
+    public function userStoreUpdate(Request $request, $departmentUuid, $tokoCode, $userUuid)
     {
         // Validasi input
         $request->validate([
@@ -159,15 +184,15 @@ class StoreController extends Controller
         $user->update([
             'no_hp' => $request->no_hp,
         ]);
-        $store = Toko::where('toko_id', $tokoId)->firstOrFail();
+        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
 
-        return redirect()->route('department.area.stores.users.index', ['tokoId' => $store->toko_id, 'departmentUuid' => $department->uuid])->with('success', 'Data karyawan berhasil diperbarui.');
+        return redirect()->route('department.area.stores.employees.index', ['tokoCode' => $store->toko_code, 'departmentUuid' => $department->uuid])->with('success', 'Data karyawan berhasil diperbarui.');
     }
 
-    public function searchUsersStore(Request $request, $departmentUuid, $tokoId)
+    public function searchUsersStore(Request $request, $departmentUuid, $tokoCode)
     {
         $search = $request->input('search');
-        $store = Toko::with('users')->findOrFail($tokoId);
+        $store = Toko::with('users')->where('toko_code', $tokoCode)->firstOrFail();
         $users = $store->users()->where('name', 'LIKE', '%' . $search . '%')->paginate(10);
         $department = Department::where('uuid', $departmentUuid)->firstOrFail();
         $currentUser = Auth::user();

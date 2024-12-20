@@ -10,38 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AreaController extends Controller
 {
-    public function showAreaDetails($areaCode, Request $request)
-    {
-        // Ambil area berdasarkan kode
-        $area = Area::where('area_code', $areaCode)->firstOrFail();
-
-        // Query untuk divisi di area ini
-        $divisionsQuery = Division::where('area_code', $area->id);
-
-        // Query untuk departemen di area ini
-        $departmentsQuery = Department::whereHas('division', function ($query) use ($area) {
-            $query->where('area_code', $area->id);
-        });
-
-        // Filter berdasarkan input pencarian
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $divisionsQuery->where('division_name', 'like', "%{$search}%");
-            $departmentsQuery->where('department_name', 'like', "%{$search}%");
-        }
-
-        // Ambil divisi dan departemen
-        $divisions = $divisionsQuery->paginate(10);
-        $departments = $departmentsQuery->paginate(10);
-
-        return view('areas.details', [
-            'area' => $area,
-            'divisions' => $divisions,
-            'departments' => $departments,
-            'searchQuery' => $request->input('search', '')
-        ]);
-    }
-
     public function showAreaDetail(Request $request)
     {
         // Ambil user login//-
@@ -61,11 +29,7 @@ class AreaController extends Controller
         $userDivisionId = $user->division_id; //+
         //+
         // Count users per department in the user's division//+
-        $usersPerDepartment = Department::withCount('users') //+
-            ->where('division_id', $userDivisionId) //+
-            ->get()
-            //+
-            ->keyBy('id');
+        $usersPerDepartment = Department::withCount('users')->get();
         //+
         // Get the user's area ID//+
         $userArea = $user->department->division->area_id;
@@ -78,7 +42,7 @@ class AreaController extends Controller
         // Kirim data ke view, termasuk data area dan status area user//-
         //+
         // Return the view with all necessary data//+
-        return view('area.detail', [
+        return view('area.index', [
             'areas' => $areas,
             'area' => $area,
             'userArea' => $userArea,

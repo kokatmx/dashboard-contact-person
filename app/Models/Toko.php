@@ -16,22 +16,10 @@ class Toko extends Model
         'position_id',
     ];
 
-    // public function position()
-    // {
-    //     return $this->belongsTo(Position::class, 'position_id');
-    // }
-
     public function position()
     {
         return $this->belongsTo(Position::class, 'position_id', 'position_id');
     }
-
-
-    // public function users()
-    // {
-    //     return $this->hasManyThrough(User::class, Position::class, 'position_id', 'position_id', 'position_id', 'position_id');
-    // }
-
 
     public function users()
     {

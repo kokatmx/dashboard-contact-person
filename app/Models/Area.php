@@ -14,6 +14,7 @@ class Area extends Model
     protected $fillable = [
         "area_code",
         "area_name",
+        "slug",
     ];
 
     const STORE_AREA = ['O1100', 'O1200', 'O9400', 'O0000'];

@@ -55,6 +55,7 @@ class User extends Authenticatable
             return true;
         }
 
+
         $canUpdate =
             $this->area_id == $otherUser->area_id
             && $this->division_id == $otherUser->division_id
@@ -90,11 +91,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Position::class, 'position_id', 'position_id');
     }
-
-    // public function stores()
-    // {
-    //     return $this->belongsToMany(Toko::class, 'store_user', 'user_id', 'toko_id');
-    // }
 
     public function store()
     {

@@ -16,7 +16,8 @@
             Perbarui informasi karyawan untuk divisi dan jabatan tertentu.
         </p>
 
-        <form action="{{ route('department.area.stores.update', ['tokoId' => $store->toko_id, 'departmentUuid' => $department->uuid]) }}"
+        <form
+            action="{{ route('department.area.stores.update', ['tokoCode' => $store->toko_code, 'departmentUuid' => $department->uuid]) }}"
             method="POST" class="space-y-5">
             @csrf
             @method('PUT')
