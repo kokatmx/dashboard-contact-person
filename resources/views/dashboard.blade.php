@@ -30,12 +30,12 @@
                         </p>
                     </div>
                     <!-- Grade Info -->
-                    <div class="flex items-center bg-white shadow-md rounded-lg p-4 border-l-4 border-gray-500">
+                    {{-- <div class="flex items-center bg-white shadow-md rounded-lg p-4 border-l-4 border-gray-500">
                         <i class="fas fa-chart-line text-gray-500 text-2xl mr-4"></i>
                         <p class="text-lg font-medium">
                             Grade: <span class="font-semibold">{{ Auth::user()->position->grade->max_grade }}</span>
                         </p>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="mt-8">
                     <a href="{{ route('department.index') }}" class="btn bg-white">

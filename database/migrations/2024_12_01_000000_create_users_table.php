@@ -16,13 +16,13 @@ return new class extends Migration
             $table->uuid('uuid')->unique();
             $table->string('name');
             $table->string('no_hp');
-            $table->string('email')->unique();
+            $table->string('nik')->unique();
             $table->unsignedBigInteger('toko_id')->default(1);
             $table->unsignedBigInteger('area_id');
             $table->unsignedBigInteger('division_id');
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('position_id');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('nik_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -36,7 +36,7 @@ return new class extends Migration
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+            $table->string('nik')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });

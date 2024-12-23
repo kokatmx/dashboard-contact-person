@@ -18,11 +18,11 @@
 
                     <!-- Email Address -->
                     <div class="mb-4">
-                        <label for="email" class="block text-gray-700 font-medium">Email</label>
-                        <input id="email" type="email" name="email" :value="old('email')" required autofocus
+                        <label for="nik" class="block text-gray-700 font-medium">NIK</label>
+                        <input id="nik" type="text" name="nik" :value="old('nik')" required autofocus
                             autocomplete="username"
                             class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300 focus:outline-none">
-                        <x-input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
+                        <x-input-error :messages="$errors->get('nik')" class="mt-2 text-sm text-red-600" />
                     </div>
 
                     <!-- Password -->
@@ -42,12 +42,12 @@
 
                     <!-- Actions -->
                     <div class="mt-6 flex items-center justify-between">
-                        @if (Route::has('password.request'))
+                        {{-- @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}"
                                 class="text-sm text-blue-600 hover:underline focus:outline-none">
                                 Lupa Password?
                             </a>
-                        @endif
+                        @endif --}}
 
                         <button type="submit"
                             class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:ring focus:ring-red-300 focus:outline-none">

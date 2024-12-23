@@ -60,7 +60,7 @@
                             <th class="text-left border border-gray-300">Nomor HP</th>
                             <th class="text-left border border-gray-300">Jabatan</th>
                             <th class="text-left border border-gray-300">Divisi</th>
-                            <th class="text-left border border-gray-300">Grade</th>
+                            {{-- <th class="text-left border border-gray-300">Grade</th> --}}
                             <th class="text-left border border-gray-300">Aksi</th>
                         </tr>
                     </thead>
@@ -72,12 +72,12 @@
                                 <td class="border border-gray-300">{{ $item['user']->no_hp }}</td>
                                 <td class="border border-gray-300">{{ $item['user']->position->position_name }}</td>
                                 <td class="border border-gray-300">{{ $item['user']->division->division_name }}</td>
-                                <td class="border border-gray-300">{{ $item['user']->position->grade->max_grade }}</td>
+                                {{-- <td class="border border-gray-300">{{ $item['user']->position->grade->max_grade }}</td> --}}
                                 <td class="border border-gray-300">
                                     @if ($item['canUpdate'])
                                         <a href="{{ route('department.employees.edit', ['departmentUuid' => optional($item['user']->department)->uuid, 'userUuid' => $item['user']->uuid]) }}"
                                             class="text-blue-600 hover:underline">
-                                            Update
+                                            <i class="fa-regular fa-pen-to-square"></i>Update</a>
                                         </a>
                                     @else
                                         <span class="text-gray-500">Tidak bisa update</span>

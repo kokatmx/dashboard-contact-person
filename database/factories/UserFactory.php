@@ -25,11 +25,11 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'nik' => $this->generateNik(),
             'password' => Hash::make('1234567890'), // Default password
             'remember_token' => Str::random(10),
             'no_hp' => $this->faker->phoneNumber(),
-            'email_verified_at' => now(),
+            'nik_verified_at' => now(),
 
             // Menggunakan nilai acak sesuai jumlah data yang ada
             'division_id' => $this->faker->numberBetween(1, 10),
@@ -42,12 +42,32 @@ class UserFactory extends Factory
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * Indicate that the model's nik address should be unverified.
      */
     public function unverified(): static
     {
         return $this->state(fn(array $attributes) => [
-            'email_verified_at' => null,
+            'nik_verified_at' => null,
         ]);
+    }
+
+    protected function generateNik()
+    {
+        // 6 digit kode wilayah (random)
+        $kodeWilayah = $this->faker->numberBetween(110101, 940110);
+
+        // Tanggal lahir dalam format YYMMDD
+        $tanggalLahir = $this->faker->dateTimeBetween('-60 years', '-18 years')->format('ymd');
+
+        // Jenis kelamin: tambahkan 40 ke tanggal jika perempuan
+        $isFemale = $this->faker->boolean;
+        if ($isFemale) {
+            $tanggalLahir = (int) substr($tanggalLahir, 4, 2) + 40 . substr($tanggalLahir, 0, 4);
+        }
+
+        // 4 digit nomor urut registrasi
+        $noUrut = $this->faker->numberBetween(1000, 9999);
+
+        return $kodeWilayah . $tanggalLahir . $noUrut;
     }
 }

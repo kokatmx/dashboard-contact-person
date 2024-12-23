@@ -38,14 +38,10 @@ class StoreController extends Controller
 
     public function search(Request $request, $uuid)
     {
-        // Cari department berdasarkan UUID
-        $department = Department::where('uuid', $uuid)->firstOrFail();
-
-        // Ambil ID department
-        $departmentId = $department->department_id;
-
-        // Ambil input pencarian
         $search = $request->input('search');
+        $department = Department::with('positions')->where('uuid', $uuid)->firstOrFail();
+        $departmentId = $department->department_id;
+        $currentUser = Auth::user();
 
         // Cari toko berdasarkan relasi melalui users
         $stores = Toko::whereHas('users', function ($query) use ($departmentId) {
@@ -57,13 +53,30 @@ class StoreController extends Controller
             })
             ->paginate(10);
 
-        // Jika data tidak ditemukan
         if ($stores->total() === 0) {
             return redirect()->back()->with('error', 'Toko tidak ditemukan.');
         }
 
-        // Kirim data ke view
-        return view('department.area.store.index', compact('stores', 'search', 'department'));
+        $storesWithUpdateStatus = $stores->map(function ($store) use ($currentUser) {
+            $areaManager = $store->getAreaManager(); // Asumsikan method ini mengembalikan user dengan posisi AM
+            $areaCoordinator = $store->getAreaCoordinator(); // Asumsikan method ini mengembalikan user dengan posisi AC
+
+            $canUpdate = false;
+            if ($areaManager && $areaManager->id === $currentUser->id) {
+                $canUpdate = $currentUser->position->position_name === 'Area Manager';
+            } elseif ($areaCoordinator && $areaCoordinator->id === $currentUser->id) {
+                $canUpdate = $currentUser->position->position_name === 'Area Coordinator';
+            }
+
+            return [
+                'store' => $store,
+                'canUpdate' => $canUpdate,
+            ];
+        });
+
+
+
+        return view('department.area.store.index', compact('stores', 'search', 'department', 'storesWithUpdateStatus'));
     }
 
     public function edit($uuid, $tokoCode)
@@ -137,7 +150,6 @@ class StoreController extends Controller
         $user->update([
             'no_hp' => $request->no_hp,
         ]);
-        $store = Toko::where('toko_code', $tokoCode)->firstOrFail();
 
         return redirect()->route('department.area.stores.employees.position.index', ['tokoCode' => $store->toko_code, 'departmentUuid' => $department->uuid, 'userName' => $user->name])->with('success', 'Data karyawan berhasil diperbarui.');
     }

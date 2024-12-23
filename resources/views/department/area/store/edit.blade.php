@@ -23,7 +23,7 @@
             @method('PUT')
 
             <div class="mb-4">
-                <label for="toko_code" class="block text-sm font-medium text-gray-700">Nama Toko</label>
+                <label for="toko_code" class="block text-sm font-medium text-gray-700">Kode Toko</label>
                 <input type="text" name="toko_code" id="toko_code" value="{{ old('toko_code', $store->toko_code) }}"
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-200 text-gray-600 sm:text-sm cursor-not-allowed"
                     disabled>
